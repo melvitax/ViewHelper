@@ -54,8 +54,6 @@ class ViewController: UIViewController {
         centerView.roundCornersToCircle()
         redCircle.addSubview(centerView)
         centerView.centerInSuperview()
-        
-        
 
         var redCircleShadow = UIView(frame: redCircle.frame)
         redCircleShadow.backgroundColor = UIColor.blackColor()
@@ -63,8 +61,6 @@ class ViewController: UIViewController {
         redCircleShadow.shadow(color: UIColor.blackColor(), offset: CGSize(width: 0, height: 0), radius: 6, opacity: 1, isMasked: false)
         view.insertSubview(redCircleShadow, belowSubview: redCircle)
 
-        
-        
         var dashedBox = UIView(frame: redCircle.frame)
         dashedBox.backgroundColor = UIColor(white: 1, alpha: 1)
         dashedBox.center.y += 200

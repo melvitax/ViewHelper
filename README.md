@@ -9,6 +9,8 @@ Tested with IOS 8 Beta 5
 
 ### Position
 ```Swift
+var origin: CGPoint 
+// convenience for: frame.origin
 var left: CGFLoat
 // convenience for: frame.origin.x
 var right: CGFLoat
@@ -21,6 +23,8 @@ var bottom: CGFLoat
 
 ### Size
 ```Swift
+var size: CGSize 
+// convenience for: frame.size
 var width: CGFLoat
 // convenience for: frame.size.width
 var height: CGFLoat
@@ -33,15 +37,6 @@ func centerInSuperview()
 func centerHorizontally()
 func centerVertically()
 ```
-
-### Size
-```Swift
-@property(nonatomic) CGPoint origin;
-@property(nonatomic) CGSize size;
-@property(nonatomic) CGFloat width;
-@property(nonatomic) CGFloat height;
-```
-
 ### Border
 ```Swift
 var borderColor: UIColor

@@ -1,6 +1,8 @@
 //
 //  AF+View+Extension.swift
 //
+//  Version 1.01
+//
 //  Created by Melvin Rivera on 7/2/14.
 //  Copyright (c) 2014 All Forces. All rights reserved.
 //
@@ -11,6 +13,11 @@ import QuartzCore
 extension UIView {
     
     //#pragma mark - Position
+    
+    var origin: CGPoint {
+        get { return frame.origin }
+        set { frame.origin = newValue }
+    }
     
     var left: CGFloat {
         get { return frame.origin.x }
@@ -33,6 +40,11 @@ extension UIView {
     }
     
     //#pragma mark - Size
+    
+    var size: CGSize {
+        get { return frame.size }
+        set { frame.size = newValue }
+    }
     
     var width: CGFloat {
         get { return frame.size.width }

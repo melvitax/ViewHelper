@@ -27,7 +27,7 @@
 		65B75F2C19744D6D000AEFD4 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = "Swift Demo UIView+AF+Additions/Main.storyboard"; sourceTree = "<group>"; };
 		65B7EA75197082AA0097E598 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		65D0169D19771DE2005220FB /* AF+View+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AF+View+Extension.swift"; sourceTree = "<group>"; };
-		65D016A319771FD1005220FB /* AF+Date+Helper.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; name = "AF+Date+Helper.podspec"; path = "../AF+Date+Helper.podspec"; sourceTree = "<group>"; };
+		65D016A319771FD1005220FB /* AF+View+Helper.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; name = "AF+View+Helper.podspec"; path = "../AF+View+Helper.podspec"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,7 +51,7 @@
 				65B75F2C19744D6D000AEFD4 /* Main.storyboard */,
 				65889B6E1965051C0049740E /* Supporting Files */,
 				65B7EA75197082AA0097E598 /* README.md */,
-				65D016A319771FD1005220FB /* AF+Date+Helper.podspec */,
+				65D016A319771FD1005220FB /* AF+View+Helper.podspec */,
 				655AEB41192D42990053AD6C /* Frameworks */,
 				655AEB40192D42990053AD6C /* Products */,
 			);
