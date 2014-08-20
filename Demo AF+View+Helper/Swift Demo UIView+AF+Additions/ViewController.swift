@@ -26,7 +26,7 @@ class ViewController: UIViewController {
         redCircle.clipsToBounds = true
         view.addSubview(redCircle)
         redCircle.centerVertically()
-        redCircle.top -= 100
+        redCircle.top(redCircle.top() - 100)
         
         // Block 1
         var block1 = UIView(frame: CGRect(x: 20, y: 20, width: 60, height: 60))
@@ -34,17 +34,17 @@ class ViewController: UIViewController {
         redCircle.addSubview(block1)
        
         // Block 2
-        var block2 = UIView(frame: CGRect(x: block1.right + 20, y: block1.top, width: block1.width, height: block1.height))
+        var block2 = UIView(frame: CGRect(x: block1.right() + 20, y: block1.top(), width: block1.width(), height: block1.height()))
         block2.backgroundColor = UIColor(white: 0, alpha: 0.3)
         redCircle.addSubview(block2)
         
         // Block 3
-        var block3 = UIView(frame: CGRect(x: block1.left, y: block1.bottom + 20, width: block1.width, height: block1.height))
+        var block3 = UIView(frame: CGRect(x: block1.left(), y: block1.bottom() + 20, width: block1.width(), height: block1.height()))
         block3.backgroundColor = UIColor(white: 0, alpha: 0.3)
         redCircle.addSubview(block3)
         
         // Block 4
-        var block4 = UIView(frame: CGRect(x: block2.left, y: block3.top, width: block1.width, height: block1.height))
+        var block4 = UIView(frame: CGRect(x: block2.left(), y: block3.top(), width: block1.width(), height: block1.height()))
         block4.backgroundColor = UIColor(white: 0, alpha: 0.3)
         redCircle.addSubview(block4)
 
@@ -57,7 +57,7 @@ class ViewController: UIViewController {
 
         var redCircleShadow = UIView(frame: redCircle.frame)
         redCircleShadow.backgroundColor = UIColor.blackColor()
-        redCircleShadow.cornerRadius = redCircleShadow.width/2
+        redCircleShadow.cornerRadius(redCircleShadow.width()/2)
         redCircleShadow.shadow(color: UIColor.blackColor(), offset: CGSize(width: 0, height: 0), radius: 6, opacity: 1, isMasked: false)
         view.insertSubview(redCircleShadow, belowSubview: redCircle)
 
@@ -67,6 +67,7 @@ class ViewController: UIViewController {
         dashedBox.borderWithDashPattern([4, 6], borderWidth: 8, borderColor: UIColor.whiteColor(), cornerRadius: 6)
         dashedBox.shadow(color: UIColor.blackColor(), offset: CGSize(width: 0, height: 0), radius: 6, opacity: 2, isMasked: false)
         view.addSubview(dashedBox)
+
         
     }
 

@@ -1,34 +1,51 @@
-UIView-AF-Additions
+AF-View-Additions 1.02
 =============================
 
 Convenience extension for UIVIew in Swift
-Tested with IOS 8 Beta 5
+Tested with Xcode 6 Beta 6
 
 ![Sample Project Screenshot](Screenshot.png?raw=true "Sample Project Screenshot")
 
 
 ### Position
 ```Swift
-var origin: CGPoint 
 // convenience for: frame.origin
-var left: CGFLoat
+func origin() -> CGPoint
+func origin(frameOrigin: CGPoint)
+
 // convenience for: frame.origin.x
-var right: CGFLoat
+func left() -> CGFLoat
+func left(frameX: CGFloat)
+
 // convenience for: frame.origin.x + frame.size.width
-var top: CGFLoat
+func right() -> CGFloat
+func right(frameRight: CGFloat)
+
 // convenience for: frame.origin.y
-var bottom: CGFLoat
+func top() -> CGFloat
+func top(frameY: CGFloat)
+
 // convenience for: frame.origin.y + height
+func bottom() -> CGFloat 
+func bottom(frameBottom: CGFloat)
+
 ```
 
 ### Size
 ```Swift
-var size: CGSize 
+
 // convenience for: frame.size
-var width: CGFLoat
+func size() -> CGSize
+func size(frameSize: CGSize) 
+
 // convenience for: frame.size.width
-var height: CGFLoat
+func width() -> CGFloat 
+func width(frameWidth: CGFloat)
+
 // convenience for: frame.size.height
+func height() -> CGFloat
+func height(frameHeight: CGFloat)
+
 ```
 
 ### Center
@@ -39,38 +56,61 @@ func centerVertically()
 ```
 ### Border
 ```Swift
-var borderColor: UIColor
+
 // convenience for: UIColor(CGColor: layer.borderColor)
-var borderWidth: CGFLoat
+func borderColor() -> UIColor
+func borderColor(borderColor: UIColor)
+
 // convenience for: layer.borderWidth
-func borderWithDashPattern(lineDashPattern: [Int], borderWidth: CGFloat, borderColor: UIColor, cornerRadius: CGFloat?)
+func borderWidth()
+func borderWidth(borderWidth: CGFloat)
+
 // applies a stroked border
+func borderWithDashPattern(lineDashPattern: [Int], borderWidth: CGFloat, borderColor: UIColor, cornerRadius: CGFloat?)
+
 ```
 
 ### Rounded Corner
 ```Swift
-var cornerRadius: CGFLoat
+
+
 // convenience for: layer.cornerRadius
-func roundCornersToCircle()
+func cornerRadius() -> CGFloat
+func cornerRadius(cornerRadius: CGFloat)
+
 // rounds corners to circle
-func roundCornersToCircle(#borderColor: UIColor, borderWidth: CGFloat)
+func roundCornersToCircle()
+
 // rounds corners to circle with border
-func roundCorners(cornerRadius: CGFloat, borderColor: UIColor?, borderWidth: CGFloat?)
+func roundCornersToCircle(#borderColor: UIColor, borderWidth: CGFloat)
+
 // rounds corner to a radius amount with border
+func roundCorners(cornerRadius: CGFloat, borderColor: UIColor?, borderWidth: CGFloat?)
+
 ```
 
 ### Shadow
 ```Swift
-var shadowColor: UIColor
+
 // convenience for: UIColor(CGColor: layer.shadowColor)
-var shadowOffset: CGSize
+func shadowColor() -> UIColor 
+func shadowColor(shadowColor: UIColor)
+
 // convenience for: layer.shadowOffset
-var shadowOpacity: Float
+func shadowOffset() -> CGSize
+func shadowOffset(shadowOffset: CGSize)
+
 // convenience for: layer.shadowOpacity
-var shadowRadius: CGFloat
+func shadowOpacity() -> Float
+func shadowOpacity(shadowOpacity: Float)
+
 // convenience for: layer.shadowRadius
-func shadow(color: UIColor = UIColor.blackColor(), offset: CGSize = CGSize(width: 0, height: 0), radius: CGFloat = 6, opacity: Float = 1, isMasked: Bool = false)
+func shadowRadius() -> CGFloat
+func shadowRadius(shadowRadius: CGFloat)
+
 // sets all shadow properties in one call
+func shadow(color: UIColor = UIColor.blackColor(), offset: CGSize = CGSize(width: 0, height: 0), radius: CGFloat = 6, opacity: Float = 1, isMasked: Bool = false)
+
 
 
 ### Autolayout
