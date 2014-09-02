@@ -1,7 +1,7 @@
 //
 //  AF+View+Extension.swift
 //
-//  Version 1.02
+//  Version 1.03
 //
 //  Created by Melvin Rivera on 7/2/14.
 //  Copyright (c) 2014 All Forces. All rights reserved.
@@ -12,7 +12,7 @@ import QuartzCore
 
 extension UIView {
     
-    //#pragma mark - Position
+    // MARK: Position
 
     func origin() -> CGPoint { return frame.origin }
     func origin(frameOrigin: CGPoint) { frame.origin = frameOrigin }
@@ -30,7 +30,7 @@ extension UIView {
     func bottom(frameBottom: CGFloat) { top(frameBottom - height()) }
     
     
-    //#pragma mark - Size
+    // MARK: Size
 
     func size() -> CGSize { return frame.size }
     func size(frameSize: CGSize) { frame.size = frameSize }
@@ -42,7 +42,7 @@ extension UIView {
     func height(frameHeight: CGFloat) { frame.size.height = frameHeight }
        
       
-    //#pragma mark - Center
+    // MARK: Center
     
     func centerInSuperview()
     {
@@ -69,7 +69,7 @@ extension UIView {
     }
     
     
-    //#pragma mark - Border
+    // MARK: Border
 
     func borderColor() -> UIColor { return UIColor(CGColor: layer.borderColor) }
     func borderColor(borderColor: UIColor) { layer.borderColor = borderColor.CGColor }
@@ -95,7 +95,7 @@ extension UIView {
     }
     
     
-    //#pragma mark - Rounded Corners
+    // MARK: Rounded Corners
 
     func cornerRadius() -> CGFloat { return layer.cornerRadius }
     func cornerRadius(cornerRadius: CGFloat) { layer.cornerRadius = cornerRadius }
@@ -123,7 +123,7 @@ extension UIView {
     }
     
     
-    //#pragma mark - Shadow
+    // MARK: Shadow
 
     func shadowColor() -> UIColor { return UIColor(CGColor: layer.shadowColor) }
     func shadowColor(shadowColor: UIColor) { layer.shadowColor = shadowColor.CGColor }
@@ -158,7 +158,7 @@ extension UIView {
     }
     
     
-    //#pragma mark - AutoLayout fix for animating
+    // MARK: AutoLayout fix for animating
     
     func prepForAnimation()
     {

@@ -1,8 +1,8 @@
-AF-View-Additions 1.02
+AF-View-Additions 1.03
 =============================
 
 Convenience extension for UIVIew in Swift
-Tested with Xcode 6 Beta 6
+Tested with Xcode 6 Beta 7
 
 ![Sample Project Screenshot](Screenshot.png?raw=true "Sample Project Screenshot")
 
