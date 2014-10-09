@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		650129AF19E4D2140046003B /* AF+Inspectable+View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650129AE19E4D2140046003B /* AF+Inspectable+View.swift */; };
 		65889B711965051C0049740E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65889B701965051C0049740E /* AppDelegate.swift */; };
 		65889B731965051C0049740E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65889B721965051C0049740E /* ViewController.swift */; };
 		65889B781965051C0049740E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65889B771965051C0049740E /* Images.xcassets */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		650129AE19E4D2140046003B /* AF+Inspectable+View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AF+Inspectable+View.swift"; sourceTree = "<group>"; };
 		655AEB42192D42990053AD6C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		655AEB44192D42990053AD6C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		655AEB46192D42990053AD6C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -89,6 +91,7 @@
 			isa = PBXGroup;
 			children = (
 				65D0169D19771DE2005220FB /* AF+View+Extension.swift */,
+				650129AE19E4D2140046003B /* AF+Inspectable+View.swift */,
 			);
 			name = "AF+View+Helper";
 			path = "../AF+View+Helper";
@@ -166,6 +169,7 @@
 			files = (
 				65889B731965051C0049740E /* ViewController.swift in Sources */,
 				65889B711965051C0049740E /* AppDelegate.swift in Sources */,
+				650129AF19E4D2140046003B /* AF+Inspectable+View.swift in Sources */,
 				65D0169E19771DE2005220FB /* AF+View+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -205,7 +209,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -238,7 +242,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
