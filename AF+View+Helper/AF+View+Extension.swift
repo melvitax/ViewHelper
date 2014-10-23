@@ -1,7 +1,7 @@
 //
 //  AF+View+Extension.swift
 //
-//  AF-View-Helper: Version 2.1
+//  AF-View-Helper: Version 2.11
 //
 //  Created by Melvin Rivera on 7/2/14.
 //  Copyright (c) 2014 All Forces. All rights reserved.
