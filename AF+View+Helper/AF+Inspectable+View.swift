@@ -1,9 +1,11 @@
 //
-//  RoundedImageView.swift
-//  Demo AF+Image+Helper
+//  AF+Inspectable+View.swift
+//
+//  AF-View-Helper: Version 2.1
 //
 //  Created by Melvin Rivera on 7/24/14.
 //  Copyright (c) 2014 All Forces. All rights reserved.
+//  https://github.com/melvitax/AFViewHelper
 //
 
 import Foundation

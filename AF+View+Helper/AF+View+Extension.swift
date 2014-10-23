@@ -1,15 +1,18 @@
 //
 //  AF+View+Extension.swift
 //
-//  Version 2.0
+//  AF-View-Helper: Version 2.1
 //
 //  Created by Melvin Rivera on 7/2/14.
 //  Copyright (c) 2014 All Forces. All rights reserved.
+//  https://github.com/melvitax/AFViewHelper
 //
 
 import UIKit
 import QuartzCore
 
+typealias ConstraintBlock = ((constraint: NSLayoutConstraint) -> ())?
+typealias ConstraintsBlock = ((constraints: [NSLayoutConstraint]) -> ())?
 
 extension UIView {
     
@@ -23,226 +26,391 @@ extension UIView {
     
     
     // MARK: Position
-
+    
     func origin() -> CGPoint { return frame.origin }
-    func origin(constant: CGPoint) -> [NSLayoutConstraint]? {
+    func origin(constant: CGPoint) -> UIView {
         if translatesAutoresizingMaskIntoConstraints() {
             frame.origin = constant
-            return nil
+            return self
         } else {
+            return origin(to: superview!, constant: constant)
+        }
+    }
+    func origin(#to:AnyObject, constant: CGPoint = CGPoint(x: 0, y: 0), multiplier:CGFloat = 1, closure: ConstraintsBlock = nil) -> UIView {
+        if !translatesAutoresizingMaskIntoConstraints() {
             var constraints = [NSLayoutConstraint]()
-            if let left = left(constant.x) {
+            if let left = pin(.Left, to: to, attribute: .Left, constant: constant.x, multiplier: multiplier) {
                 constraints.append(left)
             }
-            if let top = top(constant.y) {
+            if let top = pin(.Top, to: to, attribute: .Top, constant: constant.y, multiplier: multiplier) {
                 constraints.append(top)
             }
-            return constraints
+            closure?(constraints: constraints)
         }
+        return self
     }
-
     
     func left() -> CGFloat { return frame.origin.x }
-    func left(constant: CGFloat) -> NSLayoutConstraint? {
+    func left(constant: CGFloat) -> UIView {
         if translatesAutoresizingMaskIntoConstraints() {
             frame.origin.x = constant
-            return nil
+            return self
         } else {
-            return pin(.Left, to: superview!, attribute: .Left, constant: constant)
+            return left(to: superview!, attribute: .Left, constant: constant)
         }
+    }
+    func left(#to:AnyObject, attribute: NSLayoutAttribute = .Left, constant: CGFloat = 0, multiplier:CGFloat = 1, closure: ConstraintBlock = nil) -> UIView {
+        if !translatesAutoresizingMaskIntoConstraints() {
+            if let constraint = pin(.Left, to: to, attribute: attribute, constant: constant, multiplier: multiplier) {
+                closure?(constraint: constraint)
+            }
+        }
+        return self
     }
     
-    func leading() -> CGFloat {
-        if layoutDirectionIsLeftToRight() {
-            return left()
+    func leading() -> CGFloat { return layoutDirectionIsLeftToRight() ? left() : right() }
+    func leading(constant: CGFloat) -> UIView {
+        if translatesAutoresizingMaskIntoConstraints() {
+            return layoutDirectionIsLeftToRight() ? left(constant) : right(constant)
         } else {
-            return right()
+            return leading(to: superview!, attribute: .Leading, constant: constant)
         }
     }
-    func leading(constant: CGFloat) -> NSLayoutConstraint? {
-        if translatesAutoresizingMaskIntoConstraints() {
-            if layoutDirectionIsLeftToRight() {
-                left(constant)
-            } else {
-                right(constant)
+    func leading(#to:AnyObject, attribute: NSLayoutAttribute = .Leading, constant: CGFloat = 0, multiplier:CGFloat = 1, closure: ConstraintBlock = nil) -> UIView {
+        if !translatesAutoresizingMaskIntoConstraints() {
+            if let constraint = pin(.Leading, to: to, attribute: attribute, constant: constant, multiplier: multiplier) {
+                closure?(constraint: constraint)
             }
-            return nil
-        } else {
-            return pin(.Leading, to: superview!, attribute: .Leading, constant: constant)
         }
+        return self
     }
 
     func right() -> CGFloat { return frame.origin.x + frame.size.width }
-    func right(constant: CGFloat) -> NSLayoutConstraint? {
+    func right(constant: CGFloat) -> UIView  {
         if translatesAutoresizingMaskIntoConstraints() {
-            left(constant - width())
-            return nil
+            return left(constant - width())
         } else {
-            return pin(.Right, to: superview!, attribute: .Right, constant: constant)
+            return right(to: superview!, attribute: .Right, constant: constant)
         }
+    }
+    func right(#to:AnyObject, attribute: NSLayoutAttribute = .Right, constant: CGFloat = 0, multiplier:CGFloat = 1, closure: ConstraintBlock = nil) -> UIView {
+        if !translatesAutoresizingMaskIntoConstraints() {
+            if let constraint = pin(.Right, to: to, attribute: attribute, constant: constant, multiplier: multiplier) {
+                closure?(constraint: constraint)
+            }
+        }
+        return self
     }
     
-    func trailing() -> CGFloat {
-        if layoutDirectionIsLeftToRight() {
-            return right()
+    func trailing() -> CGFloat { return layoutDirectionIsLeftToRight() ? right() : left() }
+    func trailing(constant: CGFloat) -> UIView {
+        if translatesAutoresizingMaskIntoConstraints() {
+            return layoutDirectionIsLeftToRight() ? right(constant) : left(constant)
         } else {
-            return left()
+            return trailing(to: superview!, attribute: .Trailing, constant: constant)
         }
     }
-    func trailing(constant: CGFloat) -> NSLayoutConstraint? {
-        if translatesAutoresizingMaskIntoConstraints() {
-            if layoutDirectionIsLeftToRight() {
-                right(constant)
-            } else {
-                left(constant)
+    func trailing(#to:AnyObject, attribute: NSLayoutAttribute = .Trailing, constant: CGFloat = 0, multiplier:CGFloat = 1, closure: ConstraintBlock = nil) -> UIView {
+        if !translatesAutoresizingMaskIntoConstraints() {
+            if let constraint = pin(.Trailing, to: to, attribute: attribute, constant: constant, multiplier: multiplier) {
+                closure?(constraint: constraint)
             }
-            return nil
-        } else {
-            return pin(.Trailing, to: superview!, attribute: .Trailing, constant: constant)
         }
+        return self
     }
 
     func top() -> CGFloat { return frame.origin.y }
-    func top(constant: CGFloat) -> NSLayoutConstraint? {
+    func top(constant: CGFloat) -> UIView {
         if translatesAutoresizingMaskIntoConstraints() {
             frame.origin.y = constant
-            return nil
+            return self
         } else {
-            return pin(.Top, to: superview!, attribute: .Top, constant: constant)
+            return top(to: superview!, attribute: .Top, constant: constant)
         }
+    }
+    func top(#to:AnyObject, attribute: NSLayoutAttribute = .Top, constant: CGFloat = 0, multiplier:CGFloat = 1, closure: ConstraintBlock = nil) -> UIView {
+        if !translatesAutoresizingMaskIntoConstraints() {
+            if let constraint = pin(.Top, to: to, attribute: attribute, constant: constant, multiplier: multiplier) {
+                closure?(constraint: constraint)
+            }
+        }
+        return self
     }
 
     func bottom() -> CGFloat { return top() + height() }
-    func bottom(constant: CGFloat) -> NSLayoutConstraint? {
+    func bottom(constant: CGFloat) -> UIView {
         if translatesAutoresizingMaskIntoConstraints() {
-            top(constant - height())
-            return nil
+            return top(constant - height())
         } else {
-            return pin(.Bottom, to: superview!, attribute: .Bottom, constant: constant)
+            return bottom(to: superview!, attribute: .Bottom, constant: constant)
         }
     }
-    
-    // MARK: Content
-    func horizontalCompression() -> Float { return contentCompressionResistancePriorityForAxis(.Horizontal) }
-    func horizontalCompression(priority: Float) {
-        setContentCompressionResistancePriority(priority, forAxis: .Horizontal)
+    func bottom(#to:AnyObject, attribute: NSLayoutAttribute = .Bottom, constant: CGFloat = 0, multiplier:CGFloat = 1, closure: ConstraintBlock = nil) -> UIView {
+        if !translatesAutoresizingMaskIntoConstraints() {
+            if let constraint = pin(.Bottom, to: to, attribute: attribute, constant: constant, multiplier: multiplier) {
+                closure?(constraint: constraint)
+            }
+        }
+        return self
     }
     
-    func verticalCompression() -> Float { return contentCompressionResistancePriorityForAxis(.Vertical) }
-    func verticalCompression(priority: Float) {
-        setContentCompressionResistancePriority(priority, forAxis: .Horizontal)
+    // MARK: Content (1-100)
+    
+    func priorityX() -> Float { return contentCompressionResistancePriorityForAxis(.Horizontal) }
+    func priorityX(priority: Float) -> UIView {
+        if !translatesAutoresizingMaskIntoConstraints() {
+            setContentCompressionResistancePriority(priority, forAxis: .Horizontal)
+        }
+        return self
     }
     
-    func horizontalHugging() -> Float { return contentHuggingPriorityForAxis(.Horizontal) }
-    func horizontalHugging(priority: Float) {
-        setContentHuggingPriority(priority, forAxis: .Horizontal)
+    func priorityY() -> Float { return contentCompressionResistancePriorityForAxis(.Vertical) }
+    func priorityY(priority: Float) -> UIView {
+        if !translatesAutoresizingMaskIntoConstraints() {
+            setContentCompressionResistancePriority(priority, forAxis: .Vertical)
+        }
+        return self
     }
     
-    func verticalHugging() -> Float { return contentHuggingPriorityForAxis(.Vertical) }
-    func verticalHugging(priority: Float) {
-        setContentHuggingPriority(priority, forAxis: .Vertical)
+    func huggingX() -> Float { return contentHuggingPriorityForAxis(.Horizontal) }
+    func huggingX(priority: Float) -> UIView {
+        if !translatesAutoresizingMaskIntoConstraints() {
+            setContentHuggingPriority(priority, forAxis: .Horizontal)
+        }
+        return self
+    }
+    
+    func huggingY() -> Float { return contentHuggingPriorityForAxis(.Vertical) }
+    func huggingY(priority: Float) -> UIView {
+        if !translatesAutoresizingMaskIntoConstraints() {
+            setContentHuggingPriority(priority, forAxis: .Vertical)
+        }
+        return self
     }
     
     
     // MARK: Size
 
     func size() -> CGSize { return frame.size }
-    func size(constant: CGSize) -> [NSLayoutConstraint]? {
+    func size(constant: CGSize) -> UIView {
         if translatesAutoresizingMaskIntoConstraints() {
             frame.size = constant
-            return nil
         } else {
+            applyAttribute(.Width, constant: constant.width)
+            applyAttribute(.Height, constant: constant.height)
+        }
+        return self
+    }
+    func size(#to:AnyObject, constant: CGSize = CGSize(width: 0, height: 0), multiplier:CGFloat = 1, closure: ConstraintsBlock = nil) -> UIView {
+        if !translatesAutoresizingMaskIntoConstraints() {
             var constraints = [NSLayoutConstraint]()
-            if let width = width(constant.width) {
+            if let width = pin(.Width, to: to, attribute: .Width, constant: constant.width, multiplier: multiplier) {
                 constraints.append(width)
             }
-            if let height = height(constant.height) {
+            if let height = pin(.Height, to: to, attribute: .Height, constant: constant.height, multiplier: multiplier) {
                 constraints.append(height)
             }
-            return constraints
+            closure?(constraints: constraints)
         }
+        return self
     }
     
     func width() -> CGFloat { return frame.size.width }
-    func width(constant: CGFloat) -> NSLayoutConstraint? {
+    func width(constant: CGFloat) -> UIView {
         if translatesAutoresizingMaskIntoConstraints() {
             frame.size.width = constant
-            return nil
         } else {
-            return applyAttribute(.Width, constant: constant)
+            applyAttribute(.Width, constant: constant)
         }
+        return self
     }
-
+    func width(#to:AnyObject, attribute: NSLayoutAttribute = .Width, constant: CGFloat = 0, multiplier:CGFloat = 1, closure: ConstraintBlock = nil) -> UIView {
+        if !translatesAutoresizingMaskIntoConstraints() {
+            if let constraint = pin(.Width, to: to, attribute: attribute, constant: constant, multiplier: multiplier) {
+                closure?(constraint: constraint)
+            }
+        }
+        return self
+    }
+    
     func height() -> CGFloat { return frame.size.height }
-    func height(constant: CGFloat) -> NSLayoutConstraint? {
+    func height(constant: CGFloat) -> UIView {
         if translatesAutoresizingMaskIntoConstraints() {
             frame.size.height = constant
-            return nil
         } else {
-            return applyAttribute(.Height, constant: constant)
+            applyAttribute(.Height, constant: constant)
         }
+        return self
+    }
+    func height(#to:AnyObject, attribute: NSLayoutAttribute = .Height, constant: CGFloat = 0, multiplier:CGFloat = 1, closure: ConstraintBlock = nil) -> UIView {
+        if !translatesAutoresizingMaskIntoConstraints() {
+            if let constraint = pin(.Height, to: to, attribute: attribute, constant: constant, multiplier: multiplier) {
+                closure?(constraint: constraint)
+            }
+        }
+        return self
     }
     
-    func setMinimumSize(size:CGSize) -> [NSLayoutConstraint]?
-    {
-        if translatesAutoresizingMaskIntoConstraints() == true {
-            return nil
+    func minSize() -> CGSize? {
+        if !translatesAutoresizingMaskIntoConstraints() {
+            if let minWidth = minWidth() {
+                if let minHeight = minHeight() {
+                    return CGSize(width: minWidth, height: minHeight)
+                }
+            }
         }
-        var constraints = [NSLayoutConstraint]()
-        if let width = setMinimumWidth(size.width) {
-            constraints.append(width)
+        return nil
+    }
+    func minSize(constant:CGSize) -> UIView {
+        if !translatesAutoresizingMaskIntoConstraints() {
+            applyAttribute(.Width, constant: constant.width, multiplier: 1, relation: .GreaterThanOrEqual)
+            applyAttribute(.Height, constant: constant.height, multiplier: 1, relation: .GreaterThanOrEqual)
         }
-        if let height = setMinimumHeight(size.height) {
-            constraints.append(height)
+        return self
+    }
+    func minSize(#to:AnyObject, constant:CGSize = CGSize(width: 0, height: 0), multiplier:CGFloat = 1, closure: ConstraintsBlock = nil) -> UIView {
+        if !translatesAutoresizingMaskIntoConstraints() {
+            var constraints = [NSLayoutConstraint]()
+            if let width = pin(.Width, to: to, attribute: .Width, constant: constant.width, multiplier: multiplier, relation: .GreaterThanOrEqual) {
+                constraints.append(width)
+            }
+            if let height = pin(.Width, to: to, attribute: .Height, constant: constant.height, multiplier: multiplier, relation: .GreaterThanOrEqual) {
+                constraints.append(height)
+            }
+            closure?(constraints: constraints)
         }
-        return constraints
+        return self
     }
     
-    func setMinimumWidth(constant:CGFloat) -> NSLayoutConstraint?
-    {
-        if translatesAutoresizingMaskIntoConstraints() == true {
-            return nil
+    func minWidth() -> CGFloat? {
+        if !translatesAutoresizingMaskIntoConstraints() {
+            for constrain in constraints() {
+                if constrain.firstAttribute == .Width && constrain.firstItem as NSObject == self && constrain.secondItem == nil && constrain.relation == .GreaterThanOrEqual {
+                    return constrain.constant
+                }
+            }
         }
-        return applyAttribute(.Width, constant: constant, multiplier: 1, relation: .GreaterThanOrEqual)
+        return nil
+    }
+    func minWidth(constant:CGFloat) -> UIView {
+        if !translatesAutoresizingMaskIntoConstraints() {
+            applyAttribute(.Width, constant: constant, multiplier: 1, relation: .GreaterThanOrEqual)
+        }
+        return self
+    }
+    func minWidth(#to:AnyObject, attribute: NSLayoutAttribute = .Width, constant:CGFloat = 0, multiplier:CGFloat = 1, closure: ConstraintBlock = nil) -> UIView {
+        if !translatesAutoresizingMaskIntoConstraints() {
+            if let width = pin(.Width, to: to, attribute: attribute, constant: constant, multiplier: multiplier, relation: .GreaterThanOrEqual) {
+                closure?(constraint: width)
+            }
+        }
+        return self
     }
     
-    func setMinimumHeight(constant:CGFloat) -> NSLayoutConstraint?
-    {
-        if translatesAutoresizingMaskIntoConstraints() == true {
-            return nil
+    func minHeight() -> CGFloat? {
+        if !translatesAutoresizingMaskIntoConstraints() {
+            for constrain in constraints() {
+                if constrain.firstAttribute == .Height && constrain.firstItem as NSObject == self && constrain.secondItem == nil && constrain.relation == .GreaterThanOrEqual {
+                    return constrain.constant
+                }
+            }
         }
-        return applyAttribute(.Height, constant: constant, multiplier: 1, relation: .GreaterThanOrEqual)
+        return nil
+    }
+    func minHeight(constant:CGFloat) -> UIView {
+        if !translatesAutoresizingMaskIntoConstraints() {
+            applyAttribute(.Height, constant: constant, multiplier: 1, relation: .GreaterThanOrEqual)
+        }
+        return self
+    }
+    func minHeight(#to:AnyObject, attribute: NSLayoutAttribute = .Height, constant:CGFloat = 0, multiplier:CGFloat = 1, closure: ConstraintBlock = nil) -> UIView {
+        if !translatesAutoresizingMaskIntoConstraints() {
+            if let height = pin(.Height, to: to, attribute: attribute, constant: constant, multiplier: multiplier, relation: .GreaterThanOrEqual) {
+                closure?(constraint: height)
+            }
+        }
+        return self
     }
     
-    func setMaximumSize(size:CGSize) -> [NSLayoutConstraint]?
-    {
-        if translatesAutoresizingMaskIntoConstraints() == true {
-            return nil
+    func maxSize() -> CGSize? {
+        if !translatesAutoresizingMaskIntoConstraints() {
+            if let maxWidth = maxWidth() {
+                if let maxHeight = maxHeight() {
+                    return CGSize(width: maxWidth, height: maxHeight)
+                }
+            }
         }
-        var constraints = [NSLayoutConstraint]()
-        if let width = setMaximumWidth(size.width) {
-            constraints.append(width)
+        return nil
+    }
+    func maxSize(constant:CGSize) -> UIView {
+        if !translatesAutoresizingMaskIntoConstraints() {
+            applyAttribute(.Width, constant: constant.width, multiplier: 1, relation: .LessThanOrEqual)
+            applyAttribute(.Height, constant: constant.height, multiplier: 1, relation: .LessThanOrEqual)
         }
-        if let height = setMaximumHeight(size.height) {
-            constraints.append(height)
+        return self
+    }
+    func maxSize(#to:AnyObject, constant:CGSize = CGSize(width: 0, height: 0), multiplier:CGFloat = 1, closure: ConstraintsBlock = nil) -> UIView {
+        if !translatesAutoresizingMaskIntoConstraints() {
+            var constraints = [NSLayoutConstraint]()
+            if let width = pin(.Width, to: to, attribute: .Width, constant: constant.width, multiplier: multiplier, relation: .LessThanOrEqual) {
+                constraints.append(width)
+            }
+            if let height = pin(.Width, to: to, attribute: .Height, constant: constant.height, multiplier: multiplier, relation: .LessThanOrEqual) {
+                constraints.append(height)
+            }
+            closure?(constraints: constraints)
         }
-        return constraints
+        return self
     }
     
-    func setMaximumWidth(constant:CGFloat) -> NSLayoutConstraint?
-    {
-        if translatesAutoresizingMaskIntoConstraints() == true {
-            return nil
+    func maxWidth() -> CGFloat? {
+        if !translatesAutoresizingMaskIntoConstraints() {
+            for constrain in constraints() {
+                if constrain.firstAttribute == .Width && constrain.firstItem as NSObject == self && constrain.secondItem == nil && constrain.relation == .LessThanOrEqual {
+                    return constrain.constant
+                }
+            }
         }
-        return applyAttribute(.Width, constant: constant, multiplier: 1, relation: .LessThanOrEqual)
+        return nil
+    }
+    func maxWidth(constant:CGFloat) -> UIView {
+        if !translatesAutoresizingMaskIntoConstraints() {
+            applyAttribute(.Width, constant: constant, multiplier: 1, relation: .LessThanOrEqual)
+        }
+        return self
+    }
+    func maxWidth(#to:AnyObject, attribute: NSLayoutAttribute = .Width, constant:CGFloat = 0, multiplier:CGFloat = 1, closure: ConstraintBlock = nil) -> UIView {
+        if !translatesAutoresizingMaskIntoConstraints() {
+            if let width = pin(.Width, to: to, attribute: attribute, constant: constant, multiplier: multiplier, relation: .LessThanOrEqual) {
+                closure?(constraint: width)
+            }
+        }
+        return self
     }
     
-    func setMaximumHeight(constant:CGFloat) -> NSLayoutConstraint?
-    {
-        if translatesAutoresizingMaskIntoConstraints() == true {
-            return nil
+    func maxHeight() -> CGFloat? {
+        if !translatesAutoresizingMaskIntoConstraints() {
+            for constrain in constraints() {
+                if constrain.firstAttribute == .Height && constrain.firstItem as NSObject == self && constrain.secondItem == nil && constrain.relation == .LessThanOrEqual {
+                    return constrain.constant
+                }
+            }
         }
-        return applyAttribute(.Height, constant: constant, multiplier: 1, relation: .LessThanOrEqual)
+        return nil
+    }
+    func maxHeight(constant:CGFloat) -> UIView {
+        if !translatesAutoresizingMaskIntoConstraints() {
+            applyAttribute(.Height, constant: constant, multiplier: 1, relation: .LessThanOrEqual)
+        }
+        return self
+    }
+    func maxHeight(#to:AnyObject, attribute: NSLayoutAttribute = .Height, constant:CGFloat = 0, multiplier:CGFloat = 1, closure: ConstraintBlock = nil) -> UIView {
+        if !translatesAutoresizingMaskIntoConstraints() {
+            if let height = pin(.Height, to: to, attribute: attribute, constant: constant, multiplier: multiplier, relation: .LessThanOrEqual) {
+                closure?(constraint: height)
+            }
+        }
+        return self
     }
     
     func smallestSideLength() -> CGFloat
@@ -258,41 +426,54 @@ extension UIView {
       
     // MARK: Center
     
-    func centerInSuperview(constant:CGSize = CGSize(width: 0, height: 0)) -> [NSLayoutConstraint]?
-    {
-        if translatesAutoresizingMaskIntoConstraints() {
-            center = CGPoint(x: superview!.width()/2, y: superview!.height()/2)
-            return nil
-        } else {
+    func center(#to:AnyObject, constant:CGSize = CGSize(width: 0, height: 0), multiplier:CGFloat = 1, closure: ConstraintsBlock = nil) -> UIView  {
+        if !translatesAutoresizingMaskIntoConstraints() {
             var constraints = [NSLayoutConstraint]()
-            if let x = pin(.CenterX, to: superview!, attribute: .CenterX, constant: constant.width) {
-                constraints.append(x)
+            if let centerX = pin(.CenterX, to: superview!, attribute: .CenterX, constant: constant.width, multiplier: multiplier) {
+                constraints.append(centerX)
             }
-            if let y = pin(.CenterY, to: superview!, attribute: .CenterY, constant: constant.width) {
-                constraints.append(y)
+            if let centerY = pin(.CenterY, to: superview!, attribute: .CenterY, constant: constant.height, multiplier: multiplier) {
+                constraints.append(centerY)
             }
-            return constraints
+            closure?(constraints: constraints)
         }
+        return self
     }
     
-    func centerHorizontally(constant: CGFloat = 0) -> NSLayoutConstraint?
-    {
+    func centerX() -> CGFloat { return center.x }
+    func centerX(constant: CGFloat = 0) -> UIView {
         if translatesAutoresizingMaskIntoConstraints() {
             center = CGPoint(x: superview!.width()/2 + constant , y: center.y)
-            return nil
         } else {
-            return pin(.CenterX, to: superview!, attribute: .CenterX, constant: constant)
+            pin(.CenterX, to: superview!, attribute: .CenterX, constant: constant)
         }
+        return self
+    }
+    func centerX(#to:AnyObject, attribute: NSLayoutAttribute = .CenterX, constant: CGFloat = 0, multiplier:CGFloat = 1, closure: ConstraintBlock = nil) -> UIView {
+        if !translatesAutoresizingMaskIntoConstraints() {
+            if let centerX = pin(.CenterX, to: to, attribute: attribute, constant: constant, multiplier: multiplier) {
+                closure?(constraint: centerX)
+            }
+        }
+        return self
     }
     
-    func centerVertically(constant: CGFloat = 0) -> NSLayoutConstraint?
-    {
+    func centerY() -> CGFloat { return center.y }
+    func centerY(constant: CGFloat = 0) -> UIView {
         if translatesAutoresizingMaskIntoConstraints() {
             center = CGPoint(x: superview!.center.x, y: CGFloat(superview!.height()/2) + constant)
-            return nil
         } else {
-            return pin(.CenterY, to: superview!, attribute: .CenterY, constant: constant)
+            pin(.CenterY, to: superview!, attribute: .CenterY, constant: constant)
         }
+        return self
+    }
+    func centerY(#to:AnyObject, attribute: NSLayoutAttribute = .CenterY, constant: CGFloat = 0, multiplier:CGFloat = 1, closure: ConstraintBlock = nil) -> UIView {
+        if !translatesAutoresizingMaskIntoConstraints() {
+            if let centerY = pin(.CenterY, to: superview!, attribute: attribute, constant: constant, multiplier: multiplier) {
+                closure?(constraint: centerY)
+            }
+        }
+        return self
     }
         
     
@@ -308,140 +489,117 @@ extension UIView {
     
     // MARK: Pin
     
-    func pin(pinAttribute:NSLayoutAttribute, to peerItem:AnyObject? = nil, attribute toAttribute:NSLayoutAttribute, constant:CGFloat = 0, multiplier:CGFloat = 1, relation:NSLayoutRelation = .Equal) -> NSLayoutConstraint?
-    {
+    func pin(pinAttribute:NSLayoutAttribute, to:AnyObject? = nil, attribute:NSLayoutAttribute, constant:CGFloat = 0, multiplier:CGFloat = 1, relation:NSLayoutRelation = .Equal) -> NSLayoutConstraint? {
         if self.superview == nil {
             println("WARNING: No superview found for pinning")
             return nil
         }
-        var superview: UIView?
-        if (peerItem != nil) {
-            superview = peerItem!.isKindOfClass(UIView) ? commonSuperviewWithView(peerItem! as UIView)! : self.superview
+        var superview: UIView!
+        if (to != nil) {
+            superview = to is UIView ? commonSuperviewWithView(to! as UIView)! : self.superview
         } else {
             superview = self.superview
         }
-        let constraint = NSLayoutConstraint(item: self, attribute: pinAttribute, relatedBy: relation, toItem: peerItem, attribute: toAttribute, multiplier: multiplier, constant: constant)
+        let constraint = NSLayoutConstraint(item: self, attribute: pinAttribute, relatedBy: relation, toItem: to, attribute: attribute, multiplier: multiplier, constant: constant)
         superview?.addConstraint(constraint)
         return constraint
-    }
-    
-    func pinSizeTo(peerItem:AnyObject, constant:CGFloat = 0, multiplier:CGFloat = 1) -> [NSLayoutConstraint]?
-    {
-        var constraints = [NSLayoutConstraint]()
-        if let width = pin(.Width, to: peerItem, attribute: .Width, constant: constant, multiplier: multiplier) {
-            constraints.append(width)
-        }
-        if let height = pin(.Height, to: peerItem, attribute: .Height, constant: constant, multiplier: multiplier) {
-            constraints.append(height)
-        }
-        return constraints
-    }
-    
-    func pinCenterTo(peerItem:AnyObject, constant:CGFloat = 0, multiplier:CGFloat = 1) -> [NSLayoutConstraint]?
-    {
-        var constraints = [NSLayoutConstraint]()
-        if let x = pin(.CenterX, to: peerItem, attribute: .CenterX, constant: constant, multiplier: multiplier) {
-            constraints.append(x)
-        }
-        if let y = pin(.CenterY, to: peerItem, attribute: .CenterY, constant: constant, multiplier: multiplier) {
-            constraints.append(y)
-        }
-        return constraints
-    }
-    
-    func pinHeightToWidth() -> NSLayoutConstraint?
-    {
-        return pin(.Height, to: self, attribute: .Width)
-    }
-    
-    func pinWidthToHeight() -> NSLayoutConstraint?
-    {
-        return pin(.Width, to: self, attribute: .Height)
     }
     
     
     // MARK: Space Subviews
 
-    func spaceSubviewsEvenly(views:[UIView], size: CGSize, axis:UILayoutConstraintAxis = .Horizontal, options:NSLayoutFormatOptions = .AlignAllCenterY) -> [NSLayoutConstraint]?
+    func spaceSubviewsEvenly(views:[UIView], size: CGSize, axis:UILayoutConstraintAxis = .Horizontal, options:NSLayoutFormatOptions = .AlignAllCenterY, closure: ConstraintsBlock = nil) -> UIView
     {
-        if (views.count < 2) || (superview == nil) {
-            return nil
+        if (views.count < 2) {
+            return self
         }
         
         var spacerLength: CGFloat
         if axis == .Horizontal {
-            spacerLength = (superview!.width() - (size.width * CGFloat(views.count)) ) / ( CGFloat(views.count) - 1.0 )
+            spacerLength = (width() - (size.width * CGFloat(views.count)) ) / ( CGFloat(views.count) - 1.0 )
         } else {
-            spacerLength = (superview!.height() - (size.height * CGFloat(views.count)) ) / ( CGFloat(views.count) - 1.0 )
+            spacerLength = (height() - (size.height * CGFloat(views.count)) ) / ( CGFloat(views.count) - 1.0 )
         }
         
         var constraints = [NSLayoutConstraint]()
-        var prev:UIView?
+        var firstSpacer:UIView?
+        var prevSpacer:UIView?
         
         for idx in 0..<views.count {
             
-            // view
+            // Views
             let view = views[idx]
-            if prev == nil {
-                if let top = view.top(0) {
+            
+            if prevSpacer == nil {
+                // First View, since there are no last space views yet
+                if let top = view.pin(.Top, to: self, attribute: .Top) {
                     constraints.append(top)
                 }
-                if let left = view.left(0) {
+                if let left = view.pin(.Left, to: self, attribute: .Left) {
                     constraints.append(left)
                 }
             } else {
-                if let center = (axis == .Horizontal) ? view.pin(.CenterY, to: prev!, attribute: .CenterY) : view.pin(.CenterX, to: prev!, attribute: .CenterX) {
+                if let center = (axis == .Horizontal) ? view.pin(.CenterY, to: prevSpacer!, attribute: .CenterY) : view.pin(.CenterX, to: prevSpacer!, attribute: .CenterX) {
                     constraints.append(center)
                 }
-                if let pin = (axis == .Horizontal) ? view.pin(.Left, to: prev!, attribute: .Right) :  view.pin(.Top, to: prev!, attribute: .Bottom) {
-                    constraints.append(pin)
+                if let side = (axis == .Horizontal) ? view.pin(.Left, to: prevSpacer!, attribute: .Right) : view.pin(.Top, to: prevSpacer!, attribute: .Bottom) {
+                    constraints.append(side)
                 }
+                // Last View
                 if idx == views.count - 1 {
-                    if let right = (axis == .Horizontal) ? view.right(0) : view.bottom(0) {
-                        constraints.append(right)
+                    if let end = (axis == .Horizontal) ? view.pin(.Right, to: self, attribute: .Right) : view.pin(.Bottom, to: self, attribute: .Bottom) {
+                        constraints.append(end)
                     }
                 }
             }
-            if let size = view.size(size) {
-                constraints += size
-            }
-           
+            
+            view.priorityX(950).priorityY(950)
+            
+            constraints.append(view.applyAttribute(.Width, constant: size.width))
+            constraints.append(view.applyAttribute(.Height, constant: size.height))
+            
+            view.layoutIfNeeded()
+            
             // spacer
             if idx < views.count - 1 {
                 var spacer = UIView(autoLayout:true)
                 superview!.addSubview(spacer)
-                if let centerY = (axis == .Horizontal) ? spacer.pin(.CenterY, to: view, attribute: .CenterY) : spacer.pin(.CenterX, to: view, attribute: .CenterX) {
-                    constraints.append(centerY)
+                
+                if let center = (axis == .Horizontal) ? spacer.pin(.CenterY, to: view, attribute: .CenterY) : spacer.pin(.CenterX, to: view, attribute: .CenterX) {
+                    constraints.append(center)
                 }
-                if let pin = (axis == .Horizontal) ? spacer.pin(.Left, to: view, attribute: .Right) : spacer.pin(.Top, to: view, attribute: .Bottom) {
-                    constraints.append(pin)
-                }
-                if let side = (axis == .Horizontal) ? spacer.pin(.Height, to: view, attribute: .Height) : spacer.pin(.Width, to: view, attribute: .Width) {
+                if let side = (axis == .Horizontal) ? spacer.pin(.Left, to: view, attribute: .Right) : spacer.pin(.Top, to: view, attribute: .Bottom) {
                     constraints.append(side)
                 }
-                spacer.horizontalCompression(10)
+                if let size = (axis == .Horizontal) ? spacer.pin(.Height, to: view, attribute: .Height) : spacer.pin(.Width, to: view, attribute: .Width) {
+                    constraints.append(size)
+                }
                 
-                if prev == nil {
-                    if let length = (axis == .Horizontal) ? spacer.width(spacerLength) : spacer.height(spacerLength) {
-                        constraints.append(length)
-                    }
+                if prevSpacer == nil {
+                    // First Spacer
+                    let length = spacer.applyAttribute((axis == .Horizontal) ? .Width : .Height, constant: spacerLength)
+                    constraints.append(length)
+                    firstSpacer = spacer
                 } else {
-                    if let length = (axis == .Horizontal) ? spacer.pin(.Width, to: prev!, attribute: .Width) : spacer.pin(.Height, to: prev!, attribute: .Height) {
+                    if let length = (axis == .Horizontal) ? spacer.pin(.Width, to: prevSpacer!, attribute: .Width) : spacer.pin(.Height, to: prevSpacer!, attribute: .Height) {
                         constraints.append(length)
                     }
                 }
-                prev = spacer
+                
+                prevSpacer = spacer
+                spacer.priorityX(10).priorityY(10)
                 spacer.layoutIfNeeded()
             }
             view.layoutIfNeeded()
         }
-       return constraints
+        closure?(constraints: constraints)
+        return self
     }
     
-    func spaceSubviews(views:[UIView], spacing:CGFloat = 0, axis:UILayoutConstraintAxis = .Horizontal, options:NSLayoutFormatOptions = .AlignAllCenterY) -> [NSLayoutConstraint]?
+    func spaceSubviews(views:[UIView], spacing:CGFloat = 0, axis:UILayoutConstraintAxis = .Horizontal, options:NSLayoutFormatOptions = .AlignAllCenterY, closure: ConstraintsBlock = nil) -> UIView
     {
         if views.count < 2 {
-            return nil
+            return self
         }
         
         let direction = axis == .Horizontal ? "H:" : "V:"
@@ -470,10 +628,11 @@ extension UIView {
             previousView = view
         }
         self.addConstraints(constraints)
-        return constraints
+        closure?(constraints: constraints)
+        return self
     }
     
-    func alignSubviews(views:[UIView], axis:UILayoutConstraintAxis) -> [NSLayoutConstraint]
+    func alignSubviews(views:[UIView], axis:UILayoutConstraintAxis, closure: ConstraintsBlock = nil) -> UIView
     {
         var constraints = [NSLayoutConstraint]()
         
@@ -486,13 +645,14 @@ extension UIView {
             constraints.append(NSLayoutConstraint(item: view, attribute: attributeForView, relatedBy: .Equal, toItem: self, attribute: attributeToPin, multiplier: multiplier, constant: 0.0))
         }
         self.addConstraints(constraints)
-        return constraints
+        closure?(constraints: constraints)
+        return self
     }
     
     
     // MARK: Removing Constraints
         
-    func removeConstraintsFromViewAndRelatedView(#constraints:[NSLayoutConstraint])
+    func removeConstraintsFromViewAndRelatedView(#constraints:[NSLayoutConstraint]) -> UIView
     {
         for constraint in constraints {
             let firstView = constraint.firstItem as UIView
@@ -505,7 +665,7 @@ extension UIView {
                     }
                     if constraintFound == true {
                         commonSuperview!.removeConstraint(constraint)
-                        return
+                        return self
                     }
                     commonSuperview = commonSuperview?.superview
                 }
@@ -513,6 +673,7 @@ extension UIView {
                 constraint.firstItem.removeConstraint(constraint)
             }
         }
+        return self
     }
     
     
@@ -532,7 +693,7 @@ extension UIView {
     }
     
     
-    private func applyAttribute(attribute:NSLayoutAttribute, constant:CGFloat = 0, multiplier: CGFloat = 1, relation:NSLayoutRelation = .Equal) -> NSLayoutConstraint {
+    private func applyAttribute(attribute:NSLayoutAttribute, constant:CGFloat = 0, multiplier: CGFloat = 1, relation:NSLayoutRelation = .Equal) -> NSLayoutConstraint  {
         let constraint = NSLayoutConstraint(item: self, attribute: attribute, relatedBy: relation, toItem: nil, attribute: .NotAnAttribute, multiplier: multiplier, constant: constant)
         addConstraint(constraint)
         return constraint
@@ -545,13 +706,18 @@ extension UIView {
     // MARK: Border
     
     func borderColor() -> UIColor { return UIColor(CGColor: layer.borderColor) }
-    func borderColor(borderColor: UIColor) { layer.borderColor = borderColor.CGColor }
+    func borderColor(borderColor: UIColor) -> UIView {
+        layer.borderColor = borderColor.CGColor
+        return self
+    }
     
     func borderWidth() -> CGFloat { return layer.borderWidth }
-    func borderWidth(borderWidth: CGFloat) { layer.borderWidth = borderWidth }
+    func borderWidth(borderWidth: CGFloat) -> UIView {
+        layer.borderWidth = borderWidth
+        return self
+    }
     
-    func borderWithDashPattern(lineDashPattern: [Int], borderWidth: CGFloat, borderColor: UIColor, cornerRadius: CGFloat?)
-    {
+    func borderWithDashPattern(lineDashPattern: [Int], borderWidth: CGFloat, borderColor: UIColor, cornerRadius: CGFloat?) -> UIView {
         let strokeLayer = CAShapeLayer()
         strokeLayer.strokeColor = borderColor.CGColor
         strokeLayer.fillColor = nil
@@ -565,27 +731,31 @@ extension UIView {
         
         strokeLayer.frame = bounds
         layer.addSublayer(strokeLayer)
+        return self
     }
     
     
     // MARK: Rounded Corners
     
     func cornerRadius() -> CGFloat { return layer.cornerRadius }
-    func cornerRadius(cornerRadius: CGFloat) { layer.cornerRadius = cornerRadius }
-    
-    func roundCornersToCircle()
-    {
-        cornerRadius(width()/2)
+    func cornerRadius(cornerRadius: CGFloat) -> UIView {
+        layer.cornerRadius = cornerRadius
+        return self
     }
-    func roundCornersToCircle(#borderColor: UIColor, borderWidth: CGFloat)
-    {
+    
+    func roundCornersToCircle() -> UIView {
+        cornerRadius(width()/2)
+        return self
+    }
+    
+    func roundCornersToCircle(#borderColor: UIColor, borderWidth: CGFloat) -> UIView {
         roundCornersToCircle()
         self.borderWidth(borderWidth)
         self.borderColor(borderColor)
+        return self
     }
     
-    func roundCorners(cornerRadius: CGFloat, borderColor: UIColor?, borderWidth: CGFloat?)
-    {
+    func roundCorners(cornerRadius: CGFloat, borderColor: UIColor?, borderWidth: CGFloat?) -> UIView {
         self.cornerRadius(cornerRadius)
         if borderWidth != nil {
             self.borderWidth(borderWidth!)
@@ -593,27 +763,37 @@ extension UIView {
         if borderColor != nil {
             self.borderColor(borderColor!)
         }
+        return self
     }
     
     
     // MARK: Shadow
     
     func shadowColor() -> UIColor { return UIColor(CGColor: layer.shadowColor) }
-    func shadowColor(shadowColor: UIColor) { layer.shadowColor = shadowColor.CGColor }
+    func shadowColor(shadowColor: UIColor) -> UIView {
+        layer.shadowColor = shadowColor.CGColor
+        return self
+    }
     
     func shadowOffset() -> CGSize { return layer.shadowOffset }
-    func shadowOffset(shadowOffset: CGSize) { layer.shadowOffset = shadowOffset }
+    func shadowOffset(shadowOffset: CGSize) -> UIView {
+        layer.shadowOffset = shadowOffset
+        return self
+    }
     
     func shadowOpacity() -> Float { return layer.shadowOpacity }
-    func shadowOpacity(shadowOpacity: Float) { layer.shadowOpacity = shadowOpacity }
+    func shadowOpacity(shadowOpacity: Float) -> UIView {
+        layer.shadowOpacity = shadowOpacity
+        return self
+    }
     
     func shadowRadius() -> CGFloat { return layer.shadowRadius }
-    func shadowRadius(shadowRadius: CGFloat) { layer.shadowRadius = shadowRadius }
+    func shadowRadius(shadowRadius: CGFloat) -> UIView {
+        layer.shadowRadius = shadowRadius
+        return self
+    }
     
-    
-    
-    func shadow(color: UIColor = UIColor.blackColor(), offset: CGSize = CGSize(width: 0, height: 0), radius: CGFloat = 6, opacity: Float = 1, isMasked: Bool = false)
-    {
+    func shadow(color: UIColor = UIColor.blackColor(), offset: CGSize = CGSize(width: 0, height: 0), radius: CGFloat = 6, opacity: Float = 1, isMasked: Bool = false) -> UIView {
         shadowColor(color)
         shadowOffset(offset)
         shadowOpacity(opacity)
@@ -628,7 +808,8 @@ extension UIView {
             maskLayer.fillRule = kCAFillRuleEvenOdd
             layer.mask = maskLayer
         }
+        return self
     }
-    
+
     
 }
