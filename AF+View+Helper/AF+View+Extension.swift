@@ -1,7 +1,7 @@
 //
 //  AF+View+Extension.swift
 //
-//  AF-View-Helper: Version 2.11
+//  AF-View-Helper: Version 2.3
 //
 //  Created by Melvin Rivera on 7/2/14.
 //  Copyright (c) 2014 All Forces. All rights reserved.
@@ -285,7 +285,7 @@ extension UIView {
     func minWidth() -> CGFloat? {
         if !translatesAutoresizingMaskIntoConstraints() {
             for constrain in constraints() {
-                if constrain.firstAttribute == .Width && constrain.firstItem as NSObject == self && constrain.secondItem == nil && constrain.relation == .GreaterThanOrEqual {
+                if constrain.firstAttribute == .Width && constrain.firstItem as! NSObject == self && constrain.secondItem == nil && constrain.relation == .GreaterThanOrEqual {
                     return constrain.constant
                 }
             }
@@ -310,7 +310,7 @@ extension UIView {
     func minHeight() -> CGFloat? {
         if !translatesAutoresizingMaskIntoConstraints() {
             for constrain in constraints() {
-                if constrain.firstAttribute == .Height && constrain.firstItem as NSObject == self && constrain.secondItem == nil && constrain.relation == .GreaterThanOrEqual {
+                if constrain.firstAttribute == .Height && constrain.firstItem as! NSObject == self && constrain.secondItem == nil && constrain.relation == .GreaterThanOrEqual {
                     return constrain.constant
                 }
             }
@@ -366,7 +366,7 @@ extension UIView {
     func maxWidth() -> CGFloat? {
         if !translatesAutoresizingMaskIntoConstraints() {
             for constrain in constraints() {
-                if constrain.firstAttribute == .Width && constrain.firstItem as NSObject == self && constrain.secondItem == nil && constrain.relation == .LessThanOrEqual {
+                if constrain.firstAttribute == .Width && constrain.firstItem as! NSObject == self && constrain.secondItem == nil && constrain.relation == .LessThanOrEqual {
                     return constrain.constant
                 }
             }
@@ -391,7 +391,7 @@ extension UIView {
     func maxHeight() -> CGFloat? {
         if !translatesAutoresizingMaskIntoConstraints() {
             for constrain in constraints() {
-                if constrain.firstAttribute == .Height && constrain.firstItem as NSObject == self && constrain.secondItem == nil && constrain.relation == .LessThanOrEqual {
+                if constrain.firstAttribute == .Height && constrain.firstItem as! NSObject == self && constrain.secondItem == nil && constrain.relation == .LessThanOrEqual {
                     return constrain.constant
                 }
             }
@@ -481,9 +481,22 @@ extension UIView {
     
     func prepForAnimation()
     {
-        removeFromSuperview()
-        setTranslatesAutoresizingMaskIntoConstraints(true)
-        superview?.addSubview(self)
+        if superview != nil {
+            let aSuperview = superview!
+            removeFromSuperview()
+            setTranslatesAutoresizingMaskIntoConstraints(true)
+            aSuperview.addSubview(self)
+        }
+    }
+    
+    func prepForAutoLayout()
+    {
+        if superview != nil {
+            let aSuperview = superview!
+            removeFromSuperview()
+            setTranslatesAutoresizingMaskIntoConstraints(false)
+            aSuperview.addSubview(self)
+        }
     }
     
     
@@ -496,7 +509,7 @@ extension UIView {
         }
         var superview: UIView!
         if (to != nil) {
-            superview = to is UIView ? commonSuperviewWithView(to! as UIView)! : self.superview
+            superview = to is UIView ? commonSuperviewWithView(to! as! UIView)! : self.superview
         } else {
             superview = self.superview
         }
@@ -624,7 +637,7 @@ extension UIView {
                 vfl = "\(direction)[previousView(view)]-spacing-[view]"
                 relatedViews["previousView"] = previousView
             }
-            constraints += NSLayoutConstraint.constraintsWithVisualFormat(vfl, options: options, metrics: ["spacing":spacing], views: relatedViews as NSDictionary) as [NSLayoutConstraint]
+            constraints += NSLayoutConstraint.constraintsWithVisualFormat(vfl, options: options, metrics: ["spacing":spacing], views: relatedViews as [NSObject : AnyObject]) as! [NSLayoutConstraint]
             previousView = view
         }
         self.addConstraints(constraints)
@@ -651,30 +664,47 @@ extension UIView {
     
     
     // MARK: Removing Constraints
-        
-    func removeConstraintsFromViewAndRelatedView(#constraints:[NSLayoutConstraint]) -> UIView
+    
+    func removeAttachedConstraintsRecursevely() -> UIView
     {
-        for constraint in constraints {
-            let firstView = constraint.firstItem as UIView
-            if constraint.secondItem != nil {
-                var commonSuperview = firstView.commonSuperviewWithView(constraint.secondItem as UIView)
-                var constraintFound = false
-                while constraintFound == false {
-                    for constraintToCheck in commonSuperview!.constraints() {
-                        constraintFound = true
-                    }
-                    if constraintFound == true {
-                        commonSuperview!.removeConstraint(constraint)
-                        return self
-                    }
-                    commonSuperview = commonSuperview?.superview
+        for constraint in constraints() {
+            println("constraint \(constraint)")
+            removeConstraintRecursevely(constraint as! NSLayoutConstraint)
+        }
+        for constraint in superview!.constraints() {
+            let firstView = constraint.firstItem as! UIView
+            if let secondView = constraint.secondItem as? UIView {
+                if firstView == self {
+                    firstView.removeConstraintRecursevely(constraint as! NSLayoutConstraint)
                 }
-            } else {
-                constraint.firstItem.removeConstraint(constraint)
             }
         }
         return self
     }
+    
+    func removeConstraintRecursevely(constraint:NSLayoutConstraint) -> UIView
+    {
+        let firstView = constraint.firstItem as! UIView
+        if constraint.secondItem != nil {
+            var commonSuperview = firstView.commonSuperviewWithView(constraint.secondItem as! UIView)
+            var constraintFound = false
+            while constraintFound == false {
+                for constraintToCheck in commonSuperview!.constraints() {
+                    constraintFound = true
+                }
+                if constraintFound == true {
+                    commonSuperview!.removeConstraint(constraint)
+                    return self
+                }
+                commonSuperview = commonSuperview?.superview
+            }
+        } else {
+            constraint.firstItem.removeConstraint(constraint)
+        }
+        return self
+    }
+        
+   
     
     
     // MARK: Private
@@ -705,7 +735,7 @@ extension UIView {
     
     // MARK: Border
     
-    func borderColor() -> UIColor { return UIColor(CGColor: layer.borderColor) }
+    func borderColor() -> UIColor { return UIColor(CGColor: layer.borderColor)! }
     func borderColor(borderColor: UIColor) -> UIView {
         layer.borderColor = borderColor.CGColor
         return self
@@ -769,7 +799,7 @@ extension UIView {
     
     // MARK: Shadow
     
-    func shadowColor() -> UIColor { return UIColor(CGColor: layer.shadowColor) }
+    func shadowColor() -> UIColor { return UIColor(CGColor: layer.shadowColor)! }
     func shadowColor(shadowColor: UIColor) -> UIView {
         layer.shadowColor = shadowColor.CGColor
         return self
@@ -809,6 +839,42 @@ extension UIView {
             layer.mask = maskLayer
         }
         return self
+    }
+    
+    // MARK: Gradient
+    
+    func setGradient(colors: [UIColor], isHorizontal:Bool = false) {
+        let gradientLayer = layer as! CAGradientLayer
+        gradientLayer.startPoint = isHorizontal ? CGPoint(x: 0.5, y: 0) : CGPoint(x: 0.5, y: 1)
+        gradientLayer.startPoint = isHorizontal ? CGPoint(x: 0.5, y: 1) : CGPoint(x: 1, y: 0.5)
+        gradientLayer.colors = colors
+    }
+    
+    func animateGradientToColors(colors: [UIColor], duration: CFTimeInterval = 3) {
+        let gradientLayer = layer as! CAGradientLayer
+        let fromColors = gradientLayer.colors
+        gradientLayer.colors = colors
+        let a = CABasicAnimation(keyPath: "colors")
+        a.fromValue = fromColors
+        a.toValue = colors
+        a.duration = duration
+        a.removedOnCompletion = true
+        a.fillMode = kCAFillModeForwards
+        a.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
+        a.delegate = self
+        layer.addAnimation(a, forKey: "Gradient Animation")
+    }
+    
+    func setGradientMask(alphas:[CGFloat], isHorizontal:Bool = false) {
+        let gradientLayer = (layer.mask is CAGradientLayer) ? layer.mask as! CAGradientLayer : CAGradientLayer()
+        var colors = [CGColorRef]()
+        for alpha in alphas {
+            colors.append(UIColor(white: 1, alpha: alpha).CGColor!)
+        }
+        gradientLayer.startPoint = isHorizontal ? CGPoint(x: 1, y: 0.5) : CGPoint(x: 0.5, y: 1)
+        gradientLayer.startPoint = isHorizontal ? CGPoint(x: 0, y: 0.5) : CGPoint(x: 0.5, y: 0)
+        gradientLayer.colors = colors
+        layer.mask = gradientLayer
     }
 
     

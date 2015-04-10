@@ -12,11 +12,13 @@ import QuartzCore
 class ViewController: UIViewController {
     
     let redCircle = UIView(autoLayout:true)
+    @IBOutlet weak var inspectableView: InspectableView!
     
     override func viewDidLoad() {
 
         super.viewDidLoad()
         
+        UIApplication.sharedApplication().statusBarHidden = true
         view.backgroundColor = UIColor(white: 0.5, alpha: 1)
         
         // Dashed Box
@@ -153,7 +155,7 @@ class ViewController: UIViewController {
             dots.append(dot)
         }
         dotsViewY.spaceSubviewsEvenly(dots, size: CGSize(width: 10, height: 10), axis: .Vertical)
-       
+        
     }
     
     override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
@@ -171,6 +173,8 @@ class ViewController: UIViewController {
             //self.redCircle.roundCornersToCircle()
             }, completion: nil)
     }
+    
+    
 
 
 }

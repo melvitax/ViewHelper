@@ -1,8 +1,8 @@
-AF-View-Helper 2.11
+AF-View-Helper 2.3
 =============================
 
 Convenience extension for UIVIew in Swift
-Tested with Xcode 6.1
+Optimized for Swift 1.2
 
 
 ## Auto Layout

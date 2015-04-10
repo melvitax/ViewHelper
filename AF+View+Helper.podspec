@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name     = 'AF+View+Helper'
-  s.version  = '2.11'
+  s.version  = '2.3'
   s.platform = :ios
   s.license  = 'MIT'
   s.summary  = 'Convenience extension for UIView in Swift.'
