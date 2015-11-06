@@ -7,29 +7,35 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		650129AF19E4D2140046003B /* AF+Inspectable+View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650129AE19E4D2140046003B /* AF+Inspectable+View.swift */; };
+		650129AF19E4D2140046003B /* AFInspectableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650129AE19E4D2140046003B /* AFInspectableView.swift */; };
+		6535A0471BEBBB2400ECDA9D /* AFViewAutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6535A0461BEBBB2400ECDA9D /* AFViewAutoLayout.swift */; };
+		6535A0491BEBBE4400ECDA9D /* AFViewControllerAutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6535A0481BEBBE4400ECDA9D /* AFViewControllerAutoLayout.swift */; };
 		65889B711965051C0049740E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65889B701965051C0049740E /* AppDelegate.swift */; };
 		65889B731965051C0049740E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65889B721965051C0049740E /* ViewController.swift */; };
 		65889B781965051C0049740E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65889B771965051C0049740E /* Images.xcassets */; };
 		65B75F2D19744D6D000AEFD4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65B75F2C19744D6D000AEFD4 /* Main.storyboard */; };
-		65D0169E19771DE2005220FB /* AF+View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D0169D19771DE2005220FB /* AF+View+Extension.swift */; };
+		65D0169E19771DE2005220FB /* AFViewEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D0169D19771DE2005220FB /* AFViewEffects.swift */; };
+		65D4382B1BB336CF005D1845 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65D4382A1BB336CF005D1845 /* Launch Screen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		650129AE19E4D2140046003B /* AF+Inspectable+View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AF+Inspectable+View.swift"; sourceTree = "<group>"; };
+		650129AE19E4D2140046003B /* AFInspectableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AFInspectableView.swift; sourceTree = "<group>"; };
+		6535A0461BEBBB2400ECDA9D /* AFViewAutoLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AFViewAutoLayout.swift; sourceTree = "<group>"; };
+		6535A0481BEBBE4400ECDA9D /* AFViewControllerAutoLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AFViewControllerAutoLayout.swift; sourceTree = "<group>"; };
 		655AEB42192D42990053AD6C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		655AEB44192D42990053AD6C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		655AEB46192D42990053AD6C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		655AEB64192D429A0053AD6C /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		65889B6C1965051C0049740E /* Swift Demo AF+View+Helper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Swift Demo AF+View+Helper.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		65889B6F1965051C0049740E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		65889B701965051C0049740E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = "Swift Demo UIView+AF+Additions/AppDelegate.swift"; sourceTree = "<group>"; };
-		65889B721965051C0049740E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = "Swift Demo UIView+AF+Additions/ViewController.swift"; sourceTree = "<group>"; };
-		65889B771965051C0049740E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = "Swift Demo UIView+AF+Additions/Images.xcassets"; sourceTree = "<group>"; };
-		65B75F2C19744D6D000AEFD4 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = "Swift Demo UIView+AF+Additions/Main.storyboard"; sourceTree = "<group>"; };
-		65B7EA75197082AA0097E598 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
-		65D0169D19771DE2005220FB /* AF+View+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AF+View+Extension.swift"; sourceTree = "<group>"; };
-		65D016A319771FD1005220FB /* AF+View+Helper.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; name = "AF+View+Helper.podspec"; path = "../AF+View+Helper.podspec"; sourceTree = "<group>"; };
+		65889B6C1965051C0049740E /* AFViewHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AFViewHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		65889B6F1965051C0049740E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = Info.plist; path = Demo/Info.plist; sourceTree = "<group>"; };
+		65889B701965051C0049740E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Demo/AppDelegate.swift; sourceTree = "<group>"; };
+		65889B721965051C0049740E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = Demo/ViewController.swift; sourceTree = "<group>"; };
+		65889B771965051C0049740E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Demo/Images.xcassets; sourceTree = "<group>"; };
+		65B75F2C19744D6D000AEFD4 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Demo/Main.storyboard; sourceTree = "<group>"; };
+		65B7EA75197082AA0097E598 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		65D0169D19771DE2005220FB /* AFViewEffects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AFViewEffects.swift; sourceTree = "<group>"; };
+		65D016A319771FD1005220FB /* AFViewHelper.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = AFViewHelper.podspec; sourceTree = "<group>"; };
+		65D4382A1BB336CF005D1845 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = "Launch Screen.storyboard"; path = "Demo/Launch Screen.storyboard"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,14 +52,15 @@
 		655AEB36192D42990053AD6C = {
 			isa = PBXGroup;
 			children = (
-				65D0169C19771DE2005220FB /* AF+View+Helper */,
+				65D0169C19771DE2005220FB /* AFViewHelper */,
 				65889B701965051C0049740E /* AppDelegate.swift */,
 				65889B721965051C0049740E /* ViewController.swift */,
 				65889B771965051C0049740E /* Images.xcassets */,
 				65B75F2C19744D6D000AEFD4 /* Main.storyboard */,
 				65889B6E1965051C0049740E /* Supporting Files */,
 				65B7EA75197082AA0097E598 /* README.md */,
-				65D016A319771FD1005220FB /* AF+View+Helper.podspec */,
+				65D016A319771FD1005220FB /* AFViewHelper.podspec */,
+				65D4382A1BB336CF005D1845 /* Launch Screen.storyboard */,
 				655AEB41192D42990053AD6C /* Frameworks */,
 				655AEB40192D42990053AD6C /* Products */,
 			);
@@ -62,7 +69,7 @@
 		655AEB40192D42990053AD6C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				65889B6C1965051C0049740E /* Swift Demo AF+View+Helper.app */,
+				65889B6C1965051C0049740E /* AFViewHelper.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -87,22 +94,23 @@
 			path = "Swift Demo UIView+AF+Additions";
 			sourceTree = "<group>";
 		};
-		65D0169C19771DE2005220FB /* AF+View+Helper */ = {
+		65D0169C19771DE2005220FB /* AFViewHelper */ = {
 			isa = PBXGroup;
 			children = (
-				65D0169D19771DE2005220FB /* AF+View+Extension.swift */,
-				650129AE19E4D2140046003B /* AF+Inspectable+View.swift */,
+				6535A0481BEBBE4400ECDA9D /* AFViewControllerAutoLayout.swift */,
+				6535A0461BEBBB2400ECDA9D /* AFViewAutoLayout.swift */,
+				65D0169D19771DE2005220FB /* AFViewEffects.swift */,
+				650129AE19E4D2140046003B /* AFInspectableView.swift */,
 			);
-			name = "AF+View+Helper";
-			path = "../AF+View+Helper";
+			path = AFViewHelper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		65889B6B1965051C0049740E /* Demo AF+View+Helper */ = {
+		65889B6B1965051C0049740E /* AFViewHelper */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 65889B891965051C0049740E /* Build configuration list for PBXNativeTarget "Demo AF+View+Helper" */;
+			buildConfigurationList = 65889B891965051C0049740E /* Build configuration list for PBXNativeTarget "AFViewHelper" */;
 			buildPhases = (
 				65889B681965051C0049740E /* Sources */,
 				65889B691965051C0049740E /* Frameworks */,
@@ -112,9 +120,9 @@
 			);
 			dependencies = (
 			);
-			name = "Demo AF+View+Helper";
+			name = AFViewHelper;
 			productName = "Swift Demo UIView+AF+Additions";
-			productReference = 65889B6C1965051C0049740E /* Swift Demo AF+View+Helper.app */;
+			productReference = 65889B6C1965051C0049740E /* AFViewHelper.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -123,7 +131,9 @@
 		655AEB37192D42990053AD6C /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0600;
+				LastSwiftMigration = 0700;
+				LastSwiftUpdateCheck = 0710;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "All Forces";
 				TargetAttributes = {
 					65889B6B1965051C0049740E = {
@@ -132,7 +142,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 655AEB3A192D42990053AD6C /* Build configuration list for PBXProject "Demo AF+View+Helper" */;
+			buildConfigurationList = 655AEB3A192D42990053AD6C /* Build configuration list for PBXProject "AFViewHelper" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -145,7 +155,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				65889B6B1965051C0049740E /* Demo AF+View+Helper */,
+				65889B6B1965051C0049740E /* AFViewHelper */,
 			);
 		};
 /* End PBXProject section */
@@ -155,6 +165,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65D4382B1BB336CF005D1845 /* Launch Screen.storyboard in Resources */,
 				65889B781965051C0049740E /* Images.xcassets in Resources */,
 				65B75F2D19744D6D000AEFD4 /* Main.storyboard in Resources */,
 			);
@@ -167,10 +178,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6535A0471BEBBB2400ECDA9D /* AFViewAutoLayout.swift in Sources */,
 				65889B731965051C0049740E /* ViewController.swift in Sources */,
 				65889B711965051C0049740E /* AppDelegate.swift in Sources */,
-				650129AF19E4D2140046003B /* AF+Inspectable+View.swift in Sources */,
-				65D0169E19771DE2005220FB /* AF+View+Extension.swift in Sources */,
+				650129AF19E4D2140046003B /* AFInspectableView.swift in Sources */,
+				6535A0491BEBBE4400ECDA9D /* AFViewControllerAutoLayout.swift in Sources */,
+				65D0169E19771DE2005220FB /* AFViewEffects.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -195,6 +208,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -261,11 +275,12 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "Swift Demo UIView+AF+Additions/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Demo/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				METAL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = "Swift Demo AF+View+Helper";
+				PRODUCT_BUNDLE_IDENTIFIER = com.allforces.AFViewHelper;
+				PRODUCT_NAME = AFViewHelper;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -279,11 +294,12 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				INFOPLIST_FILE = "Swift Demo UIView+AF+Additions/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Demo/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				METAL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = "Swift Demo AF+View+Helper";
+				PRODUCT_BUNDLE_IDENTIFIER = com.allforces.AFViewHelper;
+				PRODUCT_NAME = AFViewHelper;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -291,7 +307,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		655AEB3A192D42990053AD6C /* Build configuration list for PBXProject "Demo AF+View+Helper" */ = {
+		655AEB3A192D42990053AD6C /* Build configuration list for PBXProject "AFViewHelper" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				655AEB72192D429A0053AD6C /* Debug */,
@@ -300,7 +316,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		65889B891965051C0049740E /* Build configuration list for PBXNativeTarget "Demo AF+View+Helper" */ = {
+		65889B891965051C0049740E /* Build configuration list for PBXNativeTarget "AFViewHelper" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				65889B851965051C0049740E /* Debug */,

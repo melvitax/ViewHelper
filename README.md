@@ -1,681 +1,707 @@
-AF-View-Helper 2.3
-=============================
+# AFViewHelper
 
-Convenience extension for UIVIew in Swift
-Optimized for Swift 1.2
-
-
-## Auto Layout
+[![Version](https://img.shields.io/cocoapods/v/AFViewHelper.svg?style=flat)](http://cocoapods.org/pods/AFViewHelper)
+[![License](https://img.shields.io/cocoapods/l/AFViewHelper.svg?style=flat)](http://cocoapods.org/pods/AFViewHelper)
+[![Platform](https://img.shields.io/cocoapods/p/AFViewHelper.svg?style=flat)](http://cocoapods.org/pods/AFViewHelper)
 
 
-![Sample Project Screenshot](Screenshot.png?raw=true "Sample Project Screenshot")
+Convenience UIVIew Extension for Swift 2.0
 
 
-Let's say you want a view to be 100x100 and centered, here's the code compared.
+![Sample Project Screenshot](https://raw.githubusercontent.com/melvitax/AFViewHelper/master/Screenshot.png?raw=true "Sample Project Screenshot")
 
-### The old frames way (Objective-C)
-```Objective-C
-UIView *box = [UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 100);
-box.backgroundColor = [UIColor redColor];
-self.view.addSubview = box;
-box.center = CGPointMake(self.view.width/2, self.view.height/2)
-```
+## AFViewHelper at a Glance
 
-### The old frames way (Swift)
-```swift
-let box = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
-box.backgroundColor = UIColor.redColor()
-view.addSubview(box)
-box.center = CGPoint(x: view.frame.size.width/2, y: view.frame.size.height/2)
-```
+### Auto Layout 
 
-### Auto Layout (Swift)
-```swift
-let box = UIView()
-view.addSubview(box)
-box.backgroundColor = UIColor.redColor()
-box.setTranslatesAutoresizingMaskIntoConstraints(false)
-box.addConstraint(NSLayoutConstraint(item: box, attribute: .Width, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: 100))
-box.addConstraint(NSLayoutConstraint(item: box, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: 100))
-view.addConstraint(NSLayoutConstraint(item: box, attribute: .CenterX, relatedBy: .Equal, toItem: view, attribute: .CenterX, multiplier: 1.0, constant: 0))
-view.addConstraint(NSLayoutConstraint(item: box, attribute: .CenterY, relatedBy: .Equal, toItem: view, attribute: .CenterY, multiplier: 1.0, constant: 0))
-```
-
-### Auto Layout With Helper (Swift)
 ```swift
 let box = UIView(autoLayout:true)
 view.addSubview(box)
 box.backgroundColor = UIColor.redColor()
-box.width(100).height(100).center(to: view)
+box.width(100)
+box.height(100)
+box.center(to: view)
+view.layoutIfNeeded()
 ```
 
-###Basics###
+### Chainable functions
 
-***width()***
-Gets you the frames's width
+100 pixel view pinned to the center of another view
 
-***width(100)***
-Sets the width of the view via frame or constraints depending on whether or not translatesAutoresizingMaskIntoConstraints is set to true or false
+```swift
+view.width(100).height(100).center(to: view)
+```
 
-***width(to:view, attribute: .Width, constant: 0, multiplier: 1 {
-    constraint in
-}***
-Pins the width to an attribute of another object with AutoLayout constraints. Most parameters in this function have defaults so ***width(to:view)*** can be used instead if that's all you need. The constraints are returned in the closure but the function itself returns self so that functions can be chained.
+### Compression & Hugging
 
-***constant***
-Used in ***width(100)*** is used as the new value. Used in ***width(to:view, attribute: .Width, constant: 0)*** is usef as an offset value.
+```swift
+view.horizontalCompressionPriority(UILayoutPriorityDefaultHigh)
+view.horizontalHuggingPriority(UILayoutPriorityDefaultLow)
+```
 
-***multiplier***
-The multiplier when relating to another object. For example ***box.width(to:view, attribute: .Width, constant: 0, multiplier: 0.5)*** sets the width of box to 50% of the width of the  view.
+### NSLayoutConstraints
 
-***which one to use?*** 
-Use ***width(100)*** when you need to assign a static value. Use *** width(to:view....)*** when you need the value(static or percentage) to be relational to another object. i.e. view1 left can be 10 points left of the centerY of view2 and 50% the width of the superview. Use ***pin(pinAttribute:NSLayoutAttribute, to:AnyObject? = nil, attribute:NSLayoutAttribute, constant:CGFloat = 0, multiplier:CGFloat = 1, relation:NSLayoutRelation = .Equal) -> NSLayoutConstraint?*** when you need more complex relationship rules.
+You can have access to the NSLayoutConstraints by using pin() or applyAttribute.
 
-***Satisfying Constraints***
-Auto Layout requires at least two vertical rules and two horizontal rules. Think of othe old way of doing frames as having left and width horizontal rules and top and height vertical rules. AutoLayout takes this further by allowing these rules to be set in relation to other objects and have them change dynamically as the bounds change.
+```swift
+// Pinning to an item
+let widthConstraint = view.pin(.Width, to: view, attribute: .Height, constant: 0, multiplier: 0.5, relation: .LessThanOrEqual)
+```
 
-Learn more about AutoLayout at [developer.apple.com](https://developer.apple.com/library/IOs/documentation/UserExperience/Conceptual/AutolayoutPG/Introduction/Introduction.html)
+```swift
+// Applying an attribute
+let widthConstraint =  view.applyAttribute(.Width, constant: 100, multiplier: 0.5, relation: .Equal)
+```
 
+## UIView Extension
 
-### Origin
+### Prepping for Auto Layout 
 
-Gets the frame's top left origin
+If a view is already in place with frames, prepForAutoLayout() will remove it from view, enable Auto Layout and place back in view.
+
+```swift
+view.prepForAutoLayout()
+```
+
+### Prepping for Animation
+
+If a view uses auto layout but you need to animate it using frames, prepForAnimation() will remove from view, disable auto layout and place back in view.
+
+```swift
+view.prepForAnimation()
+```
+
+### Instantiate 
+
+Instantiates a new UIView with Auto Layout
  
 ```swift
-func origin() -> CGPoint
+convenience init(autoLayout: Bool = true)
 ```
-Pins the top and left to it's superview
+
+### Position
+
+#### Origin
+
+Returns the frame's origin
+ 
+```swift
+origin() -> CGPoint
+```
+
+Pins the frame's top and left sides using Auto Layout or frames
 
 ```swift
-func origin(constant: CGPoint) -> UIView 
+origin(constant: CGPoint) -> UIView 
 ```
-Pins top and left to another object using  constant and multiplier
+Pins left and top sides to another view using Auto Layout
 
 ```swift
-func origin(#to:AnyObject, constant: CGPoint = CGPoint(x: 0, y: 0), multiplier:CGFloat = 1, closure: ConstraintsBlock = nil) -> UIView 
+origin(to to:AnyObject, constant: CGPoint = CGPoint(x: 0, y: 0), multiplier:CGFloat = 1) -> UIView
 ```
+#### Left
 
-### Left
-
-Gets the frame's left position
+Returns the min x point
 
 ```swift
-func left() -> CGFloat 
+left() -> CGFloat 
 ```
 
-Pins the left to it's superview
+Pins the left side using Auto Layout or frames
 
 ```swift
-func left(constant: CGFloat) -> UIView 
+left(constant: CGFloat) -> UIView
 ```
 
-Pins left to another object using constant and multiplier
+Pins left side to another view using Auto Layout
 
 ```swift
-func left(#to:AnyObject, attribute: NSLayoutAttribute = .Left, constant: CGFloat = 0, multiplier:CGFloat = 1, closure: ConstraintBlock = nil) -> UIView
+left(to to:AnyObject, attribute: NSLayoutAttribute = .Left, constant: CGFloat = 0, multiplier:CGFloat = 1) -> UIView
 ```
 
-### Leading
+#### Leading
 
-Gets the frame's leading position
+Returns the leading side value
 
 ```swift
-func leading() -> CGFloat 
+leading() -> CGFloat
 ```
 
-Pins the leading to it's superview
+Pins the leading side using Auto Layout or frames
 
 ```swift
-func leading(constant: CGFloat) -> UIView 
+leading(constant: CGFloat) -> UIView
 ```
 
-Pins leading to another object using constant and multiplier
+Pins the leading side to another view using Auto Layout
 
 ```swift
-func leading(#to:AnyObject, attribute: NSLayoutAttribute = .Leading, constant: CGFloat = 0, multiplier:CGFloat = 1, closure: ConstraintBlock = nil) -> UIView 
+leading(to to:AnyObject, attribute: NSLayoutAttribute = .Leading, constant: CGFloat = 0, multiplier:CGFloat = 1) -> UIView
 ```
+#### Right
 
-
-### Right
-
-Gets the frame's right position
+Returns the max x point
 
 ```swift
-func right() -> CGFloat 
+right() -> CGFloat
 ```
 
-Pins the right to it's superview
+Pins the right side using Auto Layout or frames
 
 ```swift
-func right(constant: CGFloat) -> UIView
+right(constant: CGFloat) -> UIView 
 ```
 
-Pins right to another object using constant and multiplier
+Pins the right side to another view using Auto Layout
 
 ```swift
-func right(#to:AnyObject, attribute: NSLayoutAttribute = .Right, constant: CGFloat = 0, multiplier:CGFloat = 1, closure: ConstraintBlock = nil) -> UIView 
+right(to to:AnyObject, attribute: NSLayoutAttribute = .Right, constant: CGFloat = 0, multiplier:CGFloat = 1) -> UIView
 ```
+#### Trailing
 
-### Trailing
-
-Gets the frame's trailing position
+Returns the trailing side value
 
 ```swift
-func trailing() -> CGFloat 
+trailing() -> CGFloat
 ```
 
-Pins the trailing to it's superview
+Pins the trailing side using Auto Layout or frames
 
 ```swift
-func trailing(constant: CGFloat) -> UIView 
+trailing(constant: CGFloat) -> UIView 
 ```
 
-Pins trailing to another object using constant and multiplier
+Pins the trailing side to another view using Auto Layout
 
 ```swift
-func trailing(#to:AnyObject, attribute: NSLayoutAttribute = .Trailing, constant: CGFloat = 0, multiplier:CGFloat = 1, closure: ConstraintBlock = nil) -> UIView 
+trailing(to to:AnyObject, attribute: NSLayoutAttribute = .Trailing, constant: CGFloat = 0, multiplier:CGFloat = 1) -> UIView
 ```
 
-### Top
+#### Top
 
-Gets the frame's top position
+Returns the top side value
 
 ```swift
-func top() -> CGFloat 
+top() -> CGFloat 
 ```
 
-Pins the top to it's superview
+Pins the top side using Auto Layout or frames
 
 ```swift
-func top(constant: CGFloat) -> UIView 
+top(constant: CGFloat) -> UIView
 ```
 
-Pins top to another object using constant and multiplier
+Pins the trailing side to another view using Auto Layout
 
 ```swift
-func top(#to:AnyObject, attribute: NSLayoutAttribute = .Top, constant: CGFloat = 0, multiplier:CGFloat = 1, closure: ConstraintBlock = nil) -> UIView 
+top(to to:AnyObject, attribute: NSLayoutAttribute = .Top, constant: CGFloat = 0, multiplier:CGFloat = 1) -> UIView
 ```
 
-### Bottom
+#### Bottom
 
-Gets the frame's bottom position
+Returns the bottom side value
 
 ```swift
-func bottom() -> CGFloat 
+bottom() -> CGFloat
 ```
 
-Pins the bottom to it's superview
+Pins the bottom side using Auto Layout or frames
 
 ```swift
-func bottom(constant: CGFloat) -> UIView
+bottom(constant: CGFloat) -> UIView 
 ```
 
-Pins bottom to another object using constant and multiplier
+Pins the bottom side to another view using Auto Layout
 
 ```swift
-func bottom(#to:AnyObject, attribute: NSLayoutAttribute = .Bottom, constant: CGFloat = 0, multiplier:CGFloat = 1, closure: ConstraintBlock = nil) -> UIView 
+bottom(to to:AnyObject, attribute: NSLayoutAttribute = .Bottom, constant: CGFloat = 0, multiplier:CGFloat = 1) -> UIView 
 ```
 
+#### Center
 
-### Content Compression Resistance Priority
-
-Gets the horizontal content compression resistance priority
+Pins the center to it's superview using Auto Layout or frames
 
 ```swift
-func priorityX() -> Float 
+center(constant: CGPoint = CGPoint(x: 0, y: 0)) -> UIView
 ```
 
-Sets the horizontal content compression resistance priority
+Pins the center point to another view using Auto Layout
 
 ```swift
-func priorityX(priority: Float) -> UIView 
+center(to to:AnyObject, constant:CGSize = CGSize(width: 0, height: 0), multiplier:CGFloat = 1) -> UIView 
 ```
 
-Gets the vertical content compression resistance priority
+#### Center X
+
+Returns the center X
 
 ```swift
-func priorityY() -> Float 
+centerX() -> CGFloat
 ```
 
-Sets the vertical content compression resistance priority
+Pins the center X using Auto Layout or frames
 
 ```swift
-func priorityY(priority: Float) -> UIView 
+centerX(constant: CGFloat = 0) -> UIView 
 ```
 
-### Content Hugging Priority
-
-Gets the horizontal content hugging priority
+Pins the center X to another view using Auto Layout
 
 ```swift
-func huggingX() -> Float 
+centerX(to to:AnyObject, attribute: NSLayoutAttribute = .CenterX, constant: CGFloat = 0, multiplier:CGFloat = 1) -> UIView
 ```
 
-Sets the horizontal content hugging priority
+#### Center Y
+
+Returns the center Y
 
 ```swift
-func huggingX(priority: Float) -> UIView 
+centerY() -> CGFloat
 ```
 
-Gets the vertical content hugging priority
+Pins the center Y using Auto Layout or frames
 
 ```swift
-func huggingY() -> Float 
+centerY(constant: CGFloat = 0) -> UIView
 ```
 
-Sets the vertical content hugging priority
+Pins the center Y to another view using Auto Layout
 
 ```swift
-func huggingY(priority: Float) -> UIView
+centerY(to to:AnyObject, attribute: NSLayoutAttribute = .CenterY, constant: CGFloat = 0, multiplier:CGFloat = 1) -> UIView
 ```
 
+### Compression and Hugging Priority
+
+#### Compression Priority
+
+Returns the Compression Resistance Priority for Horizontal Axis using Auto Layout
+
+```swift
+horizontalCompressionPriority() -> UILayoutPriority
+```
+
+Sets the Compression Resistance Priority for Horizontal Axis using Auto Layout
+
+```swift
+horizontalCompressionPriority(priority: UILayoutPriority) -> UIView  
+```
+
+Returns the Compression Resistance Priority for Vertical Axis using Auto Layout
+
+```swift
+verticalCompressionPriority() -> UILayoutPriority
+```
+
+Sets the Compression Resistance Priority for Vertical Axis using Auto Layout
+
+```swift
+verticalCompressionPriority(priority: UILayoutPriority) -> UIView
+```
+
+#### Hugging Priority
+
+Returns the Content Hugging Priority for Horizontal Axis using Auto Layout
+
+```swift
+func horizontalHuggingPriority() -> UILayoutPriority
+```
+
+Sets the Content Hugging Priority for Horizontal Axis using Auto Layout
+
+```swift
+horizontalHuggingPriority(priority: UILayoutPriority) -> UIView
+```
+
+Returns the Content Hugging Priority for Vertical Axis using Auto Layout
+
+```swift
+verticalHuggingPriority() -> UILayoutPriority
+```
+
+Sets the Content Hugging Priority for Vertical Axis using Auto Layout
+
+```swift
+verticalHuggingPriority(priority: UILayoutPriority) -> UIView
+```
 
 ### Size
 
-Gets the frame's size
+#### Size
+
+Returns the frame size
 
 ```swift
-func size() -> CGSize 
+size() -> CGSize
 ```
 
-Sets the size constraints
+Sets the frame size using Auto Layout or frames
 
 ```swift
-func size(constant: CGSize) -> UIView 
+size(constant: CGSize) -> UIView
 ```
 
-Pins the size to an object using a constant and multipler
+Pins the size to another view using Auto Layout
 
 ```swift
-func size(#to:AnyObject, constant: CGSize = CGSize(width: 0, height: 0), multiplier:CGFloat = 1, closure: ConstraintsBlock = nil) -> UIView
+size(to to:AnyObject, constant: CGSize = CGSize(width: 0, height: 0), multiplier:CGFloat = 1) -> UIView
 ```
 
-### Width
+#### Width
 
-Gets the frame's width
+Returns the frame width
 
 ```swift
-func width() -> CGFloat 
+width() -> CGFloat 
 ```
 
-Sets the width constraints
+Sets the frame width using Auto Layout or frames
 
 ```swift
-func width(constant: CGFloat) -> UIView 
+width(constant: CGFloat) -> UIView
 ```
 
-Pins the width to an object using a constant and multipler
+Pins the width to another view using Auto Layout
 
 ```swift
-func width(#to:AnyObject, attribute: NSLayoutAttribute = .Width, constant: CGFloat = 0, multiplier:CGFloat = 1, closure: ConstraintBlock = nil) -> UIView
+width(to to:AnyObject, attribute: NSLayoutAttribute = .Width, constant: CGFloat = 0, multiplier:CGFloat = 1) -> UIView
 ```
 
-### Height
+#### Height
 
-Gets the frame's height
+Returns the frame height
 
 ```swift
-func height() -> CGFloat
+height() -> CGFloat
 ```
 
-Sets the height constraints
+Sets the frame height using Auto Layout or frames
 
 ```swift
-func height(constant: CGFloat) -> UIView 
+eight(constant: CGFloat) -> UIView
 ```
 
-Pins the height to an object using a constant and multipler
+Pins the height to another view using Auto Layout
 
 ```swift
-func height(#to:AnyObject, attribute: NSLayoutAttribute = .Height, constant: CGFloat = 0, multiplier:CGFloat = 1, closure: ConstraintBlock = nil) -> UIView
+height(to to:AnyObject, attribute: NSLayoutAttribute = .Height, constant: CGFloat = 0, multiplier:CGFloat = 1) -> UIView
 ```
 
-### Minimum Size
+#### Minimum Size
 
-Gets the minimum size
+Returns the minimum size using Auto Layout
 
 ```swift
-func minSize() -> CGSize?
+minSize() -> CGSize?
 ```
 
-Sets the minimum width and height constraints
+Sets the minimum size using Auto Layout
 
 ```swift
-func minSize(constant:CGSize) -> UIView 
+minSize(constant:CGSize) -> UIView
 ```
 
-Pins the minimum width and height constraints to an object using a constant and multiplier
+Pins the minimum size to another view using Auto Layout
 
 ```swift
-func minSize(#to:AnyObject, constant:CGSize = CGSize(width: 0, height: 0), multiplier:CGFloat = 1, closure: ConstraintsBlock = nil) -> UIView
+minSize(to to:AnyObject, constant:CGSize = CGSize(width: 0, height: 0), multiplier:CGFloat = 1)
 ```
 
-### Minimum Width
+#### Minimum Width
 
-Gets the minimum width
+Returns the minimum width using Auto Layout
 
 ```swift
-func minWidth() -> CGFloat? 
+minWidth() -> CGFloat?
 ```
 
-Sets the minimum width constraints
+Sets the minimum width using Auto Layout
 
 ```swift
-func minWidth(constant:CGFloat) -> UIView 
+minWidth(constant:CGFloat) -> UIView
 ```
 
-Pins the minimum width constraints to an object using a constant and multiplier
+Pins the minimum width to another view using Auto Layout
 
 ```swift
-func minWidth(#to:AnyObject, attribute: NSLayoutAttribute = .Width, constant:CGFloat = 0, multiplier:CGFloat = 1, closure: ConstraintBlock = nil) -> UIView
+minWidth(to to:AnyObject, attribute: NSLayoutAttribute = .Width, constant:CGFloat = 0, multiplier:CGFloat = 1) -> UIView
 ```
 
+#### Minimum Height
 
-### Minimum Height
-
-Gets the minimum height
+Returns the minimum height using Auto Layout
 
 ```swift
-func minHeight() -> CGFloat?
+minHeight() -> CGFloat?
 ```
 
-Sets the minimum height constraints
+Sets the minimum height using Auto Layout
 
 ```swift
-func minHeight(constant:CGFloat) -> UIView
+minHeight(constant:CGFloat) -> UIView 
 ```
 
-Pins the minimum height constraints to an object using a constant and multiplier
+Pins the minimum height to another view using Auto Layout
 
 ```swift
-func minHeight(#to:AnyObject, attribute: NSLayoutAttribute = .Height, constant:CGFloat = 0, multiplier:CGFloat = 1, closure: ConstraintBlock = nil) -> UIView
+minHeight(to to:AnyObject, attribute: NSLayoutAttribute = .Height, constant:CGFloat = 0, multiplier:CGFloat = 1) -> UIView
 ```
 
-### Maximum Size
+#### Maximum Size
 
-Gets the maximum size
+Returns the maximun size using Auto Layout
 
 ```swift
-func maxSize() -> CGSize?
+maxSize() -> CGSize?
 ```
 
-Sets the maximum width and height constraints
+Sets the maximun size using Auto Layout
 
 ```swift
-func maxSize(constant:CGSize) -> UIView
+maxSize(constant:CGSize) -> UIView
 ```
 
-Pins the maximum width and height constraints to an object using a constant and multiplier
+Pins the maximun size to another view using Auto Layout
 
 ```swift
-func maxSize(#to:AnyObject, constant:CGSize = CGSize(width: 0, height: 0), multiplier:CGFloat = 1, closure: ConstraintsBlock = nil) -> UIView
+maxSize(to to:AnyObject, constant:CGSize = CGSize(width: 0, height: 0), multiplier:CGFloat = 1) -> UIView
 ```
 
+#### Maximum Width
 
-### Maximum Width
-
-Gets the maximum width
+Returns the maximun width using Auto Layout
 
 ```swift
-func maxWidth() -> CGFloat?
+maxWidth() -> CGFloat?
 ```
 
-Sets the maximum width constraints
+Sets the maximun width using Auto Layout
 
 ```swift
-func maxWidth(constant:CGFloat) -> UIView 
+maxWidth(constant:CGFloat) -> UIView
 ```
 
-Pins the maximum width constraints to an object using a constant and multiplier
+Pins the maximun width to another view using Auto Layout
 
 ```swift
-func maxWidth(#to:AnyObject, attribute: NSLayoutAttribute = .Width, constant:CGFloat = 0, multiplier:CGFloat = 1, closure: ConstraintBlock = nil) -> UIView
+maxWidth(to to:AnyObject, attribute: NSLayoutAttribute = .Width, constant:CGFloat = 0, multiplier:CGFloat = 1) -> UIView
 ```
 
-### Maximum Height
+#### Maximum Height
 
-Gets the maximum height
+Returns the maximun height using Auto Layout
 
 ```swift
-func maxHeight() -> CGFloat? 
+maxHeight() -> CGFloat?
 ```
 
-Sets the maximum height constraints
+Sets the maximun height using Auto Layout
 
 ```swift
-func maxHeight(constant:CGFloat) -> UIView 
+maxHeight(constant:CGFloat) -> UIView
 ```
 
-Pins the maximum width constraints to an object using a constant and multiplier
+Pins the maximun height to another view using Auto Layout
 
 ```swift
-func maxHeight(#to:AnyObject, attribute: NSLayoutAttribute = .Height, constant:CGFloat = 0, multiplier:CGFloat = 1, closure: ConstraintBlock = nil) -> UIView
+maxHeight(to to:AnyObject, attribute: NSLayoutAttribute = .Height, constant:CGFloat = 0, multiplier:CGFloat = 1) -> UIView
 ```
 
+### Smallest and Largest Size
 
-### Smallest And Largest Side
-
-Gets the size of the smallest side
+Returns the length of the smallest side
 
 ```swift
-func smallestSideLength() -> CGFloat
+smallestSideLength() -> CGFloat
 ```
 
-Gets the size of the largest side
+Returns the length of the largest side
 
 ```swift
-func largestSideLength() -> CGFloat
+largestSideLength() -> CGFloat
 ```
 
+### AutoLayout state
 
-### Center
-
-Pins center to another view using constant and multiplier
+Prepares the view for a frame based animation by removing the view, enabling translatesAutoresizingMaskIntoConstraints and re-adding the view to it's superview
 
 ```swift
-func center(#to:AnyObject, constant:CGSize = CGSize(width: 0, height: 0), multiplier:CGFloat = 1, closure: ConstraintsBlock = nil) -> UIView 
+prepForAnimation()
 ```
 
-
-### Center X
-
-Gets horizontal center
+Prepares the view for Auto Layout by removing the view, disabling translatesAutoresizingMaskIntoConstraints and re-adding the view to it's superview
 
 ```swift
-func centerX() -> CGFloat 
+prepForAutoLayout()
 ```
 
-Pins horzontal center to superview
+### Pin and Apply
+
+Pins an attribute to another view
 
 ```swift
-func centerX(constant: CGFloat = 0) -> UIView 
+pin(pinAttribute:NSLayoutAttribute, to:AnyObject? = nil, attribute:NSLayoutAttribute, constant:CGFloat = 0, multiplier:CGFloat = 1, relation:NSLayoutRelation = .Equal) -> NSLayoutConstraint? 
 ```
 
-Pins horzontal center to another view using attribute, constant and multiplier
+Applies an attribute to the view
 
 ```swift
-func centerX(#to:AnyObject, attribute: NSLayoutAttribute = .CenterX, constant: CGFloat = 0, multiplier:CGFloat = 1, closure: ConstraintBlock = nil) -> UIView 
-```
-
-
-### Center Y
-
-Gets horizontal center
-
-```swift
-func centerY() -> CGFloat 
-```
-
-Pins vertical center to superview
-
-```swift
-func centerY(constant: CGFloat = 0) -> UIView 
-```
-
-Pins vertical center to another view using attribute, constant and multiplier
-
-```swift
-func centerY(#to:AnyObject, attribute: NSLayoutAttribute = .CenterY, constant: CGFloat = 0, multiplier:CGFloat = 1, closure: ConstraintBlock = nil) -> UIView
-```
-
-
-### Pin
-
-Pins an attribute to an attribute of another item
-
-```swift
-func pin(pinAttribute:NSLayoutAttribute, to:AnyObject? = nil, attribute:NSLayoutAttribute, constant:CGFloat = 0, multiplier:CGFloat = 1, relation:NSLayoutRelation = .Equal) -> NSLayoutConstraint?
-```
-
-### Space subviews
-
-Space subviews evenly and inserts dynamically sized spacers in between
-
-```swift
-func spaceSubviewsEvenly(views:[UIView], size: CGSize, axis:UILayoutConstraintAxis = .Horizontal, options:NSLayoutFormatOptions = .AlignAllCenterY, closure: ConstraintsBlock = nil) -> UIView
-```
-
-Spaces subviews next to each other using VisualFormat
-
-```swift
-func spaceSubviews(views:[UIView], spacing:CGFloat = 0, axis:UILayoutConstraintAxis = .Horizontal, options:NSLayoutFormatOptions = .AlignAllCenterY, closure: ConstraintsBlock = nil) -> UIView
-```
-
-Align subviews along an axis
-
-```swift
-func alignSubviews(views:[UIView], axis:UILayoutConstraintAxis, closure: ConstraintsBlock = nil) -> UIView
+applyAttribute(attribute:NSLayoutAttribute, constant:CGFloat = 0, multiplier: CGFloat = 1, relation:NSLayoutRelation = .Equal) -> NSLayoutConstraint
 ```
 
 ### Removing Constraints
 
-Removes constraints recusevely
+Removes all attached constraints recursevely
 
 ```swift
-func removeConstraintsFromViewAndRelatedView(#constraints:[NSLayoutConstraint]) -> UIView
+removeAttachedConstraintsRecursevely() -> UIView
 ```
+
+Removes a constraint recursevely
+
+```swift
+removeConstraintRecursevely(constraint:NSLayoutConstraint) -> UIView
+```
+
+### Direction
+
+Returns true if layout direction is left to right
+
+```swift
+layoutDirectionIsLeftToRight() -> Bool
+```
+
+## UIView Effects Extension
 
 ### Border
 
-Gets the border color
+Returns layer border color
 
 ```swift
-func borderColor() -> UIColor
+borderColor() -> UIColor
 ```
 
-Sets the border color
+Sets layer border color
 
 ```swift
-func borderColor(borderColor: UIColor) -> UIView 
+borderColor(borderColor: UIColor) -> UIView 
 ```
 
-Gets the border width
+Returns layer border width
 
 ```swift
-func borderWidth()
+borderWidth() -> CGFloat 
 ```
 
-Gets the border width
+Sets the layer border width
 
 ```swift
-func borderWidth(borderWidth: CGFloat) -> UIView
-``` 
-
-Sets border with dash pattern
-
-```swift
-func borderWithDashPattern(lineDashPattern: [Int], borderWidth: CGFloat, borderColor: UIColor, cornerRadius: CGFloat?) -> UIView
+borderWidth(borderWidth: CGFloat) -> UIView 
 ```
 
-
-### Rounded Corner
-
-Gets the corner radius
+Sets layer border with a dash pattern
 
 ```swift
-func cornerRadius() -> CGFloat
+borderWithDashPattern(lineDashPattern: [Int], borderWidth: CGFloat, borderColor: UIColor, cornerRadius: CGFloat?) -> UIView 
 ```
 
-Sets the corner radius
+### Rounded Corners
+
+Returns layer corner radius
 
 ```swift
-func cornerRadius(cornerRadius: CGFloat) -> UIView 
+cornerRadius() -> CGFloat
 ```
 
-Sets the corner radius as a circle
+Sets layer corner radius
 
 ```swift
-func roundCornersToCircle() -> UIView
+cornerRadius(cornerRadius: CGFloat) -> UIView 
 ```
 
-Sets the corner radius as a circle with border
+Creates a circle by rounding the corners to half the size of the width, sets border color and width
+
 ```swift
-func roundCornersToCircle(#borderColor: UIColor, borderWidth: CGFloat) -> UIView
+roundCornersToCircle(borderColor: UIColor?, borderWidth: CGFloat?) -> UIView 
 ```
 
-Sets the corner radius with border
+Creates a circle by rounding the corners to hald the size of the width
+
 ```swift
-func roundCorners(cornerRadius: CGFloat, borderColor: UIColor?, borderWidth: CGFloat?) -> UIView
+roundCorners(cornerRadius: CGFloat, borderColor: UIColor?, borderWidth: CGFloat?) -> UIView
 ```
 
 ### Shadow
 
-Gets the shadow color
+The shadow color of the layer
+
 ```swift
-func shadowColor() -> UIColor 
+shadowColor:UIColor
 ```
 
-Sets the shadow color
+The shadow offset of the layer
 
 ```swift
-func shadowColor(shadowColor: UIColor) -> UIView
-```
-Gets the shadow offset
-
-```swift
-func shadowOffset() -> CGSize
+shadowOffset:CGSize
 ```
 
-Sets the shadow offset
+The shadow opacity of the layer
 
 ```swift
-func shadowOffset(shadowOffset: CGSize) -> UIView
+shadowOpacity:Float
 ```
 
-Gets the shadow oppacity
+The shadow radius of the layer
 
 ```swift
-func shadowOpacity() -> Float
+shadowRadius:CGFloat 
 ```
 
-Sets the shadow oppacity
+Sets shadow of the layer including the color, offset, radius, opacity and mask.
 
 ```swift
-func shadowOpacity(shadowOpacity: Float) -> UIView
+shadow(color: UIColor = UIColor.blackColor(), offset: CGSize = CGSize(width: 0, height: 0), radius: CGFloat = 6, opacity: Float = 1, isMasked: Bool = false) -> UIView
 ```
 
-Gets the shadow radius
+### Gradient
+
+Sets a gradient color layer
 
 ```swift
-func shadowRadius() -> CGFloat
+setGradient(colors: [UIColor], isHorizontal:Bool = false) -> UIView
 ```
 
-Sets the shadow radius
+Animates colors of a gradient layer
 
 ```swift
-func shadowRadius(shadowRadius: CGFloat) -> UIView 
+animateGradientToColors(colors: [UIColor], duration: CFTimeInterval = 3) -> UIView
 ```
 
-Sets all shadow properties in one call
+Sets a gradient layer mask
 
 ```swift
-func shadow(color: UIColor = UIColor.blackColor(), offset: CGSize = CGSize(width: 0, height: 0), radius: CGFloat = 6, opacity: Float = 1, isMasked: Bool = false) -> UIView 
+setGradientMask(alphas:[CGFloat], isHorizontal:Bool = false) -> UIView
 ```
 
-### Autolayout
 
-Sets setTranslatesAutoresizingMaskIntoConstraints to true
+## UIViewController Extension
+
+### Direction
+
+Returns true if layout direction is left to right
 
 ```swift
-func prepForAnimation()
+layoutDirectionIsLeftToRight() -> Bool
+```
+
+Returns true if horizontal size class is compact
+
+```swift 
+horizontalSizeClassIsCompact() -> Bool
+```
+
+Returns true if vertical size class is compact
+
+```swift
+verticalSizeClassIsCompact() -> Bool
 ```
