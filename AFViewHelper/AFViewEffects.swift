@@ -1,7 +1,7 @@
 //
 //  AFViewExtension.swift
 //
-//  AFViewExtension: Version 4.0.0
+//  AFViewExtension: Version 4.0.1
 //
 //  Created by Melvin Rivera on 7/2/14.
 //  Copyright (c) 2014 All Forces. All rights reserved.
