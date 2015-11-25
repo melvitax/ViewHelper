@@ -10,9 +10,6 @@ Autolayout and Animation UIVIew Extension for Swift 2.0
 
 ![Sample Project Screenshot](https://raw.githubusercontent.com/melvitax/AFViewHelper/master/Screenshot.png?raw=true "Sample Project Screenshot")
 
-![Sample Project Screencast](https://raw.githubusercontent.com/melvitax/AFViewHelper/master/Screencast.mov?raw=true "Sample Project Screencast")
-
-
 
 ## Animations
 
