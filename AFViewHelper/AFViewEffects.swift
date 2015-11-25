@@ -1,7 +1,7 @@
 //
 //  AFViewExtension.swift
 //
-//  AFViewExtension: Version 3.0.0
+//  AFViewExtension: Version 4.0.0
 //
 //  Created by Melvin Rivera on 7/2/14.
 //  Copyright (c) 2014 All Forces. All rights reserved.
@@ -13,52 +13,47 @@ import QuartzCore
 
 
 
-extension UIView {
+@IBDesignable extension UIView {
+    
+    public override func prepareForInterfaceBuilder() {
+        self.setNeedsDisplay()
+    }
     
     // MARK: Border
     
     /**
-    Returns layer border color
-    
-    :returns: UIColor
+    The layer border color
     */
-    func borderColor() -> UIColor { return UIColor(CGColor: layer.borderColor!) }
-    
-    /**
-     Sets layer border color
-     
-     :returns: self UIView
-     */
-    func borderColor(borderColor: UIColor) -> UIView {
-        layer.borderColor = borderColor.CGColor
-        return self
+    var borderColor: UIColor {
+        get {
+            return layer.borderColor == nil ? UIColor.clearColor() : UIColor(CGColor: layer.borderColor!)
+        }
+        set {
+            layer.borderColor = newValue.CGColor
+        }
     }
     
     /**
-     Returns layer border width
-     
-     :returns: CGFloat
+     The layer border width
      */
-    func borderWidth() -> CGFloat { return layer.borderWidth }
-    
-    /**
-     Sets the layer border width
-     
-     :returns: self UIView
-     */
-    func borderWidth(borderWidth: CGFloat) -> UIView {
-        layer.borderWidth = borderWidth
-        return self
+    var borderWidth: CGFloat {
+        get {
+            return layer.borderWidth
+        }
+        set {
+            layer.borderWidth = newValue
+        }
     }
+    
     
     /**
      Sets layer border with a dash pattern
      
-     :param: lineDashPattern: [Int]
-     :param: borderWidth: CGFloat
-     :param: borderColor: UIColor
-     :param: cornerRadius: CGFloat?
-     :returns: self UIView
+     - Parameter lineDashPattern: The dash pattern applied to the shape’s path when stroked.
+     - Parameter borderWidth: The width of the border.
+     - Parameter borderColor: The color of the border.
+     - Parameter cornerRadius: The radius of each corner oval.
+     - Returns: self
      */
     func borderWithDashPattern(lineDashPattern: [Int], borderWidth: CGFloat, borderColor: UIColor, cornerRadius: CGFloat?) -> UIView {
         let strokeLayer = CAShapeLayer()
@@ -69,7 +64,7 @@ extension UIView {
         if cornerRadius != nil {
             strokeLayer.path = UIBezierPath(roundedRect: bounds, cornerRadius: cornerRadius!).CGPath
         } else {
-            strokeLayer.path = UIBezierPath(roundedRect: bounds, cornerRadius: self.cornerRadius()).CGPath
+            strokeLayer.path = UIBezierPath(roundedRect: bounds, cornerRadius: self.cornerRadius).CGPath
         }
         
         strokeLayer.frame = bounds
@@ -81,52 +76,47 @@ extension UIView {
     // MARK: Rounded Corners
     
     /**
-    Returns layer corner radius
-    
-    :returns: CGFloat
+    The layer corner radius
     */
-    func cornerRadius() -> CGFloat { return layer.cornerRadius }
-    
-    /**
-     Sets layer corner radius
-     
-     :param: cornerRadius: CGFloat
-     :returns: self UIView
-     */
-    func cornerRadius(cornerRadius: CGFloat) -> UIView {
-        layer.cornerRadius = cornerRadius
-        return self
+    var cornerRadius: CGFloat {
+        get {
+            return layer.cornerRadius
+        }
+        set {
+            layer.cornerRadius = newValue
+            layer.masksToBounds = newValue > 0
+        }
     }
     
     /**
      Creates a circle by rounding the corners to half the size of the width, sets border color and width
      
-     :param: borderColor borderColor: UIColor?
-     :param: borderWidth: CGFloat?
-     :returns: self UIView
+     - Parameter borderColor: The border color.
+     - Parameter borderWidth: The border width.
+     - Returns: self
      */
     func roundCornersToCircle(borderColor borderColor: UIColor = UIColor.clearColor(), borderWidth: CGFloat = 0) -> UIView {
-        cornerRadius(width()/2)
-        self.borderWidth(borderWidth)
-        self.borderColor(borderColor)
+        cornerRadius = width()/2
+        self.borderWidth = borderWidth
+        self.borderColor = borderColor
         return self
     }
     
     /**
      Rounding the corners, sets border color and width
      
-     :param: cornerRadius: CGFloat
-     :param: borderColor: UIColor?
-     :param: borderWidth: CGFloat?
-     :returns: self UIView
+     - Parameter cornerRadius: The radius of each corner oval.
+     - Parameter borderColor: The border color.
+     - Parameter borderWidth: The border width.
+     - Returns: self
      */
     func roundCorners(cornerRadius: CGFloat, borderColor: UIColor?, borderWidth: CGFloat?) -> UIView {
-        self.cornerRadius(cornerRadius)
+        self.cornerRadius = cornerRadius
         if borderWidth != nil {
-            self.borderWidth(borderWidth!)
+            self.borderWidth = borderWidth!
         }
         if borderColor != nil {
-            self.borderColor(borderColor!)
+            self.borderColor = borderColor!
         }
         return self
     }
@@ -136,22 +126,19 @@ extension UIView {
     
     /**
     The shadow color of the layer
-    
-    :returns: UIColor
     */
-    var shadowColor:UIColor {
+    var shadowColor: UIColor {
         get {
-            return UIColor(CGColor: layer.shadowColor!)
+            return layer.shadowColor == nil ? UIColor.clearColor() : UIColor(CGColor: layer.shadowColor!)
         }
         set {
             layer.shadowColor = newValue.CGColor
         }
     }
     
+    
     /**
-     The shadow offset of the layer
-     
-     :returns: CGSize
+     The offset (in points) of the layer’s shadow.
      */
     var shadowOffset:CGSize {
         get {
@@ -164,8 +151,6 @@ extension UIView {
     
     /**
      The shadow opacity of the layer
-     
-     :returns: Float
      */
     var shadowOpacity:Float {
         get {
@@ -177,9 +162,7 @@ extension UIView {
     }
     
     /**
-     The shadow radius of the layer
-     
-     :returns: CGFloat
+     The blur radius (in points) used to render the layer’s shadow.
      */
     var shadowRadius:CGFloat {
         get {
@@ -191,14 +174,14 @@ extension UIView {
     }
     
     /**
-     Sets shadow of the layer including the color, offset, radius, opacity and mask.
+     Shortcut for applying shadow.
      
-     :param: color: UIColor
-     :param: offset: CGSize
-     :param: radius: CGFloat
-     :param: opacity: Float
-     :param: isMasked: Bool
-     :returns: self UIView
+     - Parameter color: The shadow color.
+     - Parameter offset: The offset (in points) of the layer’s shadow.
+     - Parameter radius: The blur radius (in points) used to render the layer’s shadow.
+     - Parameter opacity: The shadow opacity.
+     - Parameter isMasked: Indicates if it should be masked.
+     - Returns: self UIView
      */
     func shadow(color: UIColor = UIColor.blackColor(), offset: CGSize = CGSize(width: 0, height: 0), radius: CGFloat = 6, opacity: Float = 1, isMasked: Bool = false) -> UIView {
         shadowColor = color
@@ -223,9 +206,9 @@ extension UIView {
     /**
     Sets a gradient color layer
    
-    :param: colors: [UIColor]
-    :param: isHorizontal:Bool
-    :returns: self UIView
+    - Parameter colors: Array of colors to use in gradient.
+    - Parameter isHorizontal: Indicates if gradient is horizontal instead of vertical.
+    - Returns: self
     */
     func setGradient(colors: [UIColor], isHorizontal:Bool = false) -> UIView {
         let gradientLayer = layer as! CAGradientLayer
@@ -238,9 +221,9 @@ extension UIView {
     /**
      Animates colors of a gradient layer
      
-     :param: colors: [UIColor]
-     :param: duration: CFTimeInterval
-     :returns: self UIView
+     - Parameter colors: Array of colors to use in gradient.
+     - Parameter duration: Duration os animation
+     - Returns: self
      */
     func animateGradientToColors(colors: [UIColor], duration: CFTimeInterval = 3) -> UIView {
         let gradientLayer = layer as! CAGradientLayer
@@ -261,9 +244,9 @@ extension UIView {
     /**
      Sets a gradient layer mask
      
-     :param: alphas:[CGFloat]
-     :param: isHorizontal:Bool
-     :returns: self UIView
+     - Parameter alphas: Array of alpha values to use for gradient mask.
+     - Parameter isHorizontal: Indicates if gradient is horizontal instead of vertical.
+     - Returns: self 
      */
     func setGradientMask(alphas:[CGFloat], isHorizontal:Bool = false) -> UIView {
         let gradientLayer = (layer.mask is CAGradientLayer) ? layer.mask as! CAGradientLayer : CAGradientLayer()

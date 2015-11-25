@@ -1,7 +1,7 @@
 //
 //  AF+Inspectable+View.swift
 //
-//  AFViewExtension: Version 3.0.0
+//  AFViewExtension: Version 4.0.0
 //
 //  Created by Melvin Rivera on 7/24/14.
 //  Copyright (c) 2014 All Forces. All rights reserved.
@@ -14,95 +14,104 @@ import QuartzCore
 
 @IBDesignable public class AFInspectableView :UIView {
 
-    required public init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+    
+    // MARK: Border
+    
+    /**
+    The layer border color
+    */
+    @IBInspectable override var borderColor: UIColor {
+        get {
+            return layer.borderColor == nil ? UIColor.clearColor() : UIColor(CGColor: layer.borderColor!)
+        }
+        set {
+            layer.borderColor = newValue.CGColor
+        }
+    }
+    
+    /**
+     The layer border width
+     */
+    @IBInspectable override var borderWidth: CGFloat {
+        get {
+            return layer.borderWidth
+        }
+        set {
+            layer.borderWidth = newValue
+        }
+    }
+    
+    
+    // MARK: Corner Radius
+    
+    /**
+    The layer corner radius
+    */
+    @IBInspectable override var cornerRadius: CGFloat {
+        get {
+            return layer.cornerRadius
+        }
+        set {
+            layer.cornerRadius = newValue
+            layer.masksToBounds = newValue > 0
+        }
+    }
+    
+    
+    // MARK: Shadow
+    
+    /**
+    The shadow color of the layer
+    */
+    @IBInspectable override var shadowColor: UIColor {
+        get {
+            return layer.shadowColor == nil ? UIColor.clearColor() : UIColor(CGColor: layer.shadowColor!)
+        }
+        set {
+            layer.shadowColor = newValue.CGColor
+        }
+    }
+    
+    
+    /**
+     The shadow offset of the layer
+     */
+    @IBInspectable override var shadowOffset:CGSize {
+        get {
+            return layer.shadowOffset
+        }
+        set {
+            layer.shadowOffset = newValue
+        }
+    }
+    
+    /**
+     The shadow opacity of the layer
+     
+     - Returns: Float
+     */
+    @IBInspectable override var shadowOpacity:Float {
+        get {
+            return layer.shadowOpacity
+        }
+        set {
+            layer.shadowOpacity = newValue
+        }
+    }
+    
+    /**
+     The shadow radius of the layer
+     
+     - Returns: CGFloat
+     */
+    @IBInspectable override var shadowRadius:CGFloat {
+        get {
+            return layer.shadowRadius
+        }
+        set {
+            layer.shadowRadius = newValue
+        }
     }
 
-    @IBInspectable public var roundCorners : CGFloat = 0.0 {
-        didSet {
-            layer.cornerRadius = roundCorners
-        }
-    }
-    
-    @IBInspectable public var strokeColor : UIColor = UIColor.clearColor() {
-        didSet {
-            layer.borderColor = strokeColor.CGColor
-        }
-    }
-    
-    @IBInspectable public var strokeWidth : CGFloat = 0.0 {
-        didSet {
-            layer.borderWidth = strokeWidth
-        }
-    }
-    
-    
-    @IBInspectable public var shadow : UIColor = UIColor.clearColor() {
-        didSet {
-            layer.shadowColor = shadow.CGColor
-        }
-    }
-    
-    
-    @IBInspectable public var sOffset : CGSize = CGSize(width: 0, height: 0) {
-        didSet {
-            layer.shadowOffset = shadowOffset
-        }
-    }
-    
-    @IBInspectable public var sOpacity : Float = 0.0 {
-        didSet {
-            layer.shadowOpacity = shadowOpacity
-        }
-    }
-    
-    @IBInspectable public var sRadius : CGFloat = 0.0 {
-        didSet {
-            layer.shadowRadius = shadowRadius
-        }
-    }
-    
-    @IBInspectable var gradientStart: UIColor = UIColor.whiteColor() {
-        didSet{
-            setupGradient()
-        }
-    }
-    
-    @IBInspectable var gradientEnd: UIColor = UIColor.blackColor() {
-        didSet{
-            setupGradient()
-        }
-    }
-    
-    @IBInspectable var gradientHor: Bool = false {
-        didSet{
-            setupGradient()
-        }
-    }
-    
-    @IBInspectable public var layoutMargin: CGFloat = 0 {
-        didSet {
-            self.layoutMargins = UIEdgeInsets(top: layoutMargin, left: layoutMargin,
-                bottom: layoutMargin, right: layoutMargin)
-        }
-    }
-    
-    private func setupGradient(){
-        
-        let colors:Array = [gradientStart.CGColor, gradientEnd.CGColor]
-        gradientLayer.colors = colors
-        gradientLayer.cornerRadius = layer.cornerRadius
-        
-        gradientLayer.endPoint = (gradientHor) ? CGPoint(x: 1, y: 0) : CGPoint(x: 0, y: 1)
-        
-        self.setNeedsDisplay()
-        
-    }
-    
-    // Helper to return the main layer as CAGradientLayer
-    var gradientLayer: CAGradientLayer {
-        return layer as! CAGradientLayer
-    }
-    
 
 }

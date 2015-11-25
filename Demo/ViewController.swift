@@ -9,129 +9,214 @@ import Foundation
 import UIKit
 import QuartzCore
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
-    let redCircle = UIView(autoLayout:true)
+    var selectedAnimation: Int = 0
+    var selectedEasing: Int = 0
+    
+    @IBOutlet weak var forceSlider: UISlider!
+    @IBOutlet weak var forceLabel: UILabel!
+    
+    @IBOutlet weak var durationSlider: UISlider!
+    @IBOutlet weak var durationLabel: UILabel!
+    
+    @IBOutlet weak var delaySlider: UISlider!
+    @IBOutlet weak var delayLabel: UILabel!
+    
+    @IBOutlet weak var scaleSlider: UISlider!
+    @IBOutlet weak var scaleLabel: UILabel!
+    
+    @IBOutlet weak var rotateSlider: UISlider!
+    @IBOutlet weak var rotateLabel: UILabel!
+    
+    @IBOutlet weak var dampingSlider: UISlider!
+    @IBOutlet weak var dampingLabel: UILabel!
+    
+    @IBOutlet weak var velocitySlider: UISlider!
+    @IBOutlet weak var velocityLabel: UILabel!
+    
+    @IBOutlet weak var xSlider: UISlider!
+    @IBOutlet weak var xLabel: UILabel!
+    
+    @IBOutlet weak var ySlider: UISlider!
+    @IBOutlet weak var yLabel: UILabel!
+    
+
+    @IBOutlet weak var mainBox: AFInspectableView!
+    @IBOutlet weak var bigCircle: AFInspectableView!
+    @IBOutlet weak var smallCircle: AFInspectableView!
+    
+    override func prefersStatusBarHidden() -> Bool {
+        return true
+    }
     
     override func viewDidLoad() {
 
         super.viewDidLoad()
         
-        UIApplication.sharedApplication().statusBarHidden = true
-        view.backgroundColor = UIColor(white: 0.5, alpha: 1)
         
-        self.view.pin(.Width, to: view, attribute: .Height, constant: 0, multiplier: 0.5, relation: .LessThanOrEqual)
-        
-        // Dashed Box
-        let width = view.smallestSideLength() * 0.8
-        let dashedBox = UIView(autoLayout:true)
-        view.addSubview(dashedBox)
-        dashedBox.backgroundColor = UIColor(white: 1, alpha: 0.5)
-        dashedBox
-            .width(width)
-            .height(to: dashedBox, attribute: .Width)
-            .center(to:view)
-            .layoutIfNeeded()
-        dashedBox
-            .borderWithDashPattern([2, 6], borderWidth: 4, borderColor: UIColor.whiteColor(), cornerRadius: 6)
-            .shadow(UIColor.blackColor(), offset: CGSize(width: 0, height: 0), radius: 6, opacity: 2, isMasked: false)
-        
-        // Red Circle
-        view.addSubview(redCircle)
-        redCircle.backgroundColor = UIColor.redColor()
-        redCircle
-            .size(to: dashedBox, constant: CGSize(width: -50, height: -50))
-            .center(to: view)
-            .layoutIfNeeded()
-        redCircle.roundCornersToCircle(borderColor: UIColor.whiteColor(), borderWidth: 12)
-        redCircle.clipsToBounds = true
-
         // Top Left Square
         let topLeftSquare = UIView(autoLayout:true)
-        redCircle.addSubview(topLeftSquare)
-        topLeftSquare.backgroundColor = UIColor(white: 0, alpha: 0.3)
+        bigCircle.addSubview(topLeftSquare)
+        topLeftSquare.backgroundColor = UIColor(white: 0.1, alpha: 1)
         topLeftSquare
-            .left(to: redCircle)
-            .top(to: redCircle)
-            .width(to: redCircle, attribute: .Width, constant: 0, multiplier: 0.48)
+            .left(to: bigCircle)
+            .top(to: bigCircle)
+            .width(to: bigCircle, attribute: .Width, constant: 0, multiplier: 0.48)
             .height(to: topLeftSquare, attribute: .Width)
             .layoutIfNeeded()
 
         // Top Right Square
         let topRightSquare = UIView(autoLayout:true)
-        redCircle.addSubview(topRightSquare)
-        topRightSquare.backgroundColor = UIColor(white: 0, alpha: 0.3)
+        bigCircle.addSubview(topRightSquare)
+        topRightSquare.backgroundColor = UIColor(white: 0.1, alpha: 1)
         topRightSquare
-            .right(to: redCircle)
-            .top(to: redCircle)
+            .right(to: bigCircle)
+            .top(to: bigCircle)
             .size(to: topLeftSquare)
             .layoutIfNeeded()
  
         // Bottom Left Square
         let bottomLeftSquare = UIView(autoLayout:true)
-        redCircle.addSubview(bottomLeftSquare)
-        bottomLeftSquare.backgroundColor = UIColor(white: 0, alpha: 0.3)
+        bigCircle.addSubview(bottomLeftSquare)
+        bottomLeftSquare.backgroundColor = UIColor(white: 0.1, alpha: 1)
         bottomLeftSquare
-            .left(to: redCircle)
-            .bottom(to: redCircle)
+            .left(to: bigCircle)
+            .bottom(to: bigCircle)
             .size(to: topLeftSquare)
             .layoutIfNeeded()
         
         
         // Bottom Right Square
         let bottomRightSquare = UIView(autoLayout:true)
-        redCircle.addSubview(bottomRightSquare)
-        bottomRightSquare.backgroundColor = UIColor(white: 0, alpha: 0.3)
+        bigCircle.addSubview(bottomRightSquare)
+        bottomRightSquare.backgroundColor = UIColor(white:0.1, alpha: 1)
         bottomRightSquare
-            .right(to: redCircle)
-            .bottom(to: redCircle)
+            .right(to: bigCircle)
+            .bottom(to: bigCircle)
             .size(to: topLeftSquare)
             .layoutIfNeeded()
-        
-        
-        
-        // Center Circle
-        let centerCircle = UIView(autoLayout:true)
-        redCircle.addSubview(centerCircle)
-        centerCircle.backgroundColor = UIColor(white: 1, alpha: 0.7)
-        centerCircle
-            .size(to: redCircle, constant: CGSize(width: 0, height: 0), multiplier: 0.6)
-            .center(to: view)
-            .layoutIfNeeded()
-        centerCircle.roundCornersToCircle()
-
-        
-        // Center Circle Shadow
-        let redCircleShadow = UIView(autoLayout:true)
-        view.insertSubview(redCircleShadow, belowSubview: redCircle)
-        redCircleShadow.backgroundColor = UIColor.blackColor()
-        redCircleShadow
-            .size(to: redCircle)
-            .center(to: redCircle)
-            .layoutIfNeeded()
-        redCircleShadow.cornerRadius(redCircleShadow.width()/2)
-        redCircleShadow.shadow(UIColor.blackColor(), offset: CGSize(width: 0, height: 0), radius: 6, opacity: 1, isMasked: false)
-        
+     
+        resetValues() 
     }
     
-    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+    // MARK: View Layout
+    
+    override func viewDidAppear(animated: Bool)
+    {
+        super.viewDidAppear(animated)
+        layoutView()
+    }
+    
+    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator)
+    {
         super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
-        view.layoutIfNeeded()
+        
+        //view.layoutIfNeeded()
         coordinator.animateAlongsideTransition({
             context in
             // Create a transition and match the context's duration
             let transition = CATransition()
             transition.duration = context.transitionDuration()
-            
             transition.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
-            //self.redCircle.layer.addAnimation(transition, forKey: "cornerRadius")
-            //self.redCircle.roundCornersToCircle()
-            
+                self.bigCircle.layer.addAnimation(transition, forKey: "cornerRadius")
+                self.bigCircle.cornerRadius = self.bigCircle.width()/2
+                self.smallCircle.layer.addAnimation(transition, forKey: "cornerRadius")
+                self.smallCircle.cornerRadius = self.smallCircle.width()/2
             }, completion: nil)
         
     }
     
+    func layoutView()
+    {
+        view.layoutIfNeeded()
+        bigCircle.cornerRadius = bigCircle.width()/2
+        smallCircle.cornerRadius = smallCircle.width()/2
+    }
     
+    
+    // MARK: UIPickerView
+    
+    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+        return 2
+    }
+    
+    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return component == 0 ? AnimationType.allValues.count : AnimationEasingCurve.allValues.count
+    }
+    
+    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return component == 0 ? String(AnimationType.allValues[row]) : String(AnimationEasingCurve.allValues[row])
+    }
+    
+    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        switch component {
+        case 0:
+            selectedAnimation = row
+            animateView(nil)
+        default:
+            selectedEasing = row
+            animateView()
+        }
+    }
+    
+
+    // MARK: Actions
+    
+     @IBAction func resetValues(sender: AnyObject? = nil) {
+        forceSlider.setValue(1, animated: true)
+        durationSlider.setValue(0.5, animated: true)
+        delaySlider.setValue(0, animated: true)
+        scaleSlider.setValue(1, animated: true)
+        rotateSlider.setValue(0, animated: true)
+        dampingSlider.setValue(0.7, animated: true)
+        velocitySlider.setValue(0.7, animated: true)
+        xSlider.setValue(0, animated: true)
+        ySlider.setValue(0, animated: true)
+    }
+    
+    @IBAction func animateView(sender: AnyObject? = nil) {
+        bigCircle.animate(AnimationType.allValues[selectedAnimation], curve: AnimationEasingCurve.allValues[selectedEasing], duration: CGFloat(durationSlider.value), delay: CGFloat(delaySlider.value), force: CGFloat(forceSlider.value), damping: CGFloat(dampingSlider.value),velocity: CGFloat(velocitySlider.value), fromRotation: CGFloat(rotateSlider.value), fromScale: CGFloat(scaleSlider.value), fromX: CGFloat(xSlider.value), fromY: CGFloat(ySlider.value))
+    }
+    
+    @IBAction func forceSliderChanged(sender: AnyObject) {
+        animateView()
+        forceLabel.text = String(format: "Force: %.1f", forceSlider.value)
+    }
+    @IBAction func durationSliderChanged(sender: AnyObject) {
+        animateView()
+        durationLabel.text = String(format: "Duration: %.1f", durationSlider.value)
+    }
+    @IBAction func delaySliderChanged(sender: AnyObject) {
+        animateView()
+        delayLabel.text = String(format: "Delay: %.1f", delaySlider.value)
+    }
+    
+    @IBAction func scaleSliderChanged(sender: AnyObject) {
+        animateView()
+        scaleLabel.text = String(format: "Scale: %.1f", scaleSlider.value)
+    }
+    @IBAction func rotateSliderChanged(sender: AnyObject) {
+        animateView()
+        rotateLabel.text =  String(format: "Rotate: %.1f", rotateSlider.value)
+    }
+    @IBAction func dampingSliderChanged(sender: AnyObject) {
+        animateView()
+        dampingLabel.text = String(format: "Damping: %.1f", dampingSlider.value)
+    }
+    
+    @IBAction func velocitySliderChanged(sender: AnyObject) {
+        animateView()
+        velocityLabel.text = String(format: "Velocity: %.1f", velocitySlider.value)
+    }
+    @IBAction func xSliderChanged(sender: AnyObject) {
+        animateView()
+        xLabel.text =  String(format: "x: %.1f", xSlider.value)
+    }
+    @IBAction func ySliderChanged(sender: AnyObject) {
+        animateView()
+        yLabel.text = String(format: "y: %.1f", ySlider.value)
+    }
 
 
 }

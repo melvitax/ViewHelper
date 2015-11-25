@@ -7,20 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		650129AF19E4D2140046003B /* AFInspectableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650129AE19E4D2140046003B /* AFInspectableView.swift */; };
 		6535A0471BEBBB2400ECDA9D /* AFViewAutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6535A0461BEBBB2400ECDA9D /* AFViewAutoLayout.swift */; };
 		6535A0491BEBBE4400ECDA9D /* AFViewControllerAutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6535A0481BEBBE4400ECDA9D /* AFViewControllerAutoLayout.swift */; };
 		65889B711965051C0049740E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65889B701965051C0049740E /* AppDelegate.swift */; };
 		65889B731965051C0049740E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65889B721965051C0049740E /* ViewController.swift */; };
 		65889B781965051C0049740E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65889B771965051C0049740E /* Images.xcassets */; };
-		65B75F2D19744D6D000AEFD4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65B75F2C19744D6D000AEFD4 /* Main.storyboard */; };
 		65D0169E19771DE2005220FB /* AFViewEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D0169D19771DE2005220FB /* AFViewEffects.swift */; };
 		65D4382B1BB336CF005D1845 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65D4382A1BB336CF005D1845 /* Launch Screen.storyboard */; };
+		B023F5541C050EAC0066C617 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B023F5531C050EAC0066C617 /* Main.storyboard */; };
+		B0C7D3E01C04C79D00732E7E /* AFInspectableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C7D3DF1C04C79D00732E7E /* AFInspectableView.swift */; };
+		B0F1859B1C0382CC008C4222 /* AFViewAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F1859A1C0382CC008C4222 /* AFViewAnimation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		650129AE19E4D2140046003B /* AFInspectableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AFInspectableView.swift; sourceTree = "<group>"; };
-		6535A0461BEBBB2400ECDA9D /* AFViewAutoLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AFViewAutoLayout.swift; sourceTree = "<group>"; };
+		6535A0461BEBBB2400ECDA9D /* AFViewAutoLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AFViewAutoLayout.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		6535A0481BEBBE4400ECDA9D /* AFViewControllerAutoLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AFViewControllerAutoLayout.swift; sourceTree = "<group>"; };
 		655AEB42192D42990053AD6C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		655AEB44192D42990053AD6C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -31,11 +31,13 @@
 		65889B701965051C0049740E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Demo/AppDelegate.swift; sourceTree = "<group>"; };
 		65889B721965051C0049740E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = Demo/ViewController.swift; sourceTree = "<group>"; };
 		65889B771965051C0049740E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Demo/Images.xcassets; sourceTree = "<group>"; };
-		65B75F2C19744D6D000AEFD4 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Demo/Main.storyboard; sourceTree = "<group>"; };
 		65B7EA75197082AA0097E598 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		65D0169D19771DE2005220FB /* AFViewEffects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AFViewEffects.swift; sourceTree = "<group>"; };
 		65D016A319771FD1005220FB /* AFViewHelper.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = AFViewHelper.podspec; sourceTree = "<group>"; };
 		65D4382A1BB336CF005D1845 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = "Launch Screen.storyboard"; path = "Demo/Launch Screen.storyboard"; sourceTree = "<group>"; };
+		B023F5531C050EAC0066C617 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		B0C7D3DF1C04C79D00732E7E /* AFInspectableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AFInspectableView.swift; sourceTree = "<group>"; };
+		B0F1859A1C0382CC008C4222 /* AFViewAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AFViewAnimation.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,7 +58,7 @@
 				65889B701965051C0049740E /* AppDelegate.swift */,
 				65889B721965051C0049740E /* ViewController.swift */,
 				65889B771965051C0049740E /* Images.xcassets */,
-				65B75F2C19744D6D000AEFD4 /* Main.storyboard */,
+				B023F5531C050EAC0066C617 /* Main.storyboard */,
 				65889B6E1965051C0049740E /* Supporting Files */,
 				65B7EA75197082AA0097E598 /* README.md */,
 				65D016A319771FD1005220FB /* AFViewHelper.podspec */,
@@ -100,7 +102,8 @@
 				6535A0481BEBBE4400ECDA9D /* AFViewControllerAutoLayout.swift */,
 				6535A0461BEBBB2400ECDA9D /* AFViewAutoLayout.swift */,
 				65D0169D19771DE2005220FB /* AFViewEffects.swift */,
-				650129AE19E4D2140046003B /* AFInspectableView.swift */,
+				B0F1859A1C0382CC008C4222 /* AFViewAnimation.swift */,
+				B0C7D3DF1C04C79D00732E7E /* AFInspectableView.swift */,
 			);
 			path = AFViewHelper;
 			sourceTree = "<group>";
@@ -142,7 +145,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 655AEB3A192D42990053AD6C /* Build configuration list for PBXProject "AFViewHelper" */;
+			buildConfigurationList = 655AEB3A192D42990053AD6C /* Build configuration list for PBXProject "UIiewHelper" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -165,9 +168,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B023F5541C050EAC0066C617 /* Main.storyboard in Resources */,
 				65D4382B1BB336CF005D1845 /* Launch Screen.storyboard in Resources */,
 				65889B781965051C0049740E /* Images.xcassets in Resources */,
-				65B75F2D19744D6D000AEFD4 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -181,8 +184,9 @@
 				6535A0471BEBBB2400ECDA9D /* AFViewAutoLayout.swift in Sources */,
 				65889B731965051C0049740E /* ViewController.swift in Sources */,
 				65889B711965051C0049740E /* AppDelegate.swift in Sources */,
-				650129AF19E4D2140046003B /* AFInspectableView.swift in Sources */,
 				6535A0491BEBBE4400ECDA9D /* AFViewControllerAutoLayout.swift in Sources */,
+				B0F1859B1C0382CC008C4222 /* AFViewAnimation.swift in Sources */,
+				B0C7D3E01C04C79D00732E7E /* AFInspectableView.swift in Sources */,
 				65D0169E19771DE2005220FB /* AFViewEffects.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -276,7 +280,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Demo/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				METAL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.allforces.AFViewHelper;
@@ -295,7 +299,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/Demo/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				METAL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.allforces.AFViewHelper;
@@ -307,7 +311,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		655AEB3A192D42990053AD6C /* Build configuration list for PBXProject "AFViewHelper" */ = {
+		655AEB3A192D42990053AD6C /* Build configuration list for PBXProject "UIiewHelper" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				655AEB72192D429A0053AD6C /* Debug */,

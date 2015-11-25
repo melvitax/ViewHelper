@@ -1,6 +1,6 @@
 //
 //  AFViewControllerAutoLayout.swift
-//  AFViewExtension: Version 3.0.0
+//  AFViewExtension: Version 4.0.0
 //
 //  Created by Melvin Rivera on 11/5/15.
 //  Copyright © 2015 All Forces. All rights reserved.
@@ -13,8 +13,6 @@ extension UIViewController {
     
     /**
      Returns true if layout direction is left to right
-     
-     :returns: Bool
      */
     func layoutDirectionIsLeftToRight() -> Bool {
         return (UIApplication.sharedApplication().userInterfaceLayoutDirection == .LeftToRight)
@@ -22,8 +20,6 @@ extension UIViewController {
     
     /**
      Returns true if horizontal size class is compact
-     
-     :returns: Bool
      */
     func horizontalSizeClassIsCompact() -> Bool
     {
@@ -32,8 +28,6 @@ extension UIViewController {
     
     /**
      Returns true if vertical size class is compact
-     
-     :returns: Bool
      */
     func verticalSizeClassIsCompact() -> Bool
     {

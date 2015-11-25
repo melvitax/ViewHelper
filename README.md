@@ -5,14 +5,25 @@
 [![Platform](https://img.shields.io/cocoapods/p/AFViewHelper.svg?style=flat)](http://cocoapods.org/pods/AFViewHelper)
 
 
-Convenience UIVIew Extension for Swift 2.0
+Autolayout and Animation UIVIew Extension for Swift 2.0
 
 
 ![Sample Project Screenshot](https://raw.githubusercontent.com/melvitax/AFViewHelper/master/Screenshot.png?raw=true "Sample Project Screenshot")
 
-## AFViewHelper at a Glance
+![Sample Project Screencast](https://raw.githubusercontent.com/melvitax/AFViewHelper/master/Screencast.mov?raw=true "Sample Project Screencast")
 
-### Auto Layout 
+
+
+## Animations
+
+```swift
+// Required
+view.animate(.Shake, curve: .EaseInOutBack)
+// With optionals
+view.animate(.Shake, curve: .EaseInOutBack, duration: 0.8, delay: 0, force: 1, damping: 0.7,velocity: 1, fromRotation: 0, fromScale: 1.5, fromX: 0, fromY: 0)
+```
+
+## Auto Layout 
 
 ```swift
 let box = UIView(autoLayout:true)
@@ -575,28 +586,16 @@ layoutDirectionIsLeftToRight() -> Bool
 
 ### Border
 
-Returns layer border color
+The layer border color
 
 ```swift
-borderColor() -> UIColor
+var borderColor: UIColor 
 ```
 
-Sets layer border color
+The layer border width
 
 ```swift
-borderColor(borderColor: UIColor) -> UIView 
-```
-
-Returns layer border width
-
-```swift
-borderWidth() -> CGFloat 
-```
-
-Sets the layer border width
-
-```swift
-borderWidth(borderWidth: CGFloat) -> UIView 
+var borderWidth: CGFloat
 ```
 
 Sets layer border with a dash pattern
@@ -607,16 +606,10 @@ borderWithDashPattern(lineDashPattern: [Int], borderWidth: CGFloat, borderColor:
 
 ### Rounded Corners
 
-Returns layer corner radius
+The layer corner radius
 
 ```swift
-cornerRadius() -> CGFloat
-```
-
-Sets layer corner radius
-
-```swift
-cornerRadius(cornerRadius: CGFloat) -> UIView 
+var cornerRadius: CGFloat 
 ```
 
 Creates a circle by rounding the corners to half the size of the width, sets border color and width
@@ -636,25 +629,25 @@ roundCorners(cornerRadius: CGFloat, borderColor: UIColor?, borderWidth: CGFloat?
 The shadow color of the layer
 
 ```swift
-shadowColor:UIColor
+var shadowColor: UIColor 
 ```
 
 The shadow offset of the layer
 
 ```swift
-shadowOffset:CGSize
+var shadowOffset:CGSize
 ```
 
 The shadow opacity of the layer
 
 ```swift
-shadowOpacity:Float
+var shadowOpacity:Float
 ```
 
 The shadow radius of the layer
 
 ```swift
-shadowRadius:CGFloat 
+var shadowRadius:CGFloat
 ```
 
 Sets shadow of the layer including the color, offset, radius, opacity and mask.

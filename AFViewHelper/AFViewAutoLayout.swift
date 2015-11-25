@@ -1,6 +1,6 @@
 //
 //  AFViewAutoLayout.swift
-//  AFViewExtension: Version 3.0.0
+//  AFViewExtension: Version 4.0.0
 //
 //  Created by Melvin Rivera on 11/5/15.
 //  Copyright © 2015 All Forces. All rights reserved.
@@ -16,8 +16,8 @@ extension UIView {
     /**
     Instantiates a new UIView with Auto Layout
     
-    :param: autoLayout :Bool Enables Auto Layout.
-    :returns: self UIView
+    - Parameter autoLayout Enables Auto Layout.
+    - Returns: self
     */
     convenience init(autoLayout: Bool = true)
     {
@@ -29,8 +29,6 @@ extension UIView {
     
     /**
     Returns the frame's origin
-    
-    :returns: CGPoint
     */
     
     func origin() -> CGPoint { return frame.origin }
@@ -38,8 +36,8 @@ extension UIView {
     /**
      Sets the frame's top and left sides using Auto Layout or frames
      
-     :param: constant :CGPoint
-     :returns: self UIView
+     - Parameter constant: The CGPoint to ise as the origin
+     - Returns: self
      */
     func origin(constant: CGPoint) -> UIView {
         if translatesAutoresizingMaskIntoConstraints {
@@ -52,10 +50,10 @@ extension UIView {
     /**
      Pins left and top sides to another view using Auto Layout
      
-     :param: to:AnyObject The view to pin to
-     :param: constant:CGPoint Optional value
-     :param: multiplier:CGFloat Optional multiplier
-     :returns: self UIView
+     - Parameter to: The view to pin to
+     - Parameter constant: The offset to use after multiplication is done.
+     - Parameter multiplier: The multiplier to use, i.e. 0.5 is half.
+     - Returns: self UIView
      */
     func origin(to to:AnyObject, constant: CGPoint = CGPoint(x: 0, y: 0), multiplier:CGFloat = 1) -> UIView {
         var constraints = [NSLayoutConstraint]()
@@ -69,17 +67,15 @@ extension UIView {
     }
     
     /**
-     Returns the frame min x point
-     
-     :returns: CGFloat
+     Returns the frame minimum x point
      */
     func left() -> CGFloat { return frame.origin.x }
     
     /**
      Sets the frame left side using Auto Layout or frames
      
-     :param: constant:CGFloat
-     :returns: self UIView
+     - Parameter constant: The value to use.
+     - Returns: self
      */
     func left(constant: CGFloat) -> UIView {
         if translatesAutoresizingMaskIntoConstraints {
@@ -93,11 +89,11 @@ extension UIView {
     /**
      Pins left side to another view using Auto Layout
      
-     :param: to:AnyObject The view to pin to
-     :param: attribute: NSLayoutAttribute Optional attribute to pin to
-     :param: constant:CGFloat Optional value
-     :param: multiplier:CGFloat Optional multiplier
-     :returns: self UIView
+     - Parameter to: The view to pin to
+     - Parameter attribute: The attribute to pin to
+     - Parameter constant: The offset to use after multiplication is done.
+     - Parameter multiplier: The multiplier to use, i.e. 0.5 is half.
+     - Returns: self
      */
     func left(to to:AnyObject, attribute: NSLayoutAttribute = .Left, constant: CGFloat = 0, multiplier:CGFloat = 1) -> UIView {
         pin(.Left, to: to, attribute: attribute, constant: constant, multiplier: multiplier)
@@ -106,16 +102,14 @@ extension UIView {
     
     /**
      Returns the frame leading value
-     
-     :returns: CGFloat
      */
     func leading() -> CGFloat { return layoutDirectionIsLeftToRight() ? left() : right() }
     
     /**
      Sets the frame leading side using Auto Layout or frames
      
-     :param: constant:CGFloat
-     :returns: self UIView
+     - Parameter constant: The value to use.
+     - Returns: self
      */
     func leading(constant: CGFloat) -> UIView {
         if translatesAutoresizingMaskIntoConstraints {
@@ -128,11 +122,11 @@ extension UIView {
     /**
      Pins the frame leading side to another view using Auto Layout
      
-     :param: to:AnyObject The view to pin to
-     :param: attribute: NSLayoutAttribute Optional attribute to pin to
-     :param: constant:CGFloat Optional value
-     :param: multiplier:CGFloat Optional multiplier
-     :returns: self UIView
+     - Parameter to: The view to pin to
+     - Parameter attribute: The attribute to pin to
+     - Parameter constant: The offset to use after multiplication is done.
+     - Parameter multiplier: The multiplier to use, i.e. 0.5 is half.
+     - Returns: self
      */
     func leading(to to:AnyObject, attribute: NSLayoutAttribute = .Leading, constant: CGFloat = 0, multiplier:CGFloat = 1) -> UIView {
         pin(.Leading, to: to, attribute: attribute, constant: constant, multiplier: multiplier)
@@ -141,16 +135,14 @@ extension UIView {
     
     /**
      Returns the frame max x point
-     
-     :returns: CGFloat
      */
     func right() -> CGFloat { return frame.origin.x + frame.size.width }
     
     /**
      Sets the frame right side using Auto Layout or frames
      
-     :param: constant:CGFloat
-     :returns: self UIView
+     - Parameter constant: The value to use.
+     - Returns: self
      */
     func right(constant: CGFloat) -> UIView  {
         if translatesAutoresizingMaskIntoConstraints {
@@ -162,11 +154,11 @@ extension UIView {
     /**
      Pins the frame right side to another view using Auto Layout
      
-     :param: to:AnyObject The view to pin to
-     :param: attribute: NSLayoutAttribute Optional attribute to pin to
-     :param: constant:CGFloat Optional value
-     :param: multiplier:CGFloat Optional multiplier
-     :returns: self UIView
+     - Parameter to: The view to pin to
+     - Parameter attribute: The attribute to pin to
+     - Parameter constant: The offset to use after multiplication is done.
+     - Parameter multiplier: The multiplier to use, i.e. 0.5 is half.
+     - Returns: self
      */
     func right(to to:AnyObject, attribute: NSLayoutAttribute = .Right, constant: CGFloat = 0, multiplier:CGFloat = 1) -> UIView {
         pin(.Right, to: to, attribute: attribute, constant: constant, multiplier: multiplier)
@@ -175,16 +167,14 @@ extension UIView {
     
     /**
      Returns the frame trailing value
-     
-     :returns: CGFloat
      */
     func trailing() -> CGFloat { return layoutDirectionIsLeftToRight() ? right() : left() }
     
     /**
      Sets the frame trailing side using Auto Layout or frames
      
-     :param: constant:CGFloat
-     :returns: self UIView
+     - Parameter constant: The value to use
+     - Returns: self UIView
      */
     func trailing(constant: CGFloat) -> UIView {
         if translatesAutoresizingMaskIntoConstraints {
@@ -197,11 +187,11 @@ extension UIView {
     /**
      Pins the frame trailing side to another view using Auto Layout
      
-     :param: to:AnyObject The view to pin to
-     :param: attribute: NSLayoutAttribute Optional attribute to pin to
-     :param: constant:CGFloat Optional value
-     :param: multiplier:CGFloat Optional multiplier
-     :returns: self UIView
+     - Parameter to: The view to pin to
+     - Parameter attribute: The attribute to pin to
+     - Parameter constant: The offset to use after multiplication is done.
+     - Parameter multiplier: The multiplier to use, i.e. 0.5 is half.
+     - Returns: self
      */
     func trailing(to to:AnyObject, attribute: NSLayoutAttribute = .Trailing, constant: CGFloat = 0, multiplier:CGFloat = 1) -> UIView {
         pin(.Trailing, to: to, attribute: attribute, constant: constant, multiplier: multiplier)
@@ -210,16 +200,14 @@ extension UIView {
     
     /**
      Returns the frame top value
-     
-     :returns: CGFloat
      */
     func top() -> CGFloat { return frame.origin.y }
     
     /**
      Sets the frame top side using Auto Layout or frames
      
-     :param: constant:CGFloat
-     :returns: self UIView
+     - Parameter constant: The value to use.
+     - Returns: self
      */
     func top(constant: CGFloat) -> UIView {
         if translatesAutoresizingMaskIntoConstraints {
@@ -233,11 +221,11 @@ extension UIView {
     /**
      Pins the frame trailing side to another view using Auto Layout
      
-     :param: to:AnyObject The view to pin to
-     :param: attribute: NSLayoutAttribute Optional attribute to pin to
-     :param: constant:CGFloat Optional value
-     :param: multiplier:CGFloat Optional multiplier
-     :returns: self UIView
+     - Parameter to: The view to pin to
+     - Parameter attribute: The attribute to pin to
+     - Parameter constant: The offset to use after multiplication is done.
+     - Parameter multiplier: The multiplier to use, i.e. 0.5 is half.
+     - Returns: self
      */
     func top(to to:AnyObject, attribute: NSLayoutAttribute = .Top, constant: CGFloat = 0, multiplier:CGFloat = 1) -> UIView {
         pin(.Top, to: to, attribute: attribute, constant: constant, multiplier: multiplier)
@@ -246,16 +234,14 @@ extension UIView {
     
     /**
      Returns the frame bottom value
-     
-     :returns: CGFloat
      */
     func bottom() -> CGFloat { return top() + height() }
     
     /**
      Sets the frame bottom side using Auto Layout or frames
      
-     :param: constant:CGFloat
-     :returns: self UIView
+     - Parameter constant: The value to use.
+     - Returns: self
      */
     func bottom(constant: CGFloat) -> UIView {
         if translatesAutoresizingMaskIntoConstraints {
@@ -267,11 +253,11 @@ extension UIView {
     /**
      Pins the frame bottom side to another view using Auto Layout
      
-     :param: to:AnyObject The view to pin to
-     :param: attribute: NSLayoutAttribute Optional attribute to pin to
-     :param: constant:CGFloat Optional value
-     :param: multiplier:CGFloat Optional multiplier
-     :returns: self UIView
+     - Parameter to: The view to pin to
+     - Parameter attribute: The attribute to pin to
+     - Parameter constant: The offset to use after multiplication is done.
+     - Parameter multiplier: The multiplier to use, i.e. 0.5 is half.
+     - Returns: self
      */
     func bottom(to to:AnyObject, attribute: NSLayoutAttribute = .Bottom, constant: CGFloat = 0, multiplier:CGFloat = 1) -> UIView {
         pin(.Bottom, to: to, attribute: attribute, constant: constant, multiplier: multiplier)
@@ -281,8 +267,8 @@ extension UIView {
     /**
      Sets the center to it's superview using Auto Layout or frames
      
-     :param: constant:CGPoint Optional value
-     :returns: self UIView
+     - Parameter constant: The value to use.
+     - Returns: self
      */
     func center(constant: CGPoint = CGPoint(x: 0, y: 0)) -> UIView {
         if translatesAutoresizingMaskIntoConstraints {
@@ -297,10 +283,10 @@ extension UIView {
     /**
      Pins the center point to another view using Auto Layout
      
-     :param: to:AnyObject The view to pin to
-     :param: constant:CGSize Optional value
-     :param: multiplier:CGFloat Optional multiplier
-     :returns: self UIView
+     - Parameter to: The view to pin to
+     - Parameter constant: The offset to use after multiplication is done.
+     - Parameter multiplier: The multiplier to use, i.e. 0.5 is half.
+     - Returns: self
      */
     func center(to to:AnyObject, constant:CGSize = CGSize(width: 0, height: 0), multiplier:CGFloat = 1) -> UIView  {
         var constraints = [NSLayoutConstraint]()
@@ -315,16 +301,14 @@ extension UIView {
     
     /**
      Returns the center X
-     
-     :returns: CGFloat
      */
     func centerX() -> CGFloat { return center.x }
     
     /**
      Sets the center X using Auto Layout or frames
      
-     :param: constant:CGFloat
-     :returns: self UIView
+     - Parameter constant: The value to use.
+     - Returns: self
      */
     func centerX(constant: CGFloat = 0) -> UIView {
         if translatesAutoresizingMaskIntoConstraints {
@@ -338,11 +322,11 @@ extension UIView {
     /**
      Pins the center X to another view using Auto Layout
      
-     :param: to:AnyObject The view to pin to
-     :param: attribute: NSLayoutAttribute Optional attribute to pin to
-     :param: constant:CGFloat Optional value
-     :param: multiplier:CGFloat Optional multiplier
-     :returns: self UIView
+     - Parameter to: The view to pin to
+     - Parameter attribute: The attribute to pin to
+     - Parameter constant: The offset to use after multiplication is done.
+     - Parameter multiplier: The multiplier to use, i.e. 0.5 is half.
+     - Returns: self
      */
     func centerX(to to:AnyObject, attribute: NSLayoutAttribute = .CenterX, constant: CGFloat = 0, multiplier:CGFloat = 1) -> UIView {
         pin(.CenterX, to: to, attribute: attribute, constant: constant, multiplier: multiplier)
@@ -351,16 +335,14 @@ extension UIView {
     
     /**
      Returns the center Y
-     
-     :returns: CGFloat
      */
     func centerY() -> CGFloat { return center.y }
     
     /**
      Sets the center Y using Auto Layout or frames
      
-     :param: constant:CGFloat
-     :returns: self UIView
+     - Parameter constant: The value to use.
+     - Returns: self
      */
     func centerY(constant: CGFloat = 0) -> UIView {
         if translatesAutoresizingMaskIntoConstraints {
@@ -374,11 +356,11 @@ extension UIView {
     /**
      Pins the center Y to another view using Auto Layout
      
-     :param: to:AnyObject The view to pin to
-     :param: attribute: NSLayoutAttribute Optional attribute to pin to
-     :param: constant:CGFloat Optional value
-     :param: multiplier:CGFloat Optional multiplier
-     :returns: self UIView
+     - Parameter to: The view to pin to
+     - Parameter attribute: The attribute to pin to
+     - Parameter constant: The offset to use after multiplication is done.
+     - Parameter multiplier: The multiplier to use, i.e. 0.5 is half.
+     - Returns: self
      */
     func centerY(to to:AnyObject, attribute: NSLayoutAttribute = .CenterY, constant: CGFloat = 0, multiplier:CGFloat = 1) -> UIView {
         pin(.CenterY, to: superview!, attribute: attribute, constant: constant)
@@ -389,15 +371,13 @@ extension UIView {
     
     /**
     Returns the Compression Resistance Priority for Horizontal Axis using Auto Layout
-    
-    :returns: UILayoutPriority
     */
     func horizontalCompressionPriority() -> UILayoutPriority { return contentCompressionResistancePriorityForAxis(.Horizontal) }
     
     /**
      Sets the Compression Resistance Priority for Horizontal Axis using Auto Layout
      
-     :returns: self UIView
+     - Returns: self
      */
     func horizontalCompressionPriority(priority: UILayoutPriority) -> UIView {
         if !translatesAutoresizingMaskIntoConstraints {
@@ -408,15 +388,13 @@ extension UIView {
     
     /**
      Returns the Compression Resistance Priority for Vertical Axis using Auto Layout
-     
-     :returns: UILayoutPriority
      */
     func verticalCompressionPriority() -> UILayoutPriority { return contentCompressionResistancePriorityForAxis(.Vertical) }
     
     /**
      Sets the Compression Resistance Priority for Vertical Axis using Auto Layout
      
-     :returns: self UIView
+     - Returns: self
      */
     func verticalCompressionPriority(priority: UILayoutPriority) -> UIView {
         if !translatesAutoresizingMaskIntoConstraints {
@@ -427,15 +405,13 @@ extension UIView {
     
     /**
      Returns the Content Hugging Priority for Horizontal Axis using Auto Layout
-     
-     :returns: UILayoutPriority
      */
     func horizontalHuggingPriority() -> UILayoutPriority { return contentHuggingPriorityForAxis(.Horizontal) }
     
     /**
      Sets the Content Hugging Priority for Horizontal Axis using Auto Layout
      
-     :returns: self UIView
+     - Returns: self
      */
     func horizontalHuggingPriority(priority: UILayoutPriority) -> UIView {
         if !translatesAutoresizingMaskIntoConstraints {
@@ -446,15 +422,13 @@ extension UIView {
     
     /**
      Returns the Content Hugging Priority for Vertical Axis using Auto Layout
-     
-     :returns: UILayoutPriority
      */
     func verticalHuggingPriority() -> UILayoutPriority { return contentHuggingPriorityForAxis(.Vertical) }
     
     /**
      Sets the Content Hugging Priority for Vertical Axis using Auto Layout
      
-     :returns: self UIView
+     - Returns: self
      */
     func verticalHuggingPriority(priority: UILayoutPriority) -> UIView {
         if !translatesAutoresizingMaskIntoConstraints {
@@ -468,16 +442,14 @@ extension UIView {
     
     /**
     Returns the frame size
-    
-    :returns: CGSize
     */
     func size() -> CGSize { return frame.size }
     
     /**
      Sets the frame size using Auto Layout or frames
      
-     :param: constant:CGSize
-     :returns: self UIView
+     - Parameter constant: The value to use.
+     - Returns: self UIView
      */
     func size(constant: CGSize) -> UIView {
         if translatesAutoresizingMaskIntoConstraints {
@@ -492,10 +464,10 @@ extension UIView {
     /**
      Pins the size to another view using Auto Layout
      
-     :param: to:AnyObject The view to pin to
-     :param: constant:CGSize Optional value
-     :param: multiplier:CGFloat Optional multiplier
-     :returns: self UIView
+     - Parameter to: The view to pin to
+     - Parameter constant: The offset to use after multiplication is done.
+     - Parameter multiplier: The multiplier to use, i.e. 0.5 is half.
+     - Returns: self
      */
     func size(to to:AnyObject, constant: CGSize = CGSize(width: 0, height: 0), multiplier:CGFloat = 1) -> UIView {
         if !translatesAutoresizingMaskIntoConstraints {
@@ -512,16 +484,14 @@ extension UIView {
     
     /**
      Returns the frame width
-     
-     :returns: CGFloat
      */
     func width() -> CGFloat { return frame.size.width }
     
     /**
      Sets the frame width using Auto Layout or frames
      
-     :param: constant:CGFloat
-     :returns: self UIView
+     - Parameter constant: The value to use.
+     - Returns: self
      */
     func width(constant: CGFloat) -> UIView {
         if translatesAutoresizingMaskIntoConstraints {
@@ -535,11 +505,11 @@ extension UIView {
     /**
      Pins the width to another view using Auto Layout
      
-     :param: to:AnyObject The view to pin to
-     :param: attribute: NSLayoutAttribute Optional attribute to pin to
-     :param: constant:CGFloat Optional value
-     :param: multiplier:CGFloat Optional multiplier
-     :returns: self UIView
+     - Parameter to: The view to pin to
+     - Parameter attribute: The attribute to pin to
+     - Parameter constant: The offset to use after multiplication is done.
+     - Parameter multiplier: The multiplier to use, i.e. 0.5 is half.
+     - Returns: self
      */
     func width(to to:AnyObject, attribute: NSLayoutAttribute = .Width, constant: CGFloat = 0, multiplier:CGFloat = 1) -> UIView {
         if !translatesAutoresizingMaskIntoConstraints {
@@ -550,16 +520,14 @@ extension UIView {
     
     /**
      Returns the frame height
-     
-     :returns: CGFloat
      */
     func height() -> CGFloat { return frame.size.height }
     
     /**
      Sets the frame height using Auto Layout or frames
      
-     :param: constant:CGFloat
-     :returns: self UIView
+     - Parameter constant: The value to use.
+     - Returns: self UIView
      */
     func height(constant: CGFloat) -> UIView {
         if translatesAutoresizingMaskIntoConstraints {
@@ -573,11 +541,11 @@ extension UIView {
     /**
      Pins the height to another view using Auto Layout
      
-     :param: to:AnyObject The view to pin to
-     :param: attribute: NSLayoutAttribute Optional attribute to pin to
-     :param: constant:CGFloat Optional value
-     :param: multiplier:CGFloat Optional multiplier
-     :returns: self UIView
+     - Parameter to: The view to pin to
+     - Parameter attribute: The attribute to pin to
+     - Parameter constant: The offset to use after multiplication is done.
+     - Parameter multiplier: The multiplier to use, i.e. 0.5 is half.
+     - Returns: self
      */
     func height(to to:AnyObject, attribute: NSLayoutAttribute = .Height, constant: CGFloat = 0, multiplier:CGFloat = 1) -> UIView {
         if !translatesAutoresizingMaskIntoConstraints {
@@ -588,8 +556,6 @@ extension UIView {
     
     /**
      Returns the minimum size using Auto Layout
-     
-     :returns: CGSize
      */
     func minSize() -> CGSize? {
         if !translatesAutoresizingMaskIntoConstraints {
@@ -605,8 +571,8 @@ extension UIView {
     /**
      Sets the minimum size using Auto Layout
      
-     :param: constant:CGSize Optional value
-     :returns: self UIView
+     - Parameter constant: The value to use.
+     - Returns: self
      */
     func minSize(constant:CGSize) -> UIView {
         if !translatesAutoresizingMaskIntoConstraints {
@@ -619,10 +585,10 @@ extension UIView {
     /**
      Pins the minimum size to another view using Auto Layout
      
-     :param: to:AnyObject The view to pin to
-     :param: constant:CGSize Optional value
-     :param: multiplier:CGFloat Optional multiplier
-     :returns: self UIView
+     - Parameter to: The view to pin to
+     - Parameter constant: The offset to use after multiplication is done.
+     - Parameter multiplier: The multiplier to use, i.e. 0.5 is half.
+     - Returns: self
      */
     func minSize(to to:AnyObject, constant:CGSize = CGSize(width: 0, height: 0), multiplier:CGFloat = 1) -> UIView {
         if !translatesAutoresizingMaskIntoConstraints {
@@ -639,8 +605,6 @@ extension UIView {
     
     /**
      Returns the minimum width using Auto Layout
-     
-     :returns: CGFloat
      */
     func minWidth() -> CGFloat? {
         if !translatesAutoresizingMaskIntoConstraints {
@@ -656,8 +620,8 @@ extension UIView {
     /**
      Sets the minimum width using Auto Layout
      
-     :param: constant:CGFloat Optional value
-     :returns: self UIView
+     - Parameter constant: The value to use.
+     - Returns: self
      */
     func minWidth(constant:CGFloat) -> UIView {
         if !translatesAutoresizingMaskIntoConstraints {
@@ -669,11 +633,11 @@ extension UIView {
     /**
      Pins the minimum width to another view using Auto Layout
      
-     :param: to:AnyObject The view to pin to
-     :param: attribute: NSLayoutAttribute Optional attribute to pin to
-     :param: constant:CGFloat Optional value
-     :param: multiplier:CGFloat Optional multiplier
-     :returns: self UIView
+     - Parameter to: The view to pin to
+     - Parameter attribute: The attribute to pin to
+     - Parameter constant: The offset to use after multiplication is done.
+     - Parameter multiplier: The multiplier to use, i.e. 0.5 is half.
+     - Returns: self
      */
     func minWidth(to to:AnyObject, attribute: NSLayoutAttribute = .Width, constant:CGFloat = 0, multiplier:CGFloat = 1) -> UIView {
         if !translatesAutoresizingMaskIntoConstraints {
@@ -684,8 +648,6 @@ extension UIView {
     
     /**
      Returns the minimum height using Auto Layout
-     
-     :returns: CGFloat
      */
     func minHeight() -> CGFloat? {
         if !translatesAutoresizingMaskIntoConstraints {
@@ -701,8 +663,8 @@ extension UIView {
     /**
      Sets the minimum height using Auto Layout
      
-     :param: constant:CGFloat Optional value
-     :returns: self UIView
+     - Parameter constant: The value to use.
+     - Returns: self
      */
     func minHeight(constant:CGFloat) -> UIView {
         if !translatesAutoresizingMaskIntoConstraints {
@@ -714,11 +676,11 @@ extension UIView {
     /**
      Pins the minimum height to another view using Auto Layout
      
-     :param: to:AnyObject The view to pin to
-     :param: attribute: NSLayoutAttribute Optional attribute to pin to
-     :param: constant:CGFloat Optional value
-     :param: multiplier:CGFloat Optional multiplier
-     :returns: self UIView
+     - Parameter to: The view to pin to
+     - Parameter attribute: The attribute to pin to
+     - Parameter constant: The offset to use after multiplication is done.
+     - Parameter multiplier: The multiplier to use, i.e. 0.5 is half.
+     - Returns: self
      */
     func minHeight(to to:AnyObject, attribute: NSLayoutAttribute = .Height, constant:CGFloat = 0, multiplier:CGFloat = 1) -> UIView {
         if !translatesAutoresizingMaskIntoConstraints {
@@ -729,8 +691,6 @@ extension UIView {
     
     /**
      Returns the maximun size using Auto Layout
-     
-     :returns: CGSize
      */
     func maxSize() -> CGSize? {
         if !translatesAutoresizingMaskIntoConstraints {
@@ -746,8 +706,8 @@ extension UIView {
     /**
      Sets the maximun size using Auto Layout
      
-     :param: constant:CGSize Optional value
-     :returns: self UIView
+     - Parameter constant: The value to use.
+     - Returns: self
      */
     func maxSize(constant:CGSize) -> UIView {
         if !translatesAutoresizingMaskIntoConstraints {
@@ -760,10 +720,10 @@ extension UIView {
     /**
      Pins the maximun size to another view using Auto Layout
      
-     :param: to:AnyObject The view to pin to
-     :param: constant:CGSize Optional value
-     :param: multiplier:CGFloat Optional multiplier
-     :returns: self UIView
+     - Parameter to: The view to pin to
+     - Parameter constant: The offset to use after multiplication is done.
+     - Parameter multiplier: The multiplier to use, i.e. 0.5 is half.
+     - Returns: self
      */
     func maxSize(to to:AnyObject, constant:CGSize = CGSize(width: 0, height: 0), multiplier:CGFloat = 1) -> UIView {
         if !translatesAutoresizingMaskIntoConstraints {
@@ -780,8 +740,6 @@ extension UIView {
     
     /**
      Returns the maximun width using Auto Layout
-     
-     :returns: CGFloat
      */
     func maxWidth() -> CGFloat? {
         if !translatesAutoresizingMaskIntoConstraints {
@@ -797,8 +755,8 @@ extension UIView {
     /**
      Sets the maximun width using Auto Layout
      
-     :param: constant:CGFloat Optional value
-     :returns: self UIView
+     - Parameter constant: The value to use.
+     - Returns: self
      */
     func maxWidth(constant:CGFloat) -> UIView {
         if !translatesAutoresizingMaskIntoConstraints {
@@ -810,11 +768,11 @@ extension UIView {
     /**
      Pins the maximun width to another view using Auto Layout
      
-     :param: to:AnyObject The view to pin to
-     :param: attribute: NSLayoutAttribute Optional attribute to pin to
-     :param: constant:CGFloat Optional value
-     :param: multiplier:CGFloat Optional multiplier
-     :returns: self UIView
+     - Parameter to: The view to pin to
+     - Parameter attribute: The attribute to pin to
+     - Parameter constant: The offset to use after multiplication is done.
+     - Parameter multiplier: The multiplier to use, i.e. 0.5 is half.
+     - Returns: self
      */
     func maxWidth(to to:AnyObject, attribute: NSLayoutAttribute = .Width, constant:CGFloat = 0, multiplier:CGFloat = 1) -> UIView {
         if !translatesAutoresizingMaskIntoConstraints {
@@ -825,8 +783,6 @@ extension UIView {
     
     /**
      Returns the maximun height using Auto Layout
-     
-     :returns: CGFloat
      */
     func maxHeight() -> CGFloat? {
         if !translatesAutoresizingMaskIntoConstraints {
@@ -842,8 +798,8 @@ extension UIView {
     /**
      Sets the maximun height using Auto Layout
      
-     :param: constant:CGFloat Optional value
-     :returns: self UIView
+     - Parameter constant: The value to use.
+     - Returns: self
      */
     func maxHeight(constant:CGFloat) -> UIView {
         if !translatesAutoresizingMaskIntoConstraints {
@@ -855,11 +811,11 @@ extension UIView {
     /**
      Pins the maximun height to another view using Auto Layout
      
-     :param: to:AnyObject The view to pin to
-     :param: attribute: NSLayoutAttribute Optional attribute to pin to
-     :param: constant:CGFloat Optional value
-     :param: multiplier:CGFloat Optional multiplier
-     :returns: self UIView
+     - Parameter to: The view to pin to
+     - Parameter attribute: The attribute to pin to
+     - Parameter constant: The offset to use after multiplication is done.
+     - Parameter multiplier: The multiplier to use, i.e. 0.5 is half.
+     - Returns: self
      */
     func maxHeight(to to:AnyObject, attribute: NSLayoutAttribute = .Height, constant:CGFloat = 0, multiplier:CGFloat = 1) -> UIView {
         if !translatesAutoresizingMaskIntoConstraints {
@@ -870,8 +826,6 @@ extension UIView {
     
     /**
      Returns the length of the smallest side
-     
-     :returns: CGFloat
      */
     func smallestSideLength() -> CGFloat
     {
@@ -880,8 +834,6 @@ extension UIView {
     
     /**
      Returns the length of the largest side
-     
-     :returns: CGFloat
      */
     func largestSideLength() -> CGFloat
     {
@@ -923,13 +875,13 @@ extension UIView {
     /**
     Pins an attribute to another view
     
-    :param: pinAttribute: NSLayoutAttribute View's attribut to pin
-    :param: to:AnyObject The view to pin to
-    :param: attribute: NSLayoutAttribute  Attribute to pin to
-    :param: constant:CGFloat Optional value
-    :param: multiplier:CGFloat Optional multiplier
-    :param: relation:NSLayoutRelation Optional relation
-    :returns: NSLayoutConstraint
+    - Parameter pinAttribute: The View's attribut to pin
+    - Parameter to: The view to pin to
+    - Parameter attribute: The Attribute to pin to
+    - Parameter constant: The offset to use after multiplication is done.
+    - Parameter multiplier: The multiplier to use, i.e. 0.5 is half.
+    - Parameter relation: The Relation to use
+    - Returns: NSLayoutConstraint
     */
     func pin(pinAttribute:NSLayoutAttribute, to:AnyObject? = nil, attribute:NSLayoutAttribute, constant:CGFloat = 0, multiplier:CGFloat = 1, relation:NSLayoutRelation = .Equal) -> NSLayoutConstraint? {
             if !translatesAutoresizingMaskIntoConstraints {
@@ -953,11 +905,11 @@ extension UIView {
     /**
      Applies an attribute to the view
      
-     :param: attribute: NSLayoutAttribute  Attribute to apply
-     :param: constant:CGFloat Optional value
-     :param: multiplier:CGFloat Optional multiplier
-     :param: relation:NSLayoutRelation Optional relation
-     :returns: NSLayoutConstraint
+     - Parameter attribute:  Attribute to apply
+     - Parameter constant: The offset to use after multiplication is done.
+     - Parameter multiplier: The multiplier to use, i.e. 0.5 is half.
+     - Parameter relation: The Relation to use
+     - Returns: NSLayoutConstraint
      */
     func applyAttribute(attribute:NSLayoutAttribute, constant:CGFloat = 0, multiplier: CGFloat = 1, relation:NSLayoutRelation = .Equal) -> NSLayoutConstraint  {
         let constraint = NSLayoutConstraint(item: self, attribute: attribute, relatedBy: relation, toItem: nil, attribute: .NotAnAttribute, multiplier: multiplier, constant: constant)
@@ -970,7 +922,7 @@ extension UIView {
     /**
     Removes all attached constraints recursevely
     
-    :returns: self UIVIew
+    - Returns: self
     */
     func removeAttachedConstraintsRecursevely() -> UIView
     {
@@ -992,7 +944,7 @@ extension UIView {
     /**
      Removes a constraint recursevely
      
-     :returns: self UIVIew
+     - Returns: self
      */
     func removeConstraintRecursevely(constraint:NSLayoutConstraint) -> UIView
     {
@@ -1021,8 +973,6 @@ extension UIView {
     
     /**
     Returns true if layout direction is left to right
-    
-    :returns: Bool
     */
     func layoutDirectionIsLeftToRight() -> Bool {
         return (UIApplication.sharedApplication().userInterfaceLayoutDirection == .LeftToRight)
@@ -1035,7 +985,7 @@ extension UIView {
     /**
     Finds the nearest common superview
     
-    :returns: UIVIew?
+    - Returns: UIVIew?
     */
     private func commonSuperviewWithView(view:UIView) -> UIView?
     {
