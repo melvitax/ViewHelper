@@ -12,6 +12,7 @@
 		65889B711965051C0049740E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65889B701965051C0049740E /* AppDelegate.swift */; };
 		65889B731965051C0049740E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65889B721965051C0049740E /* ViewController.swift */; };
 		65889B781965051C0049740E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65889B771965051C0049740E /* Images.xcassets */; };
+		658A3B161D42BF210029B4E4 /* AFInspectableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658A3B151D42BF210029B4E4 /* AFInspectableButton.swift */; };
 		65D0169E19771DE2005220FB /* AFViewEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D0169D19771DE2005220FB /* AFViewEffects.swift */; };
 		65D4382B1BB336CF005D1845 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65D4382A1BB336CF005D1845 /* Launch Screen.storyboard */; };
 		B023F5541C050EAC0066C617 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B023F5531C050EAC0066C617 /* Main.storyboard */; };
@@ -31,6 +32,7 @@
 		65889B701965051C0049740E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Demo/AppDelegate.swift; sourceTree = "<group>"; };
 		65889B721965051C0049740E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = Demo/ViewController.swift; sourceTree = "<group>"; };
 		65889B771965051C0049740E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Demo/Images.xcassets; sourceTree = "<group>"; };
+		658A3B151D42BF210029B4E4 /* AFInspectableButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AFInspectableButton.swift; sourceTree = "<group>"; };
 		65B7EA75197082AA0097E598 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		65D0169D19771DE2005220FB /* AFViewEffects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AFViewEffects.swift; sourceTree = "<group>"; };
 		65D016A319771FD1005220FB /* AFViewHelper.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = AFViewHelper.podspec; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 		65D0169C19771DE2005220FB /* AFViewHelper */ = {
 			isa = PBXGroup;
 			children = (
+				658A3B151D42BF210029B4E4 /* AFInspectableButton.swift */,
 				6535A0481BEBBE4400ECDA9D /* AFViewControllerAutoLayout.swift */,
 				6535A0461BEBBB2400ECDA9D /* AFViewAutoLayout.swift */,
 				65D0169D19771DE2005220FB /* AFViewEffects.swift */,
@@ -182,6 +185,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6535A0471BEBBB2400ECDA9D /* AFViewAutoLayout.swift in Sources */,
+				658A3B161D42BF210029B4E4 /* AFInspectableButton.swift in Sources */,
 				65889B731965051C0049740E /* ViewController.swift in Sources */,
 				65889B711965051C0049740E /* AppDelegate.swift in Sources */,
 				6535A0491BEBBE4400ECDA9D /* AFViewControllerAutoLayout.swift in Sources */,
