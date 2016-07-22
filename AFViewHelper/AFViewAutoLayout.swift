@@ -1,10 +1,11 @@
 //
 //  AFViewAutoLayout.swift
-//  AFViewExtension: Version 4.0.1
+//  AFViewExtension: Version 4.1.0
 //
 //  Created by Melvin Rivera on 11/5/15.
-//  Copyright © 2015 All Forces. All rights reserved.
+//  https://github.com/melvitax/AFViewHelper
 //
+
 
 import Foundation
 import UIKit
@@ -14,11 +15,11 @@ extension UIView {
     // MARK: Init
     
     /**
-    Instantiates a new UIView with Auto Layout
-    
-    - Parameter autoLayout Enables Auto Layout.
-    - Returns: self
-    */
+     Instantiates a new UIView with Auto Layout
+     
+     - Parameter autoLayout Enables Auto Layout.
+     - Returns: self
+     */
     convenience init(autoLayout: Bool = true)
     {
         self.init(frame:CGRectZero)
@@ -28,8 +29,8 @@ extension UIView {
     // MARK: Position
     
     /**
-    Returns the frame's origin
-    */
+     Returns the frame's origin
+     */
     
     func origin() -> CGPoint { return frame.origin }
     
@@ -370,8 +371,8 @@ extension UIView {
     // MARK: Compression and Hugging Priority
     
     /**
-    Returns the Compression Resistance Priority for Horizontal Axis using Auto Layout
-    */
+     Returns the Compression Resistance Priority for Horizontal Axis using Auto Layout
+     */
     func horizontalCompressionPriority() -> UILayoutPriority { return contentCompressionResistancePriorityForAxis(.Horizontal) }
     
     /**
@@ -441,8 +442,8 @@ extension UIView {
     // MARK: Size
     
     /**
-    Returns the frame size
-    */
+     Returns the frame size
+     */
     func size() -> CGSize { return frame.size }
     
     /**
@@ -844,8 +845,8 @@ extension UIView {
     // MARK: AutoLayout state
     
     /**
-    Prepares the view for a frame based animation by removing the view, enabling translatesAutoresizingMaskIntoConstraints and re-adding the view to it's superview
-    */
+     Prepares the view for a frame based animation by removing the view, enabling translatesAutoresizingMaskIntoConstraints and re-adding the view to it's superview
+     */
     func prepForAnimation()
     {
         if superview != nil {
@@ -873,18 +874,18 @@ extension UIView {
     // MARK: Pin and Apply
     
     /**
-    Pins an attribute to another view
-    
-    - Parameter pinAttribute: The View's attribut to pin
-    - Parameter to: The view to pin to
-    - Parameter attribute: The Attribute to pin to
-    - Parameter constant: The offset to use after multiplication is done.
-    - Parameter multiplier: The multiplier to use, i.e. 0.5 is half.
-    - Parameter relation: The Relation to use
-    - Returns: NSLayoutConstraint
-    */
+     Pins an attribute to another view
+     
+     - Parameter pinAttribute: The View's attribut to pin
+     - Parameter to: The view to pin to
+     - Parameter attribute: The Attribute to pin to
+     - Parameter constant: The offset to use after multiplication is done.
+     - Parameter multiplier: The multiplier to use, i.e. 0.5 is half.
+     - Parameter relation: The Relation to use
+     - Returns: NSLayoutConstraint
+     */
     func pin(pinAttribute:NSLayoutAttribute, to:AnyObject? = nil, attribute:NSLayoutAttribute, constant:CGFloat = 0, multiplier:CGFloat = 1, relation:NSLayoutRelation = .Equal) -> NSLayoutConstraint? {
-            if !translatesAutoresizingMaskIntoConstraints {
+        if !translatesAutoresizingMaskIntoConstraints {
             if self.superview == nil {
                 print("WARNING: No superview found for pinning")
                 return nil
@@ -920,10 +921,10 @@ extension UIView {
     // MARK: Removing Constraints
     
     /**
-    Removes all attached constraints recursevely
-    
-    - Returns: self
-    */
+     Removes all attached constraints recursevely
+     
+     - Returns: self
+     */
     func removeAttachedConstraintsRecursevely() -> UIView
     {
         for constraint in constraints {
@@ -972,21 +973,21 @@ extension UIView {
     // MARK: Direction
     
     /**
-    Returns true if layout direction is left to right
-    */
+     Returns true if layout direction is left to right
+     */
     func layoutDirectionIsLeftToRight() -> Bool {
         return (UIApplication.sharedApplication().userInterfaceLayoutDirection == .LeftToRight)
     }
     
-
+    
     
     // MARK: Private
     
     /**
-    Finds the nearest common superview
-    
-    - Returns: UIVIew?
-    */
+     Finds the nearest common superview
+     
+     - Returns: UIVIew?
+     */
     private func commonSuperviewWithView(view:UIView) -> UIView?
     {
         var commonSuperview: UIView? = nil
@@ -999,5 +1000,5 @@ extension UIView {
         } while (checkView) != nil
         return commonSuperview
     }
-
+    
 }

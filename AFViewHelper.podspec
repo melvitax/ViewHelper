@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name     = 'AFViewHelper'
-  s.version  = '4.0.1'
+  s.version  = '4.1.0'
   s.platform     = :ios, '8.0'
   s.license  = 'MIT'
   s.summary  = 'Autolayout and Animation UIVIew Extension for Swift 2.0.'

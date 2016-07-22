@@ -102,11 +102,11 @@
 			isa = PBXGroup;
 			children = (
 				658A3B151D42BF210029B4E4 /* AFInspectableButton.swift */,
+				B0C7D3DF1C04C79D00732E7E /* AFInspectableView.swift */,
 				6535A0481BEBBE4400ECDA9D /* AFViewControllerAutoLayout.swift */,
 				6535A0461BEBBB2400ECDA9D /* AFViewAutoLayout.swift */,
 				65D0169D19771DE2005220FB /* AFViewEffects.swift */,
 				B0F1859A1C0382CC008C4222 /* AFViewAnimation.swift */,
-				B0C7D3DF1C04C79D00732E7E /* AFInspectableView.swift */,
 			);
 			path = AFViewHelper;
 			sourceTree = "<group>";

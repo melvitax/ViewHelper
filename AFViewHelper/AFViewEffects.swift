@@ -1,10 +1,9 @@
 //
 //  AFViewExtension.swift
 //
-//  AFViewExtension: Version 4.0.1
+//  AFViewExtension: Version 4.1.0
 //
 //  Created by Melvin Rivera on 7/2/14.
-//  Copyright (c) 2014 All Forces. All rights reserved.
 //  https://github.com/melvitax/AFViewHelper
 //
 
@@ -22,8 +21,8 @@ import QuartzCore
     // MARK: Border
     
     /**
-    The layer border color
-    */
+     The layer border color
+     */
     var borderColor: UIColor {
         get {
             return layer.borderColor == nil ? UIColor.clearColor() : UIColor(CGColor: layer.borderColor!)
@@ -76,8 +75,8 @@ import QuartzCore
     // MARK: Rounded Corners
     
     /**
-    The layer corner radius
-    */
+     The layer corner radius
+     */
     var cornerRadius: CGFloat {
         get {
             return layer.cornerRadius
@@ -125,8 +124,8 @@ import QuartzCore
     // MARK: Shadow
     
     /**
-    The shadow color of the layer
-    */
+     The shadow color of the layer
+     */
     var shadowColor: UIColor {
         get {
             return layer.shadowColor == nil ? UIColor.clearColor() : UIColor(CGColor: layer.shadowColor!)
@@ -204,12 +203,12 @@ import QuartzCore
     // MARK: Gradient
     
     /**
-    Sets a gradient color layer
-   
-    - Parameter colors: Array of colors to use in gradient.
-    - Parameter isHorizontal: Indicates if gradient is horizontal instead of vertical.
-    - Returns: self
-    */
+     Sets a gradient color layer
+     
+     - Parameter colors: Array of colors to use in gradient.
+     - Parameter isHorizontal: Indicates if gradient is horizontal instead of vertical.
+     - Returns: self
+     */
     func setGradient(colors: [UIColor], isHorizontal:Bool = false) -> UIView {
         let gradientLayer = layer as! CAGradientLayer
         gradientLayer.startPoint = isHorizontal ? CGPoint(x: 0.5, y: 0) : CGPoint(x: 0.5, y: 1)
@@ -246,7 +245,7 @@ import QuartzCore
      
      - Parameter alphas: Array of alpha values to use for gradient mask.
      - Parameter isHorizontal: Indicates if gradient is horizontal instead of vertical.
-     - Returns: self 
+     - Returns: self
      */
     func setGradientMask(alphas:[CGFloat], isHorizontal:Bool = false) -> UIView {
         let gradientLayer = (layer.mask is CAGradientLayer) ? layer.mask as! CAGradientLayer : CAGradientLayer()
@@ -260,7 +259,7 @@ import QuartzCore
         layer.mask = gradientLayer
         return self
     }
-
+    
     
     
 }

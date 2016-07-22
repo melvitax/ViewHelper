@@ -1,9 +1,10 @@
 //
 //  AFInspectableButton.swift
-//  News Proto
+//  
+//  AFViewExtension: Version 4.1.0
 //
 //  Created by Melvin Rivera on 6/28/16.
-//  Copyright © 2016 NBC News. All rights reserved.
+//  https://github.com/melvitax/AFViewHelper
 //
 
 import Foundation

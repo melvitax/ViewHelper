@@ -1,9 +1,9 @@
 //
 //  AFViewControllerAutoLayout.swift
-//  AFViewExtension: Version 4.0.1
+//  AFViewExtension: Version 4.1.0
 //
 //  Created by Melvin Rivera on 11/5/15.
-//  Copyright © 2015 All Forces. All rights reserved.
+//  https://github.com/melvitax/AFViewHelper
 //
 
 import Foundation
