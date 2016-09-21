@@ -5,7 +5,7 @@
 [![Platform](https://img.shields.io/cocoapods/p/AFViewHelper.svg?style=flat)](http://cocoapods.org/pods/AFViewHelper)
 
 
-Autolayout and Animation UIVIew Extension for Swift 2.0
+Autolayout and View Animation Helper for Swift 3.0
 
 
 ![Sample Project Screenshot](https://raw.githubusercontent.com/melvitax/AFViewHelper/master/Screenshot.png?raw=true "Sample Project Screenshot")

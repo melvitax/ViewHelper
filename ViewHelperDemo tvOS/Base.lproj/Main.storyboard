@@ -1,0 +1,491 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder.AppleTV.Storyboard" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="AppleTV" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="6Mc-gY-AST">
+    <dependencies>
+        <deployment identifier="tvOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="6Mc-gY-AST" customClass="ViewController" customModule="ViewHelperDemo_tvOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="2Mb-ws-KVJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="Eov-Zy-LkT"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="w2e-a9-oma">
+                        <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h9I-XZ-UU5">
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fP7-ah-hDP" customClass="AFInspectableView" customModule="ViewHelper">
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Yu-f3-AUg" customClass="AFInspectableView" customModule="ViewHelper">
+                                                <color key="backgroundColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="0.80000000000000004" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <integer key="value" value="150"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                        <real key="value" value="0.0"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                        <color key="value" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="3Yu-f3-AUg" firstAttribute="height" secondItem="fP7-ah-hDP" secondAttribute="height" multiplier="0.6" id="7uv-tL-L78"/>
+                                            <constraint firstAttribute="width" secondItem="fP7-ah-hDP" secondAttribute="height" multiplier="1:1" id="UOa-bR-D0W"/>
+                                            <constraint firstItem="3Yu-f3-AUg" firstAttribute="width" secondItem="fP7-ah-hDP" secondAttribute="width" multiplier="0.6" id="eVV-Zs-LPr"/>
+                                            <constraint firstItem="3Yu-f3-AUg" firstAttribute="centerY" secondItem="fP7-ah-hDP" secondAttribute="centerY" id="iyg-vV-F53"/>
+                                            <constraint firstItem="3Yu-f3-AUg" firstAttribute="centerX" secondItem="fP7-ah-hDP" secondAttribute="centerX" id="mdR-pk-nGO"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <integer key="value" value="200"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="fP7-ah-hDP" firstAttribute="height" secondItem="h9I-XZ-UU5" secondAttribute="height" constant="-40" id="Abz-f6-gOG"/>
+                                    <constraint firstItem="fP7-ah-hDP" firstAttribute="centerY" secondItem="h9I-XZ-UU5" secondAttribute="centerY" id="Uzr-00-9OD"/>
+                                    <constraint firstItem="fP7-ah-hDP" firstAttribute="centerX" secondItem="h9I-XZ-UU5" secondAttribute="centerX" id="qMr-qh-5bf"/>
+                                </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="YQ5-5e-7JG" appends="YES" id="sSa-Jn-1AD"/>
+                                </connections>
+                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="NWD-KX-jYL">
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="lsB-pK-Zuw">
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="ofK-Qs-UpR">
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kuf-By-oJm" customClass="FocusedButton" customModule="ViewHelperDemo_tvOS">
+                                                        <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
+                                                        <state key="normal" title="-">
+                                                            <color key="titleColor" red="0.2666666667" green="0.57254901960000004" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="forceActionWithSender:" destination="6Mc-gY-AST" eventType="primaryActionTriggered" id="ODf-Ei-jN7"/>
+                                                        </connections>
+                                                    </button>
+                                                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="lOn-4u-ZfF">
+                                                        <color key="progressTintColor" red="0.26666666666666666" green="0.5725490196078431" blue="0.75294117647058822" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="trackTintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </progressView>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EaH-gB-AhD" customClass="FocusedButton" customModule="ViewHelperDemo_tvOS" customModuleProvider="target">
+                                                        <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
+                                                        <state key="normal" title="+">
+                                                            <color key="titleColor" red="0.2666666667" green="0.57254901960000004" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="forceActionWithSender:" destination="6Mc-gY-AST" eventType="primaryActionTriggered" id="tSL-9F-zVA"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            </stackView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Force" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gOz-ce-0OP">
+                                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="34"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ga6-34-CxW" userLabel="spacer">
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            </view>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="SLF-qI-6hw">
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kr7-y3-Gfv" customClass="FocusedButton" customModule="ViewHelperDemo_tvOS" customModuleProvider="target">
+                                                        <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
+                                                        <state key="normal" title="◀">
+                                                            <color key="titleColor" red="0.2666666667" green="0.57254901960000004" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="scaleActionWithSender:" destination="6Mc-gY-AST" eventType="primaryActionTriggered" id="RNy-ah-0yA"/>
+                                                        </connections>
+                                                    </button>
+                                                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="J22-z3-56b">
+                                                        <color key="progressTintColor" red="0.26666666666666666" green="0.5725490196078431" blue="0.75294117647058822" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="trackTintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </progressView>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qmU-Bq-qQv" customClass="FocusedButton" customModule="ViewHelperDemo_tvOS" customModuleProvider="target">
+                                                        <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
+                                                        <state key="normal" title="▶">
+                                                            <color key="titleColor" red="0.2666666667" green="0.57254901960000004" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="scaleActionWithSender:" destination="6Mc-gY-AST" eventType="primaryActionTriggered" id="pFj-JD-bWd"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            </stackView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Scale" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ftu-OB-xup">
+                                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="34"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dVw-nQ-zZr" userLabel="spacer">
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            </view>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="b9s-ya-3KF">
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mO0-Wd-JG4" customClass="FocusedButton" customModule="ViewHelperDemo_tvOS" customModuleProvider="target">
+                                                        <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
+                                                        <state key="normal" title="◀">
+                                                            <color key="titleColor" red="0.2666666667" green="0.57254901960000004" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="velocityActionWithSender:" destination="6Mc-gY-AST" eventType="primaryActionTriggered" id="o1b-SU-BDl"/>
+                                                        </connections>
+                                                    </button>
+                                                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="7Lp-MC-oC7">
+                                                        <color key="progressTintColor" red="0.26666666666666666" green="0.5725490196078431" blue="0.75294117647058822" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="trackTintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </progressView>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cRB-pV-LwH" customClass="FocusedButton" customModule="ViewHelperDemo_tvOS" customModuleProvider="target">
+                                                        <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
+                                                        <state key="normal" title="▶">
+                                                            <color key="titleColor" red="0.2666666667" green="0.57254901960000004" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="velocityActionWithSender:" destination="6Mc-gY-AST" eventType="primaryActionTriggered" id="YbN-s6-dH6"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            </stackView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Velocity" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZUu-t3-9Lu">
+                                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="34"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2ow-CE-fG5" userLabel="spacer">
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            </view>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="K5t-Dv-H60">
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="8mE-Mf-dcU">
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZFc-9e-SHI" customClass="FocusedButton" customModule="ViewHelperDemo_tvOS" customModuleProvider="target">
+                                                        <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
+                                                        <state key="normal" title="◀">
+                                                            <color key="titleColor" red="0.2666666667" green="0.57254901960000004" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="durationActionWithSender:" destination="6Mc-gY-AST" eventType="primaryActionTriggered" id="a3r-gm-zcl"/>
+                                                        </connections>
+                                                    </button>
+                                                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ici-s4-bp5">
+                                                        <color key="progressTintColor" red="0.26666666666666666" green="0.5725490196078431" blue="0.75294117647058822" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="trackTintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </progressView>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Wc-c8-evN" customClass="FocusedButton" customModule="ViewHelperDemo_tvOS" customModuleProvider="target">
+                                                        <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
+                                                        <state key="normal" title="▶">
+                                                            <color key="titleColor" red="0.2666666667" green="0.57254901960000004" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="durationActionWithSender:" destination="6Mc-gY-AST" eventType="primaryActionTriggered" id="V42-Z7-c6f"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Duration" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MOM-hR-8ip">
+                                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="34"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hmP-Qw-fND" userLabel="spacer">
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            </view>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="XfE-gS-HCd">
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l21-4m-hZs" customClass="FocusedButton" customModule="ViewHelperDemo_tvOS" customModuleProvider="target">
+                                                        <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
+                                                        <state key="normal" title="◀">
+                                                            <color key="titleColor" red="0.2666666667" green="0.57254901960000004" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="rotateActionWithSender:" destination="6Mc-gY-AST" eventType="primaryActionTriggered" id="zU0-gv-d7Y"/>
+                                                        </connections>
+                                                    </button>
+                                                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="uY0-KJ-d0U">
+                                                        <color key="progressTintColor" red="0.26666666666666666" green="0.5725490196078431" blue="0.75294117647058822" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="trackTintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </progressView>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PvW-su-igx" customClass="FocusedButton" customModule="ViewHelperDemo_tvOS" customModuleProvider="target">
+                                                        <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
+                                                        <state key="normal" title="▶">
+                                                            <color key="titleColor" red="0.2666666667" green="0.57254901960000004" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="rotateActionWithSender:" destination="6Mc-gY-AST" eventType="primaryActionTriggered" id="A2J-74-cm2"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rotate" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9hl-dy-Ve1">
+                                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="34"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yaz-uL-F2i" userLabel="spacer">
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            </view>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="mUz-ZP-4Md">
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IZm-OM-gKj" customClass="FocusedButton" customModule="ViewHelperDemo_tvOS" customModuleProvider="target">
+                                                        <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
+                                                        <state key="normal" title="◀">
+                                                            <color key="titleColor" red="0.2666666667" green="0.57254901960000004" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="xActionWithSender:" destination="6Mc-gY-AST" eventType="primaryActionTriggered" id="aYs-45-iTn"/>
+                                                        </connections>
+                                                    </button>
+                                                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="485-Uq-emb">
+                                                        <color key="progressTintColor" red="0.26666666666666666" green="0.5725490196078431" blue="0.75294117647058822" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="trackTintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </progressView>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gMr-wZ-txG" customClass="FocusedButton" customModule="ViewHelperDemo_tvOS" customModuleProvider="target">
+                                                        <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
+                                                        <state key="normal" title="▶">
+                                                            <color key="titleColor" red="0.2666666667" green="0.57254901960000004" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="xActionWithSender:" destination="6Mc-gY-AST" eventType="primaryActionTriggered" id="Hb1-lR-dj7"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="x" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FpR-2L-eGe">
+                                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="34"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kE0-wN-LQk" userLabel="spacer">
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            </view>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="zwm-ci-yxm">
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="psM-oX-5sx">
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b7u-ND-rK0" customClass="FocusedButton" customModule="ViewHelperDemo_tvOS" customModuleProvider="target">
+                                                        <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
+                                                        <state key="normal" title="◀">
+                                                            <color key="titleColor" red="0.2666666667" green="0.57254901960000004" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="delayActionWithSender:" destination="6Mc-gY-AST" eventType="primaryActionTriggered" id="SRa-ow-s6x"/>
+                                                        </connections>
+                                                    </button>
+                                                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="pVO-pL-pM8">
+                                                        <color key="progressTintColor" red="0.26666666666666666" green="0.5725490196078431" blue="0.75294117647058822" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="trackTintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </progressView>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P0J-02-15D" customClass="FocusedButton" customModule="ViewHelperDemo_tvOS" customModuleProvider="target">
+                                                        <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
+                                                        <state key="normal" title="▶">
+                                                            <color key="titleColor" red="0.2666666667" green="0.57254901960000004" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="delayActionWithSender:" destination="6Mc-gY-AST" eventType="primaryActionTriggered" id="sr8-gf-f60"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Delay" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="feW-zn-9kJ" userLabel="Delay">
+                                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="34"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zCb-ot-ypY" userLabel="spacer">
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            </view>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="fQw-SW-dG9">
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1I0-HS-1MP" customClass="FocusedButton" customModule="ViewHelperDemo_tvOS" customModuleProvider="target">
+                                                        <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
+                                                        <state key="normal" title="◀">
+                                                            <color key="titleColor" red="0.2666666667" green="0.57254901960000004" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="dampingActionWithSender:" destination="6Mc-gY-AST" eventType="primaryActionTriggered" id="3dJ-HR-f6l"/>
+                                                        </connections>
+                                                    </button>
+                                                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="CS2-ck-vto">
+                                                        <color key="progressTintColor" red="0.26666666666666666" green="0.5725490196078431" blue="0.75294117647058822" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="trackTintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </progressView>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Txi-eL-Ylz" customClass="FocusedButton" customModule="ViewHelperDemo_tvOS" customModuleProvider="target">
+                                                        <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
+                                                        <state key="normal" title="▶">
+                                                            <color key="titleColor" red="0.2666666667" green="0.57254901960000004" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="dampingActionWithSender:" destination="6Mc-gY-AST" eventType="primaryActionTriggered" id="hYb-94-pPJ"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Damping" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CeM-iu-QdJ">
+                                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="34"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vy0-o4-OAZ" userLabel="spacer">
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            </view>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="lCi-xY-aRM">
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ths-e7-Rzc" customClass="FocusedButton" customModule="ViewHelperDemo_tvOS" customModuleProvider="target">
+                                                        <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
+                                                        <state key="normal" title="◀">
+                                                            <color key="titleColor" red="0.2666666667" green="0.57254901960000004" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="yActionWithSender:" destination="6Mc-gY-AST" eventType="primaryActionTriggered" id="HVD-NM-gyX"/>
+                                                        </connections>
+                                                    </button>
+                                                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Kca-jO-kz2">
+                                                        <color key="progressTintColor" red="0.26666666666666666" green="0.5725490196078431" blue="0.75294117647058822" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="trackTintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </progressView>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tho-G6-qgu" customClass="FocusedButton" customModule="ViewHelperDemo_tvOS" customModuleProvider="target">
+                                                        <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
+                                                        <state key="normal" title="▶">
+                                                            <color key="titleColor" red="0.2666666667" green="0.57254901960000004" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="yActionWithSender:" destination="6Mc-gY-AST" eventType="primaryActionTriggered" id="4Ev-3W-kEh"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="y" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QbS-HW-Haq">
+                                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="34"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nhy-4Z-Dsm" userLabel="spacer">
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            </view>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="70Z-sc-LTK"/>
+                                </constraints>
+                            </stackView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="66" sectionHeaderHeight="66" sectionFooterHeight="66" translatesAutoresizingMaskIntoConstraints="NO" id="PqO-Bu-f4U">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yhe-KN-qtR">
+                                <state key="normal" title="Animate"/>
+                                <connections>
+                                    <action selector="animateView:" destination="6Mc-gY-AST" eventType="primaryActionTriggered" id="ol4-id-EAb"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DhQ-RU-GPR">
+                                <state key="normal" title="Reset"/>
+                                <connections>
+                                    <action selector="resetValues:" destination="6Mc-gY-AST" eventType="primaryActionTriggered" id="zSv-ux-hCu"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Yhe-KN-qtR" firstAttribute="top" secondItem="2Mb-ws-KVJ" secondAttribute="bottom" constant="10" id="0Au-fG-jWx"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="NWD-KX-jYL" secondAttribute="trailing" id="0jF-uD-Kaj"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="PqO-Bu-f4U" secondAttribute="trailing" constant="-20" id="2ZA-Pn-QkG"/>
+                            <constraint firstAttribute="right" secondItem="DhQ-RU-GPR" secondAttribute="right" constant="20" id="AyN-9j-zQF"/>
+                            <constraint firstItem="Yhe-KN-qtR" firstAttribute="left" secondItem="w2e-a9-oma" secondAttribute="left" constant="20" id="Bub-Qp-7EZ"/>
+                            <constraint firstItem="h9I-XZ-UU5" firstAttribute="leading" secondItem="w2e-a9-oma" secondAttribute="leading" id="GbB-Gl-lOs"/>
+                            <constraint firstItem="PqO-Bu-f4U" firstAttribute="top" secondItem="NWD-KX-jYL" secondAttribute="bottom" id="Izq-9w-Pra"/>
+                            <constraint firstItem="h9I-XZ-UU5" firstAttribute="height" secondItem="w2e-a9-oma" secondAttribute="height" multiplier="0.5" id="RDe-L9-wme"/>
+                            <constraint firstItem="NWD-KX-jYL" firstAttribute="top" secondItem="h9I-XZ-UU5" secondAttribute="bottom" id="YcC-oe-1o2"/>
+                            <constraint firstItem="h9I-XZ-UU5" firstAttribute="centerX" secondItem="w2e-a9-oma" secondAttribute="centerX" id="cEj-ya-1kZ"/>
+                            <constraint firstItem="h9I-XZ-UU5" firstAttribute="top" secondItem="2Mb-ws-KVJ" secondAttribute="bottom" id="eum-Z5-E4i"/>
+                            <constraint firstItem="Eov-Zy-LkT" firstAttribute="top" secondItem="PqO-Bu-f4U" secondAttribute="bottom" id="mex-WA-6fE"/>
+                            <constraint firstAttribute="trailing" secondItem="h9I-XZ-UU5" secondAttribute="trailing" id="sY0-tc-IKb"/>
+                            <constraint firstItem="DhQ-RU-GPR" firstAttribute="top" secondItem="2Mb-ws-KVJ" secondAttribute="bottom" constant="10" id="tCg-Cc-XQA"/>
+                            <constraint firstItem="NWD-KX-jYL" firstAttribute="leading" secondItem="w2e-a9-oma" secondAttribute="leadingMargin" id="x0h-TP-8RG"/>
+                            <constraint firstItem="PqO-Bu-f4U" firstAttribute="leading" secondItem="w2e-a9-oma" secondAttribute="leadingMargin" constant="-20" id="zxy-ha-6Fp"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="bigCircle" destination="fP7-ah-hDP" id="WR2-ou-f9h"/>
+                        <outlet property="dampingLabel" destination="CeM-iu-QdJ" id="jQY-5y-3oU"/>
+                        <outlet property="dampingProgress" destination="CS2-ck-vto" id="J6C-3I-ed4"/>
+                        <outlet property="delayLabel" destination="feW-zn-9kJ" id="tgq-yE-cfy"/>
+                        <outlet property="delayProgress" destination="pVO-pL-pM8" id="KDJ-Oh-9VM"/>
+                        <outlet property="durationLabel" destination="MOM-hR-8ip" id="XZE-Po-gpe"/>
+                        <outlet property="durationProgress" destination="ici-s4-bp5" id="F0i-9X-Lxx"/>
+                        <outlet property="forceLabel" destination="gOz-ce-0OP" id="j0f-eX-4Q7"/>
+                        <outlet property="forceProgress" destination="lOn-4u-ZfF" id="AaP-yM-SAf"/>
+                        <outlet property="mainBox" destination="h9I-XZ-UU5" id="Vfl-rK-BV1"/>
+                        <outlet property="rotateLabel" destination="9hl-dy-Ve1" id="YEL-u1-zOe"/>
+                        <outlet property="rotateProgress" destination="uY0-KJ-d0U" id="nQH-lq-L6s"/>
+                        <outlet property="scaleLabel" destination="Ftu-OB-xup" id="fSI-PW-XMT"/>
+                        <outlet property="scaleProgress" destination="J22-z3-56b" id="A75-dC-19L"/>
+                        <outlet property="smallCircle" destination="3Yu-f3-AUg" id="89L-Tc-X4U"/>
+                        <outlet property="velocityLabel" destination="ZUu-t3-9Lu" id="mz9-eR-rYP"/>
+                        <outlet property="velocityProgress" destination="7Lp-MC-oC7" id="v5p-WM-KzW"/>
+                        <outlet property="xPointLabel" destination="FpR-2L-eGe" id="5xE-aU-Vn3"/>
+                        <outlet property="xPointProgress" destination="Kca-jO-kz2" id="6q1-AJ-P7Z"/>
+                        <outlet property="yPointLabel" destination="QbS-HW-Haq" id="K0C-w1-2gK"/>
+                        <outlet property="yPointProgress" destination="485-Uq-emb" id="MHL-T7-fm7"/>
+                        <outletCollection property="stepperButtons" destination="Tho-G6-qgu" collectionClass="NSMutableArray" id="zff-JJ-o5K"/>
+                        <outletCollection property="stepperButtons" destination="ths-e7-Rzc" collectionClass="NSMutableArray" id="lVK-ZS-d5a"/>
+                        <outletCollection property="stepperButtons" destination="Txi-eL-Ylz" collectionClass="NSMutableArray" id="fz2-yI-JUE"/>
+                        <outletCollection property="stepperButtons" destination="1I0-HS-1MP" collectionClass="NSMutableArray" id="nor-4v-a76"/>
+                        <outletCollection property="stepperButtons" destination="P0J-02-15D" collectionClass="NSMutableArray" id="roS-ch-6rg"/>
+                        <outletCollection property="stepperButtons" destination="b7u-ND-rK0" collectionClass="NSMutableArray" id="mn3-VQ-gl2"/>
+                        <outletCollection property="stepperButtons" destination="gMr-wZ-txG" collectionClass="NSMutableArray" id="mRc-kx-haY"/>
+                        <outletCollection property="stepperButtons" destination="IZm-OM-gKj" collectionClass="NSMutableArray" id="mm4-OD-aqR"/>
+                        <outletCollection property="stepperButtons" destination="PvW-su-igx" collectionClass="NSMutableArray" id="Dy6-Vm-N3J"/>
+                        <outletCollection property="stepperButtons" destination="l21-4m-hZs" collectionClass="NSMutableArray" id="KGK-wt-b8j"/>
+                        <outletCollection property="stepperButtons" destination="7Wc-c8-evN" collectionClass="NSMutableArray" id="g1w-wT-rpC"/>
+                        <outletCollection property="stepperButtons" destination="ZFc-9e-SHI" collectionClass="NSMutableArray" id="o2g-EE-7Ks"/>
+                        <outletCollection property="stepperButtons" destination="cRB-pV-LwH" collectionClass="NSMutableArray" id="hWY-QQ-j4u"/>
+                        <outletCollection property="stepperButtons" destination="mO0-Wd-JG4" collectionClass="NSMutableArray" id="QU0-X9-y8r"/>
+                        <outletCollection property="stepperButtons" destination="qmU-Bq-qQv" collectionClass="NSMutableArray" id="gdj-tS-Ulu"/>
+                        <outletCollection property="stepperButtons" destination="kr7-y3-Gfv" collectionClass="NSMutableArray" id="fTa-zI-DfB"/>
+                        <outletCollection property="stepperButtons" destination="EaH-gB-AhD" collectionClass="NSMutableArray" id="Gvk-xs-S6W"/>
+                        <outletCollection property="stepperButtons" destination="Kuf-By-oJm" collectionClass="NSMutableArray" id="YU7-Bt-R0E"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="f43-r0-6AL" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="YQ5-5e-7JG">
+                    <connections>
+                        <action selector="animateView:" destination="6Mc-gY-AST" id="StK-sw-bAb"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+        </scene>
+    </scenes>
+</document>
