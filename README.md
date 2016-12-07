@@ -1,4 +1,4 @@
-# AFViewHelper
+# ViewHelper
 
 [![Version](https://img.shields.io/cocoapods/v/AFViewHelper.svg?style=flat)](http://cocoapods.org/pods/AFViewHelper)
 [![License](https://img.shields.io/cocoapods/l/AFViewHelper.svg?style=flat)](http://cocoapods.org/pods/AFViewHelper)
@@ -8,7 +8,7 @@
 Autolayout and View Animation Helper for Swift 3.0
 
 
-![Sample Project Screenshot](https://raw.githubusercontent.com/melvitax/AFViewHelper/master/Screenshot.png?raw=true "Sample Project Screenshot")
+![Sample Project Screenshot](https://raw.githubusercontent.com/melvitax/ViewHelper/master/Screenshot.png?raw=true "Sample Project Screenshot")
 
 
 ## Animations
@@ -20,7 +20,7 @@ view.animate(.Shake, curve: .EaseInOutBack)
 view.animate(.Shake, curve: .EaseInOutBack, duration: 0.8, delay: 0, force: 1, damping: 0.7,velocity: 1, fromRotation: 0, fromScale: 1.5, fromX: 0, fromY: 0)
 ```
 
-## Auto Layout 
+## Auto Layout
 
 ```swift
 let box = UIView(autoLayout:true)
@@ -63,7 +63,7 @@ let widthConstraint =  view.applyAttribute(.Width, constant: 100, multiplier: 0.
 
 ## UIView Extension
 
-### Prepping for Auto Layout 
+### Prepping for Auto Layout
 
 If a view is already in place with frames, prepForAutoLayout() will remove it from view, enable Auto Layout and place back in view.
 
@@ -79,10 +79,10 @@ If a view uses auto layout but you need to animate it using frames, prepForAnima
 view.prepForAnimation()
 ```
 
-### Instantiate 
+### Instantiate
 
 Instantiates a new UIView with Auto Layout
- 
+
 ```swift
 convenience init(autoLayout: Bool = true)
 ```
@@ -92,7 +92,7 @@ convenience init(autoLayout: Bool = true)
 #### Origin
 
 Returns the frame's origin
- 
+
 ```swift
 origin() -> CGPoint
 ```
@@ -100,7 +100,7 @@ origin() -> CGPoint
 Pins the frame's top and left sides using Auto Layout or frames
 
 ```swift
-origin(constant: CGPoint) -> UIView 
+origin(constant: CGPoint) -> UIView
 ```
 Pins left and top sides to another view using Auto Layout
 
@@ -112,7 +112,7 @@ origin(to to:AnyObject, constant: CGPoint = CGPoint(x: 0, y: 0), multiplier:CGFl
 Returns the min x point
 
 ```swift
-left() -> CGFloat 
+left() -> CGFloat
 ```
 
 Pins the left side using Auto Layout or frames
@@ -157,7 +157,7 @@ right() -> CGFloat
 Pins the right side using Auto Layout or frames
 
 ```swift
-right(constant: CGFloat) -> UIView 
+right(constant: CGFloat) -> UIView
 ```
 
 Pins the right side to another view using Auto Layout
@@ -176,7 +176,7 @@ trailing() -> CGFloat
 Pins the trailing side using Auto Layout or frames
 
 ```swift
-trailing(constant: CGFloat) -> UIView 
+trailing(constant: CGFloat) -> UIView
 ```
 
 Pins the trailing side to another view using Auto Layout
@@ -190,7 +190,7 @@ trailing(to to:AnyObject, attribute: NSLayoutAttribute = .Trailing, constant: CG
 Returns the top side value
 
 ```swift
-top() -> CGFloat 
+top() -> CGFloat
 ```
 
 Pins the top side using Auto Layout or frames
@@ -216,13 +216,13 @@ bottom() -> CGFloat
 Pins the bottom side using Auto Layout or frames
 
 ```swift
-bottom(constant: CGFloat) -> UIView 
+bottom(constant: CGFloat) -> UIView
 ```
 
 Pins the bottom side to another view using Auto Layout
 
 ```swift
-bottom(to to:AnyObject, attribute: NSLayoutAttribute = .Bottom, constant: CGFloat = 0, multiplier:CGFloat = 1) -> UIView 
+bottom(to to:AnyObject, attribute: NSLayoutAttribute = .Bottom, constant: CGFloat = 0, multiplier:CGFloat = 1) -> UIView
 ```
 
 #### Center
@@ -236,7 +236,7 @@ center(constant: CGPoint = CGPoint(x: 0, y: 0)) -> UIView
 Pins the center point to another view using Auto Layout
 
 ```swift
-center(to to:AnyObject, constant:CGSize = CGSize(width: 0, height: 0), multiplier:CGFloat = 1) -> UIView 
+center(to to:AnyObject, constant:CGSize = CGSize(width: 0, height: 0), multiplier:CGFloat = 1) -> UIView
 ```
 
 #### Center X
@@ -250,7 +250,7 @@ centerX() -> CGFloat
 Pins the center X using Auto Layout or frames
 
 ```swift
-centerX(constant: CGFloat = 0) -> UIView 
+centerX(constant: CGFloat = 0) -> UIView
 ```
 
 Pins the center X to another view using Auto Layout
@@ -292,7 +292,7 @@ horizontalCompressionPriority() -> UILayoutPriority
 Sets the Compression Resistance Priority for Horizontal Axis using Auto Layout
 
 ```swift
-horizontalCompressionPriority(priority: UILayoutPriority) -> UIView  
+horizontalCompressionPriority(priority: UILayoutPriority) -> UIView
 ```
 
 Returns the Compression Resistance Priority for Vertical Axis using Auto Layout
@@ -360,7 +360,7 @@ size(to to:AnyObject, constant: CGSize = CGSize(width: 0, height: 0), multiplier
 Returns the frame width
 
 ```swift
-width() -> CGFloat 
+width() -> CGFloat
 ```
 
 Sets the frame width using Auto Layout or frames
@@ -446,7 +446,7 @@ minHeight() -> CGFloat?
 Sets the minimum height using Auto Layout
 
 ```swift
-minHeight(constant:CGFloat) -> UIView 
+minHeight(constant:CGFloat) -> UIView
 ```
 
 Pins the minimum height to another view using Auto Layout
@@ -548,7 +548,7 @@ prepForAutoLayout()
 Pins an attribute to another view
 
 ```swift
-pin(pinAttribute:NSLayoutAttribute, to:AnyObject? = nil, attribute:NSLayoutAttribute, constant:CGFloat = 0, multiplier:CGFloat = 1, relation:NSLayoutRelation = .Equal) -> NSLayoutConstraint? 
+pin(pinAttribute:NSLayoutAttribute, to:AnyObject? = nil, attribute:NSLayoutAttribute, constant:CGFloat = 0, multiplier:CGFloat = 1, relation:NSLayoutRelation = .Equal) -> NSLayoutConstraint?
 ```
 
 Applies an attribute to the view
@@ -586,7 +586,7 @@ layoutDirectionIsLeftToRight() -> Bool
 The layer border color
 
 ```swift
-var borderColor: UIColor 
+var borderColor: UIColor
 ```
 
 The layer border width
@@ -598,7 +598,7 @@ var borderWidth: CGFloat
 Sets layer border with a dash pattern
 
 ```swift
-borderWithDashPattern(lineDashPattern: [Int], borderWidth: CGFloat, borderColor: UIColor, cornerRadius: CGFloat?) -> UIView 
+borderWithDashPattern(lineDashPattern: [Int], borderWidth: CGFloat, borderColor: UIColor, cornerRadius: CGFloat?) -> UIView
 ```
 
 ### Rounded Corners
@@ -606,13 +606,13 @@ borderWithDashPattern(lineDashPattern: [Int], borderWidth: CGFloat, borderColor:
 The layer corner radius
 
 ```swift
-var cornerRadius: CGFloat 
+var cornerRadius: CGFloat
 ```
 
 Creates a circle by rounding the corners to half the size of the width, sets border color and width
 
 ```swift
-roundCornersToCircle(borderColor: UIColor?, borderWidth: CGFloat?) -> UIView 
+roundCornersToCircle(borderColor: UIColor?, borderWidth: CGFloat?) -> UIView
 ```
 
 Creates a circle by rounding the corners to hald the size of the width
@@ -626,7 +626,7 @@ roundCorners(cornerRadius: CGFloat, borderColor: UIColor?, borderWidth: CGFloat?
 The shadow color of the layer
 
 ```swift
-var shadowColor: UIColor 
+var shadowColor: UIColor
 ```
 
 The shadow offset of the layer
@@ -686,7 +686,7 @@ layoutDirectionIsLeftToRight() -> Bool
 
 Returns true if horizontal size class is compact
 
-```swift 
+```swift
 horizontalSizeClassIsCompact() -> Bool
 ```
 
