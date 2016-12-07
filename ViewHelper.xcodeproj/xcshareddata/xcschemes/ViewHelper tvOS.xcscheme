@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "65D6FA761D8C674E004BAB04"
+               BlueprintIdentifier = "65D6FA831D8C675E004BAB04"
                BuildableName = "ViewHelper.framework"
-               BlueprintName = "ViewHelper watchOS"
-               ReferencedContainer = "container:UIViewHelper.xcodeproj">
+               BlueprintName = "ViewHelper tvOS"
+               ReferencedContainer = "container:ViewHelper.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -45,10 +45,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "65D6FA761D8C674E004BAB04"
+            BlueprintIdentifier = "65D6FA831D8C675E004BAB04"
             BuildableName = "ViewHelper.framework"
-            BlueprintName = "ViewHelper watchOS"
-            ReferencedContainer = "container:UIViewHelper.xcodeproj">
+            BlueprintName = "ViewHelper tvOS"
+            ReferencedContainer = "container:ViewHelper.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -63,10 +63,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "65D6FA761D8C674E004BAB04"
+            BlueprintIdentifier = "65D6FA831D8C675E004BAB04"
             BuildableName = "ViewHelper.framework"
-            BlueprintName = "ViewHelper watchOS"
-            ReferencedContainer = "container:UIViewHelper.xcodeproj">
+            BlueprintName = "ViewHelper tvOS"
+            ReferencedContainer = "container:ViewHelper.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>

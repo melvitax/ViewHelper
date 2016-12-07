@@ -1,10 +1,8 @@
 //
-//  AFViewExtension.swift
-//
-//  AFViewExtension: Version 4.2.0
-//
+//  ViewEffects.swift
+//  ViewHelper: Version 4.2.0
 //  Created by Melvin Rivera on 7/2/14.
-//  https://github.com/melvitax/AFViewHelper
+//  https://github.com/melvitax/ViewHelper
 //
 
 import UIKit

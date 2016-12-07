@@ -1,9 +1,8 @@
 //
-//  AFViewControllerAutoLayout.swift
-//  AFViewExtension: Version 4.2.0
-//
+//  ViewControllerAutoLayout.swift
+//  ViewHelper: Version 4.2.0
 //  Created by Melvin Rivera on 11/5/15.
-//  https://github.com/melvitax/AFViewHelper
+//  https://github.com/melvitax/ViewHelper
 //
 
 import Foundation

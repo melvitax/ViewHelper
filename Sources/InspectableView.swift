@@ -1,10 +1,8 @@
 //
-//  AF+Inspectable+View.swift
-//
-//  AFViewExtension: Version 4.2.0
-//
+//  InspectableView.swift
+//  ViewHelper: Version 4.2.0
 //  Created by Melvin Rivera on 7/24/14.
-//  https://github.com/melvitax/AFViewHelper
+//  https://github.com/melvitax/ViewHelper
 //
 
 
@@ -12,7 +10,7 @@ import Foundation
 import UIKit
 import QuartzCore
 
-@IBDesignable open class AFInspectableView :UIView {
+@IBDesignable open class InspectableView :UIView {
     
     
     // MARK: Border

@@ -42,9 +42,9 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     @IBOutlet weak var yLabel: UILabel!
     
     
-    @IBOutlet weak var mainBox: AFInspectableView!
-    @IBOutlet weak var bigCircle: AFInspectableView!
-    @IBOutlet weak var smallCircle: AFInspectableView!
+    @IBOutlet weak var mainBox: InspectableView!
+    @IBOutlet weak var bigCircle: InspectableView!
+    @IBOutlet weak var smallCircle: InspectableView!
     
     override var prefersStatusBarHidden : Bool {
         return true

@@ -1,10 +1,8 @@
 //
-//  AFInspectableButton.swift
-//  
-//  AFViewExtension: Version 4.2.0
-//
+//  InspectableButton.swift
+//  ViewHelper: Version 4.2.0
 //  Created by Melvin Rivera on 6/28/16.
-//  https://github.com/melvitax/AFViewHelper
+//  https://github.com/melvitax/ViewHelper
 //
 
 import Foundation
@@ -12,7 +10,7 @@ import Foundation
 import UIKit
 import QuartzCore
 
-@IBDesignable open class AFInspectableButton : UIButton {
+@IBDesignable open class InspectableButton : UIButton {
     
     
     // MARK: Border

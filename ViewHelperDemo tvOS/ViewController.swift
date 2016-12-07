@@ -8,45 +8,31 @@
 
 import UIKit
 
+let selectedAnimationKey = "selectedAnimation"
+let selectedEasingCurveKey = "selectedEasingCurve"
+
 class ViewController: UIViewController {
     
     var selectedAnimation: Int = 0
-    var selectedEasing: Int = 0
+    var selectedEasingCurve: Int = 0
     
-    @IBOutlet weak var mainBox: AFInspectableView!
-    @IBOutlet weak var bigCircle: AFInspectableView!
-    @IBOutlet weak var smallCircle: AFInspectableView!
+    @IBOutlet weak var mainBox: InspectableView!
+    @IBOutlet weak var bigCircle: InspectableView!
+    @IBOutlet weak var smallCircle: InspectableView!
     
     
-    @IBOutlet weak var forceProgress: UIProgressView!
     @IBOutlet weak var forceLabel: UILabel!
-    
-    @IBOutlet weak var durationProgress: UIProgressView!
     @IBOutlet weak var durationLabel: UILabel!
-    
-    @IBOutlet weak var delayProgress: UIProgressView!
     @IBOutlet weak var delayLabel: UILabel!
-    
-    @IBOutlet weak var scaleProgress: UIProgressView!
     @IBOutlet weak var scaleLabel: UILabel!
-    
-    @IBOutlet weak var rotateProgress: UIProgressView!
     @IBOutlet weak var rotateLabel: UILabel!
-    
-    @IBOutlet weak var dampingProgress: UIProgressView!
     @IBOutlet weak var dampingLabel: UILabel!
-    
-    @IBOutlet weak var velocityProgress: UIProgressView!
     @IBOutlet weak var velocityLabel: UILabel!
-    
-    @IBOutlet weak var xPointProgress: UIProgressView!
     @IBOutlet weak var xPointLabel: UILabel!
-    
-    @IBOutlet weak var yPointProgress: UIProgressView!
     @IBOutlet weak var yPointLabel: UILabel!
     
-    @IBOutlet var stepperButtons: [FocusedButton]!
- 
+    @IBOutlet weak var animation: UIButton!
+    @IBOutlet weak var curve: UIButton!
     
     struct AnimationProperty {
         var minValue:Float
@@ -78,8 +64,8 @@ class ViewController: UIViewController {
     var rotate = AnimationProperty(min: 0, max: 5, defaultValue: 0, step: 1)
     var damping = AnimationProperty(min: 0, max: 1, defaultValue: 0.7, step: 0.1)
     var velocity = AnimationProperty(min: 0, max: 1, defaultValue: 0.7, step: 0.1)
-    var xPoint = AnimationProperty(min: 0, max: 300, defaultValue: 0, step: 20)
-    var yPoint = AnimationProperty(min: 0, max: 300, defaultValue: 0, step: 20)
+    var xPoint = AnimationProperty(min: -1000, max: 1000, defaultValue: 0, step: 50)
+    var yPoint = AnimationProperty(min: -1000, max: 1000, defaultValue: 0, step: 50)
 
 
     override func viewDidLoad() {
@@ -132,12 +118,20 @@ class ViewController: UIViewController {
             .size(to: topLeftSquare)
             .layoutIfNeeded()
         
+        UserDefaults.standard.addObserver(self, forKeyPath: selectedAnimationKey, options: NSKeyValueObservingOptions.new, context: nil)
+        UserDefaults.standard.addObserver(self, forKeyPath: selectedEasingCurveKey, options: NSKeyValueObservingOptions.new, context: nil)
+        
         resetValues()
         
-        for button in stepperButtons {
-            button.buttonColors(focused: UIColor.lightGray, unfocused: UIColor.white)
+    }
+    
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        if keyPath == selectedAnimationKey {
+            updateAnimationUI()
+        } else {
+            updateEasingCurveUI()
         }
-        
+        animateView()
     }
 
     override func viewDidAppear(_ animated: Bool)
@@ -184,11 +178,19 @@ class ViewController: UIViewController {
         yPoint.currentValue = yPoint.defaultValue
         updateYPointUI()
         
+        selectedAnimation = 0
+        selectedEasingCurve = 0
+        UserDefaults.standard.set(selectedAnimation, forKey: selectedAnimationKey)
+        UserDefaults.standard.set(selectedEasingCurve, forKey: selectedAnimationKey)
+        UserDefaults.standard.synchronize()
+        updateAnimationUI()
+        updateEasingCurveUI()
+        
     }
     
     @IBAction func animateView(_ sender: AnyObject? = nil) {
         bigCircle.animate(AnimationType.allValues[selectedAnimation],
-                          curve: AnimationEasingCurve.allValues[selectedEasing],
+                          curve: AnimationEasingCurve.allValues[selectedEasingCurve],
                           duration: CGFloat(duration.currentValue),
                           delay: CGFloat(delay.currentValue),
                           force: CGFloat(force.currentValue),
@@ -201,128 +203,126 @@ class ViewController: UIViewController {
     }
     
     @IBAction func forceAction(sender: UIButton) {
-        force.currentValue = sender.titleLabel!.text == "▶" ? force.currentValue + force.stepValue : force.currentValue - force.stepValue
+        force.currentValue = sender.titleLabel!.text == "+" ? force.currentValue + force.stepValue : force.currentValue - force.stepValue
         updateForceUI()
         animateView()
-        
     }
     func updateForceUI() {
-        forceProgress.setProgress(force.percentageValue, animated: true)
-        forceLabel.text = String(format: "Force: %.1f", force.currentValue)
+        forceLabel.text = String(format: "%.1f", force.currentValue)
     }
     
     @IBAction func durationAction(sender: UIButton) {
-        duration.currentValue = sender.titleLabel!.text == "▶" ? duration.currentValue + duration.stepValue : duration.currentValue - duration.stepValue
+        duration.currentValue = sender.titleLabel!.text == "+" ? duration.currentValue + duration.stepValue : duration.currentValue - duration.stepValue
         updateDurationUI()
         animateView()
     }
     func updateDurationUI() {
-        durationProgress.setProgress(duration.percentageValue, animated: true)
-        durationLabel.text = String(format: "Duration: %.1f", duration.currentValue)
+        durationLabel.text = String(format: "%.1f", duration.currentValue)
     }
    
     @IBAction func delayAction(sender: UIButton) {
-        delay.currentValue = sender.titleLabel!.text == "▶" ? delay.currentValue + delay.stepValue : delay.currentValue - delay.stepValue
+        delay.currentValue = sender.titleLabel!.text == "+" ? delay.currentValue + delay.stepValue : delay.currentValue - delay.stepValue
         updateDelayUI()
         animateView()
     }
     func updateDelayUI() {
-        delayProgress.setProgress(delay.percentageValue, animated: true)
-        delayLabel.text = String(format: "Delay: %.1f", delay.currentValue)
+        delayLabel.text = String(format: "%.1f", delay.currentValue)
     }
     
     @IBAction func scaleAction(sender: UIButton) {
-        scale.currentValue = sender.titleLabel!.text == "▶" ? scale.currentValue + scale.stepValue : scale.currentValue - scale.stepValue
+        scale.currentValue = sender.titleLabel!.text == "+" ? scale.currentValue + scale.stepValue : scale.currentValue - scale.stepValue
         updateScaleUI()
         animateView()
     }
     func updateScaleUI() {
-        scaleProgress.setProgress(scale.percentageValue, animated: true)
-        scaleLabel.text = String(format: "Scale: %.1f", scale.currentValue)
+        scaleLabel.text = String(format: "%.1f", scale.currentValue)
     }
     
     @IBAction func rotateAction(sender: UIButton) {
-        rotate.currentValue = sender.titleLabel!.text == "▶" ? rotate.currentValue + rotate.stepValue : rotate.currentValue - rotate.stepValue
+        rotate.currentValue = sender.titleLabel!.text == "+" ? rotate.currentValue + rotate.stepValue : rotate.currentValue - rotate.stepValue
         updateRotateUI()
         animateView()
     }
     func updateRotateUI() {
-        rotateProgress.setProgress(rotate.percentageValue, animated: true)
-        rotateLabel.text = String(format: "Rotate: %.1f", rotate.currentValue)
+        rotateLabel.text = String(format: "%.1f", rotate.currentValue)
     }
 
     @IBAction func dampingAction(sender: UIButton) {
-        damping.currentValue = sender.titleLabel!.text == "▶" ? damping.currentValue + damping.stepValue : damping.currentValue - damping.stepValue
+        damping.currentValue = sender.titleLabel!.text == "+" ? damping.currentValue + damping.stepValue : damping.currentValue - damping.stepValue
         updateDampingUI()
         animateView()
     }
     func updateDampingUI() {
-        dampingProgress.setProgress(damping.percentageValue, animated: true)
-        dampingLabel.text = String(format: "Damping: %.1f", damping.currentValue)
+        dampingLabel.text = String(format: "%.1f", damping.currentValue)
     }
     
     @IBAction func velocityAction(sender: UIButton) {
-        velocity.currentValue = sender.titleLabel!.text == "▶" ? velocity.currentValue + velocity.stepValue : velocity.currentValue - velocity.stepValue
+        velocity.currentValue = sender.titleLabel!.text == "+" ? velocity.currentValue + velocity.stepValue : velocity.currentValue - velocity.stepValue
         updateVelocityUI()
         animateView()
     }
     func updateVelocityUI() {
-        velocityProgress.setProgress(velocity.percentageValue, animated: true)
-        velocityLabel.text = String(format: "Velocity: %.1f", velocity.currentValue)
+        velocityLabel.text = String(format: "%.1f", velocity.currentValue)
     }
     
     @IBAction func xAction(sender: UIButton) {
-        xPoint.currentValue = sender.titleLabel!.text == "▶" ? xPoint.currentValue + xPoint.stepValue : xPoint.currentValue - xPoint.stepValue
+        xPoint.currentValue = sender.titleLabel!.text == "+" ? xPoint.currentValue + xPoint.stepValue : xPoint.currentValue - xPoint.stepValue
         updateXPointUI()
         animateView()
     }
     func updateXPointUI() {
-        xPointProgress.setProgress(xPoint.percentageValue, animated: true)
-        xPointLabel.text = String(format: "X: %.1f", xPoint.currentValue)
+        xPointLabel.text = String(format: "%.1f", xPoint.currentValue)
     }
     
     @IBAction func yAction(sender: UIButton) {
-        yPoint.currentValue = sender.titleLabel!.text == "▶" ? yPoint.currentValue + yPoint.stepValue : yPoint.currentValue - yPoint.stepValue
+        yPoint.currentValue = sender.titleLabel!.text == "+" ? yPoint.currentValue + yPoint.stepValue : yPoint.currentValue - yPoint.stepValue
         updateYPointUI()
         animateView()
     }
     func updateYPointUI() {
-        yPointProgress.setProgress(yPoint.percentageValue, animated: true)
-        yPointLabel.text = String(format: "Y: %.1f", yPoint.currentValue)
+        yPointLabel.text = String(format: "%.1f", yPoint.currentValue)
     }
     
+    func updateAnimationUI() {
+        selectedAnimation = UserDefaults.standard.integer(forKey: selectedAnimationKey)
+        animation.setTitle("Animation: \(AnimationType.allValues[selectedAnimation]) ⋯", for: .normal)
+    }
     
-     // MARK: TableView
+    func updateEasingCurveUI() {
+        selectedEasingCurve = UserDefaults.standard.integer(forKey: selectedEasingCurveKey)
+        curve.setTitle("Curve: \(AnimationEasingCurve.allValues[selectedEasingCurve]) ⋯", for: .normal)
+    }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let controller = segue.destination as! TableViewController
+        if segue.identifier == "Animation" {
+            controller.items = AnimationType.allValues.map { $0.description }
+            controller.selected = selectedAnimation
+            controller.title = selectedAnimationKey
+        } else {
+            controller.items = AnimationEasingCurve.allValues.map { $0.description }
+            controller.selected = selectedEasingCurve
+            controller.title = selectedEasingCurveKey
+        }
+        
+    }
     
-    
-    
-    /*
- 
+    func updateUIFromTableViewControllerAction(){
+        
+    }
 
- 
- func numberOfComponents(in pickerView: UIPickerView) -> Int {
- return 2
- }
- 
- func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
- return component == 0 ? AnimationType.allValues.count : AnimationEasingCurve.allValues.count
- }
- 
- func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
- return component == 0 ? String(describing: AnimationType.allValues[row]) : String(describing: AnimationEasingCurve.allValues[row])
- }
- 
- func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
- switch component {
- case 0:
- selectedAnimation = row
- animateView(nil)
- default:
- selectedEasing = row
- animateView()
- }
- }*/
+    @IBAction func unwindToThisViewController(segue: UIStoryboardSegue) {
+        print("here")
+        let controller = segue.source as! TableViewController
+        if controller.title == selectedAnimationKey {
+            selectedAnimation = controller.selected
+            updateAnimationUI()
+        } else {
+            selectedEasingCurve = controller.selected
+            updateEasingCurveUI()
+        }
+    }
+    
 
 }
 

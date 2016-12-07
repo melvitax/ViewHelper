@@ -1,10 +1,8 @@
 //
-//  AFViewAnimation.swift
-//
-//  AFViewExtension: Version 4.2.0
-//
+//  ViewAnimation.swift
+//  ViewHelper: Version 4.2.0
 //  Created by Melvin Rivera on 11/23/15.
-//  https://github.com/melvitax/AFViewHelper
+//  https://github.com/melvitax/ViewHelper
 //
 
 import Foundation
@@ -16,6 +14,11 @@ import UIKit
 enum AnimationType {
     case slideLeft, slideRight, slideDown, slideUp, squeezeLeft, squeezeRight, squeezeDown, squeezeUp, fadeIn, fadeOut, fadeOutIn, fadeInLeft, fadeInRight, fadeInDown, fadeInUp, zoomIn, zoomOut, fall, shake, pop, flipX, flipY, morph, squeeze, flash, wobble, swing
     static let allValues = [shake, pop, morph, squeeze, wobble, swing, flipX, flipY, fall, squeezeLeft, squeezeRight, squeezeDown, squeezeUp, slideLeft, slideRight, slideDown, slideUp,  fadeIn, fadeOut, fadeOutIn, fadeInLeft, fadeInRight, fadeInDown, fadeInUp, zoomIn, zoomOut, flash]
+    var description: String {
+        get {
+            return String(describing: self)
+        }
+    }
 }
 
 /**
@@ -63,6 +66,11 @@ enum AnimationEasingCurve {
         case .easeOut: return UIViewAnimationOptions.curveEaseOut
         case .easeInOut: return UIViewAnimationOptions()
         default: return UIViewAnimationOptions.curveLinear
+        }
+    }
+    var description: String {
+        get {
+            return String(describing: self)
         }
     }
 }
