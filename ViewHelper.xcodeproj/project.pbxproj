@@ -10,7 +10,6 @@
 		6588DCCB1DE971EB00575329 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6588DCCA1DE971EB00575329 /* TableViewController.swift */; };
 		658FE8F01D92FA0D00CB92F3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658FE8EF1D92FA0D00CB92F3 /* ViewController.swift */; };
 		65D6FA911D8C6874004BAB04 /* ViewHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 65D6FA8F1D8C6802004BAB04 /* ViewHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		65D6FA921D8C6874004BAB04 /* ViewHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 65D6FA8F1D8C6802004BAB04 /* ViewHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		65D6FA931D8C6876004BAB04 /* ViewHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 65D6FA8F1D8C6802004BAB04 /* ViewHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		65D6FA941D8C689E004BAB04 /* InspectableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D6FA4C1D8C66A0004BAB04 /* InspectableButton.swift */; };
 		65D6FA951D8C689E004BAB04 /* InspectableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D6FA4D1D8C66A0004BAB04 /* InspectableView.swift */; };
@@ -18,12 +17,6 @@
 		65D6FA971D8C689E004BAB04 /* ViewAutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D6FA4F1D8C66A0004BAB04 /* ViewAutoLayout.swift */; };
 		65D6FA981D8C689E004BAB04 /* ViewControllerAutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D6FA501D8C66A0004BAB04 /* ViewControllerAutoLayout.swift */; };
 		65D6FA991D8C689E004BAB04 /* ViewEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D6FA511D8C66A0004BAB04 /* ViewEffects.swift */; };
-		65D6FA9A1D8C689F004BAB04 /* InspectableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D6FA4C1D8C66A0004BAB04 /* InspectableButton.swift */; };
-		65D6FA9B1D8C689F004BAB04 /* InspectableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D6FA4D1D8C66A0004BAB04 /* InspectableView.swift */; };
-		65D6FA9C1D8C689F004BAB04 /* ViewAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D6FA4E1D8C66A0004BAB04 /* ViewAnimation.swift */; };
-		65D6FA9D1D8C689F004BAB04 /* ViewAutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D6FA4F1D8C66A0004BAB04 /* ViewAutoLayout.swift */; };
-		65D6FA9E1D8C689F004BAB04 /* ViewControllerAutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D6FA501D8C66A0004BAB04 /* ViewControllerAutoLayout.swift */; };
-		65D6FA9F1D8C689F004BAB04 /* ViewEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D6FA511D8C66A0004BAB04 /* ViewEffects.swift */; };
 		65D6FAA01D8C68A0004BAB04 /* InspectableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D6FA4C1D8C66A0004BAB04 /* InspectableButton.swift */; };
 		65D6FAA11D8C68A0004BAB04 /* InspectableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D6FA4D1D8C66A0004BAB04 /* InspectableView.swift */; };
 		65D6FAA21D8C68A0004BAB04 /* ViewAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D6FA4E1D8C66A0004BAB04 /* ViewAnimation.swift */; };
@@ -68,11 +61,9 @@
 		65D6FA501D8C66A0004BAB04 /* ViewControllerAutoLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerAutoLayout.swift; sourceTree = "<group>"; };
 		65D6FA511D8C66A0004BAB04 /* ViewEffects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewEffects.swift; sourceTree = "<group>"; };
 		65D6FA6A1D8C673E004BAB04 /* ViewHelper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ViewHelper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		65D6FA771D8C674E004BAB04 /* ViewHelper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ViewHelper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		65D6FA841D8C675E004BAB04 /* ViewHelper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ViewHelper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		65D6FA8C1D8C6802004BAB04 /* Info-iOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-iOS.plist"; sourceTree = "<group>"; };
 		65D6FA8D1D8C6802004BAB04 /* Info-tvOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-tvOS.plist"; sourceTree = "<group>"; };
-		65D6FA8E1D8C6802004BAB04 /* Info-watchOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-watchOS.plist"; sourceTree = "<group>"; };
 		65D6FA8F1D8C6802004BAB04 /* ViewHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewHelper.h; sourceTree = "<group>"; };
 		65D6FAAA1D8C68CF004BAB04 /* ViewHelperDemo iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ViewHelperDemo iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		65D6FAAC1D8C68CF004BAB04 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -90,13 +81,6 @@
 
 /* Begin PBXFrameworksBuildPhase section */
 		65D6FA661D8C673E004BAB04 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		65D6FA731D8C674E004BAB04 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -144,7 +128,6 @@
 			isa = PBXGroup;
 			children = (
 				65D6FA6A1D8C673E004BAB04 /* ViewHelper.framework */,
-				65D6FA771D8C674E004BAB04 /* ViewHelper.framework */,
 				65D6FA841D8C675E004BAB04 /* ViewHelper.framework */,
 				65D6FAAA1D8C68CF004BAB04 /* ViewHelperDemo iOS.app */,
 				65D6FAC61D8C6C3E004BAB04 /* ViewHelperDemo tvOS.app */,
@@ -174,7 +157,6 @@
 				65D6FA511D8C66A0004BAB04 /* ViewEffects.swift */,
 				65D6FA8C1D8C6802004BAB04 /* Info-iOS.plist */,
 				65D6FA8D1D8C6802004BAB04 /* Info-tvOS.plist */,
-				65D6FA8E1D8C6802004BAB04 /* Info-watchOS.plist */,
 				65D6FA8F1D8C6802004BAB04 /* ViewHelper.h */,
 			);
 			path = Sources;
@@ -219,14 +201,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		65D6FA741D8C674E004BAB04 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				65D6FA921D8C6874004BAB04 /* ViewHelper.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		65D6FA811D8C675E004BAB04 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -254,24 +228,6 @@
 			name = "ViewHelper iOS";
 			productName = "ViewHelper iOS";
 			productReference = 65D6FA6A1D8C673E004BAB04 /* ViewHelper.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		65D6FA761D8C674E004BAB04 /* ViewHelper watchOS */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 65D6FA7C1D8C674E004BAB04 /* Build configuration list for PBXNativeTarget "ViewHelper watchOS" */;
-			buildPhases = (
-				65D6FA721D8C674E004BAB04 /* Sources */,
-				65D6FA731D8C674E004BAB04 /* Frameworks */,
-				65D6FA741D8C674E004BAB04 /* Headers */,
-				65D6FA751D8C674E004BAB04 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "ViewHelper watchOS";
-			productName = "ViewHelper watchOS";
-			productReference = 65D6FA771D8C674E004BAB04 /* ViewHelper.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		65D6FA831D8C675E004BAB04 /* ViewHelper tvOS */ = {
@@ -341,10 +297,6 @@
 						CreatedOnToolsVersion = 8.0;
 						ProvisioningStyle = Automatic;
 					};
-					65D6FA761D8C674E004BAB04 = {
-						CreatedOnToolsVersion = 8.0;
-						ProvisioningStyle = Automatic;
-					};
 					65D6FA831D8C675E004BAB04 = {
 						CreatedOnToolsVersion = 8.0;
 						ProvisioningStyle = Automatic;
@@ -375,7 +327,6 @@
 				65D6FAA91D8C68CF004BAB04 /* ViewHelperDemo iOS */,
 				65D6FAC51D8C6C3E004BAB04 /* ViewHelperDemo tvOS */,
 				65D6FA691D8C673E004BAB04 /* ViewHelper iOS */,
-				65D6FA761D8C674E004BAB04 /* ViewHelper watchOS */,
 				65D6FA831D8C675E004BAB04 /* ViewHelper tvOS */,
 			);
 		};
@@ -383,13 +334,6 @@
 
 /* Begin PBXResourcesBuildPhase section */
 		65D6FA681D8C673E004BAB04 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		65D6FA751D8C674E004BAB04 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -435,19 +379,6 @@
 				65D6FAA31D8C68A0004BAB04 /* ViewAutoLayout.swift in Sources */,
 				65D6FAA51D8C68A0004BAB04 /* ViewEffects.swift in Sources */,
 				65D6FAA01D8C68A0004BAB04 /* InspectableButton.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		65D6FA721D8C674E004BAB04 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				65D6FA9C1D8C689F004BAB04 /* ViewAnimation.swift in Sources */,
-				65D6FA9B1D8C689F004BAB04 /* InspectableView.swift in Sources */,
-				65D6FA9E1D8C689F004BAB04 /* ViewControllerAutoLayout.swift in Sources */,
-				65D6FA9D1D8C689F004BAB04 /* ViewAutoLayout.swift in Sources */,
-				65D6FA9F1D8C689F004BAB04 /* ViewEffects.swift in Sources */,
-				65D6FA9A1D8C689F004BAB04 /* InspectableButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -620,7 +551,7 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/Sources/Info-iOS.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.allforces.ViewHelper-iOS";
@@ -629,7 +560,7 @@
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
-				TVOS_DEPLOYMENT_TARGET = 9.0;
+				TVOS_DEPLOYMENT_TARGET = 10.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 				WATCHOS_DEPLOYMENT_TARGET = 2.0;
@@ -657,7 +588,7 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/Sources/Info-iOS.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.allforces.ViewHelper-iOS";
@@ -665,83 +596,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 3.0;
-				TVOS_DEPLOYMENT_TARGET = 9.0;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-				WATCHOS_DEPLOYMENT_TARGET = 2.0;
-			};
-			name = Release;
-		};
-		65D6FA7D1D8C674E004BAB04 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				APPLICATION_EXTENSION_API_ONLY = YES;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_SUSPICIOUS_MOVES = YES;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CODE_SIGN_IDENTITY = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "$(SRCROOT)/Sources/Info-watchOS.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.allforces.ViewHelper-watchOS";
-				PRODUCT_NAME = ViewHelper;
-				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				TVOS_DEPLOYMENT_TARGET = 9.0;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-				WATCHOS_DEPLOYMENT_TARGET = 2.0;
-			};
-			name = Debug;
-		};
-		65D6FA7E1D8C674E004BAB04 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				APPLICATION_EXTENSION_API_ONLY = YES;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_SUSPICIOUS_MOVES = YES;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CODE_SIGN_IDENTITY = "";
-				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "$(SRCROOT)/Sources/Info-watchOS.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.allforces.ViewHelper-watchOS";
-				PRODUCT_NAME = ViewHelper;
-				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				TVOS_DEPLOYMENT_TARGET = 9.0;
+				TVOS_DEPLOYMENT_TARGET = 10.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 				WATCHOS_DEPLOYMENT_TARGET = 2.0;
@@ -768,7 +623,7 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/Sources/Info-tvOS.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.allforces.ViewHelper-tvOS";
@@ -779,7 +634,7 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 9.0;
+				TVOS_DEPLOYMENT_TARGET = 10.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 				WATCHOS_DEPLOYMENT_TARGET = 2.0;
@@ -807,7 +662,7 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/Sources/Info-tvOS.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.allforces.ViewHelper-tvOS";
@@ -817,7 +672,7 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 9.0;
+				TVOS_DEPLOYMENT_TARGET = 10.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 				WATCHOS_DEPLOYMENT_TARGET = 2.0;
@@ -943,15 +798,6 @@
 			buildConfigurations = (
 				65D6FA701D8C673E004BAB04 /* Debug */,
 				65D6FA711D8C673E004BAB04 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		65D6FA7C1D8C674E004BAB04 /* Build configuration list for PBXNativeTarget "ViewHelper watchOS" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				65D6FA7D1D8C674E004BAB04 /* Debug */,
-				65D6FA7E1D8C674E004BAB04 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

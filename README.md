@@ -3,9 +3,12 @@
 [![Version](https://img.shields.io/cocoapods/v/AFViewHelper.svg?style=flat)](http://cocoapods.org/pods/AFViewHelper)
 [![License](https://img.shields.io/cocoapods/l/AFViewHelper.svg?style=flat)](http://cocoapods.org/pods/AFViewHelper)
 [![Platform](https://img.shields.io/cocoapods/p/AFViewHelper.svg?style=flat)](http://cocoapods.org/pods/AFViewHelper)
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
 
-Autolayout and View Animation Helper for Swift 3.0
+Autolayout and View Animation Helper for Swift 3.0. 
+Mimimum requirements: Swift 3 and IOS 10
+Supported: IOS and Apple TV
 
 
 ![Sample Project Screenshot](https://raw.githubusercontent.com/melvitax/ViewHelper/master/Screenshot.png?raw=true "Sample Project Screenshot")

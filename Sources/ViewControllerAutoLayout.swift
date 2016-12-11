@@ -1,6 +1,6 @@
 //
 //  ViewControllerAutoLayout.swift
-//  ViewHelper: Version 4.2.0
+//  ViewHelper: Version 4.2.1
 //  Created by Melvin Rivera on 11/5/15.
 //  https://github.com/melvitax/ViewHelper
 //
@@ -10,12 +10,6 @@ import UIKit
 
 extension UIViewController {
     
-    /**
-     Returns true if layout direction is left to right
-     */
-    func layoutDirectionIsLeftToRight() -> Bool {
-        return (UIApplication.shared.userInterfaceLayoutDirection == .leftToRight)
-    }
     
     /**
      Returns true if horizontal size class is compact
