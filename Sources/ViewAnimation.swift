@@ -1,6 +1,6 @@
 //
 //  ViewAnimation.swift
-//  ViewHelper: Version 4.2.3
+//  ViewHelper: Version 4.2.4
 //  Created by Melvin Rivera on 11/23/15.
 //  https://github.com/melvitax/ViewHelper
 //
@@ -11,7 +11,7 @@ import UIKit
 /**
  A preset animation behavior.
  */
-enum AnimationType {
+public enum AnimationType {
     case slideLeft, slideRight, slideDown, slideUp, squeezeLeft, squeezeRight, squeezeDown, squeezeUp, fadeIn, fadeOut, fadeOutIn, fadeInLeft, fadeInRight, fadeInDown, fadeInUp, zoomIn, zoomOut, fall, shake, pop, flipX, flipY, morph, squeeze, flash, wobble, swing
     static let allValues = [shake, pop, morph, squeeze, wobble, swing, flipX, flipY, fall, squeezeLeft, squeezeRight, squeezeDown, squeezeUp, slideLeft, slideRight, slideDown, slideUp,  fadeIn, fadeOut, fadeOutIn, fadeInLeft, fadeInRight, fadeInDown, fadeInUp, zoomIn, zoomOut, flash]
     var description: String {
@@ -24,7 +24,7 @@ enum AnimationType {
 /**
  Easing curve to be used in animation.
  */
-enum AnimationEasingCurve {
+public enum AnimationEasingCurve {
     case easeIn, easeOut, easeInOut, linear, easeInSine, easeOutSine, easeInOutSine, easeInQuad, easeOutQuad, easeInOutQuad, easeInCubic, easeOutCubic, easeInOutCubic, easeInQuart, easeOutQuart, easeInOutQuart, easeInQuint, easeOutQuint, easeInOutQuint, easeInExpo, easeOutExpo, easeInOutExpo, easeInCirc, easeOutCirc, easeInOutCirc, easeInBack, easeOutBack, easeInOutBack, spring
     static let allValues = [easeIn, easeOut, easeInOut, linear, easeInSine, easeOutSine, easeInOutSine, easeInQuad, easeOutQuad, easeInOutQuad, easeInCubic, easeOutCubic, easeInOutCubic, easeInQuart, easeOutQuart, easeInOutQuart, easeInQuint, easeOutQuint, easeInOutQuint, easeInExpo, easeOutExpo, easeInOutExpo, easeInCirc, easeOutCirc, easeInOutCirc, easeInBack, easeOutBack, easeInOutBack, spring]
     var timingFunction:CAMediaTimingFunction {
@@ -75,7 +75,7 @@ enum AnimationEasingCurve {
     }
 }
 
-extension UIView {
+public extension UIView {
     
     typealias AnimationCompletionHandler = () -> Void
     

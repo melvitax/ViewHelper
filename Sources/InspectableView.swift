@@ -1,6 +1,6 @@
 //
 //  InspectableView.swift
-//  ViewHelper: Version 4.2.3
+//  ViewHelper: Version 4.2.4
 //  Created by Melvin Rivera on 7/24/14.
 //  https://github.com/melvitax/ViewHelper
 //
@@ -18,7 +18,7 @@ import QuartzCore
     /**
      The layer border color
      */
-    @IBInspectable override var borderColor: UIColor {
+    @IBInspectable override public var borderColor: UIColor {
         get {
             return layer.borderColor == nil ? UIColor.clear : UIColor(cgColor: layer.borderColor!)
         }
@@ -30,7 +30,7 @@ import QuartzCore
     /**
      The layer border width
      */
-    @IBInspectable override var borderWidth: CGFloat {
+    @IBInspectable override public var borderWidth: CGFloat {
         get {
             return layer.borderWidth
         }
@@ -45,7 +45,7 @@ import QuartzCore
     /**
      The layer corner radius
      */
-    @IBInspectable override var cornerRadius: CGFloat {
+    @IBInspectable override public var cornerRadius: CGFloat {
         get {
             return layer.cornerRadius
         }
@@ -62,7 +62,7 @@ import QuartzCore
     /**
      The shadow color of the layer
      */
-    @IBInspectable override var shadowColor: UIColor {
+    @IBInspectable override public var shadowColor: UIColor {
         get {
             return layer.shadowColor == nil ? UIColor.clear : UIColor(cgColor: layer.shadowColor!)
         }
@@ -75,7 +75,7 @@ import QuartzCore
     /**
      The shadow offset of the layer
      */
-    @IBInspectable override var shadowOffset:CGSize {
+    @IBInspectable override public var shadowOffset:CGSize {
         get {
             return layer.shadowOffset
         }
@@ -89,7 +89,7 @@ import QuartzCore
      
      - Returns: Float
      */
-    @IBInspectable override var shadowOpacity:Float {
+    @IBInspectable override public var shadowOpacity:Float {
         get {
             return layer.shadowOpacity
         }
@@ -103,7 +103,7 @@ import QuartzCore
      
      - Returns: CGFloat
      */
-    @IBInspectable override var shadowRadius:CGFloat {
+    @IBInspectable override public var shadowRadius:CGFloat {
         get {
             return layer.shadowRadius
         }

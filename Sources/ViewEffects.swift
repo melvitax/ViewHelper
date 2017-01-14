@@ -1,6 +1,6 @@
 //
 //  ViewEffects.swift
-//  ViewHelper: Version 4.2.3
+//  ViewHelper: Version 4.2.4
 //  Created by Melvin Rivera on 7/2/14.
 //  https://github.com/melvitax/ViewHelper
 //
@@ -10,11 +10,7 @@ import QuartzCore
 
 
 
-@IBDesignable extension UIView {
-    
-    open override func prepareForInterfaceBuilder() {
-        self.setNeedsDisplay()
-    }
+@IBDesignable public extension UIView {
     
     // MARK: Border
     

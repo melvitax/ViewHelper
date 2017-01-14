@@ -1,6 +1,6 @@
 //
 //  ViewAutoLayout.swift
-//  ViewHelper: Version 4.2.3
+//  ViewHelper: Version 4.2.4
 //  Created by Melvin Rivera on 11/5/15.
 //  https://github.com/melvitax/ViewHelper
 //
@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-extension UIView {
+public extension UIView {
     
     // MARK: Init
     
