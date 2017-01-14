@@ -1,8 +1,8 @@
 Pod::Spec.new do |s|
     s.name     = 'AFViewHelper'
-    s.version  = '4.2.2'
+    s.version  = '4.2.3'
     s.license  = 'MIT'
-    s.summary  = 'Autolayout and Animation UIVIew Extension for Swift 2.0.'
+    s.summary  = 'Autolayout and Animation UIVIew Extension for Swift 3.0.'
     s.homepage = 'https://github.com/melvitax/ViewHelper'
     s.author   = { 'Melvin Rivera' => 'melvitax@gmail.com' }
     s.source   = { :git => 'https://github.com/melvitax/ViewHelper.git', :tag => s.version.to_s }

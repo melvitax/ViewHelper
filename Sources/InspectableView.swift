@@ -1,6 +1,6 @@
 //
 //  InspectableView.swift
-//  ViewHelper: Version 4.2.2
+//  ViewHelper: Version 4.2.3
 //  Created by Melvin Rivera on 7/24/14.
 //  https://github.com/melvitax/ViewHelper
 //

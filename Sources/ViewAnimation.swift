@@ -1,6 +1,6 @@
 //
 //  ViewAnimation.swift
-//  ViewHelper: Version 4.2.2
+//  ViewHelper: Version 4.2.3
 //  Created by Melvin Rivera on 11/23/15.
 //  https://github.com/melvitax/ViewHelper
 //
