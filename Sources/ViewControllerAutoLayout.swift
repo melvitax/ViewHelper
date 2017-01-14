@@ -1,6 +1,6 @@
 //
 //  ViewControllerAutoLayout.swift
-//  ViewHelper: Version 4.2.1
+//  ViewHelper: Version 4.2.2
 //  Created by Melvin Rivera on 11/5/15.
 //  https://github.com/melvitax/ViewHelper
 //

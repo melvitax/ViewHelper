@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
     s.name     = 'AFViewHelper'
-    s.version  = '4.2.1'
+    s.version  = '4.2.2'
     s.license  = 'MIT'
     s.summary  = 'Autolayout and Animation UIVIew Extension for Swift 2.0.'
     s.homepage = 'https://github.com/melvitax/ViewHelper'
@@ -12,9 +12,9 @@ Pod::Spec.new do |s|
     s.social_media_url = 'https://twitter.com/melvitax'
     s.framework    = 'QuartzCore'
 
-    s.platforms = { :ios => '8.4', :tvos => '9.0' }
-    s.ios.deployment_target = "8.4"
-    s.tvos.deployment_target = "9.0"
+    s.platforms = { :ios => '9.0', :tvos => '9.0' }
+    s.ios.deployment_target = "9.0"
+    s.tvos.deployment_target = "10.0"
 
     s.xcconfig = { 'SWIFT_VERSION' => '3.0' }
 

@@ -1,6 +1,6 @@
 //
 //  ViewAutoLayout.swift
-//  ViewHelper: Version 4.2.1
+//  ViewHelper: Version 4.2.2
 //  Created by Melvin Rivera on 11/5/15.
 //  https://github.com/melvitax/ViewHelper
 //
@@ -974,7 +974,11 @@ extension UIView {
      Returns true if layout direction is left to right
      */
     func layoutDirectionIsLeftToRight() -> Bool {
-        return (self.effectiveUserInterfaceLayoutDirection == UIUserInterfaceLayoutDirection.leftToRight)
+        if #available(iOS 10.0, *) {
+            return (self.effectiveUserInterfaceLayoutDirection == UIUserInterfaceLayoutDirection.leftToRight)
+        } else {
+            return UIApplication.shared.userInterfaceLayoutDirection == .leftToRight
+        }
     }
     
     

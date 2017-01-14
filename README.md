@@ -7,7 +7,7 @@
 
 
 Autolayout and View Animation Helper for Swift 3.0. 
-Mimimum requirements: Swift 3 and IOS 10
+Mimimum requirements: Swift 3 and IOS 9
 Supported: IOS and Apple TV
 
 
